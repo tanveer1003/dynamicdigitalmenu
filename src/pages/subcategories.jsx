@@ -23,6 +23,7 @@ function SubcategoriesPage() {
     ];
 
     const Categories = () => {
+        /*
         const scrollRef = useRef(null);
         const [scrollWidth, setScrollWidth] = useState(1);
         const [scrollLeft, setScrollLeft] = useState(0);
@@ -42,7 +43,7 @@ function SubcategoriesPage() {
         const handleScroll = () => {
             setScrollLeft(scrollRef.current.scrollLeft);
         };
-
+        */
         return (
             <div className="container pt-2">
                 <h2 className="mb-4">Categories</h2>
@@ -52,14 +53,16 @@ function SubcategoriesPage() {
                     {categories.map((category, index) => (
                         <div key={index} className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
                             <Link className='text-white link-offset-2 link-underline link-underline-opacity-0' to="/categoryproducts">
-                            <div className="overlay"></div>
-                            <h5 className="category-text">{category.name}</h5>
+                                <div className="overlay"></div>
+                                <h5 className="category-text">{category.name}</h5>
                             </Link>
                         </div>
                     ))}
                 </div>
 
                 {/* Scrollbar Indicator */}
+                {/*<div className="scroll-indicator"></div>*/}
+                {/*
                 <div className="scroll-indicator">
                     <div
                         className="scroll-indicator-fill"
@@ -68,6 +71,7 @@ function SubcategoriesPage() {
                         }}
                     ></div>
                 </div>
+                */}
             </div>
         );
     };
@@ -103,7 +107,7 @@ function SubcategoriesPage() {
             price: "$18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: "https://s3-alpha-sig.figma.com/img/1f8d/695f/155cd34f89482fea75dbdd7f29da3edb?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=QmhXxsWJ6~jLsYAO6zvxdJ-jSoMPWCm~98Fsk-1H320MfGj41GmF94TOK-046k6LUUOlEmQa6y8lyvw1PgbnTR7wnX2dgJnZFsIEdnkah9Yc4D9aZZi-9zBF6pSb3DKGvqLq-afOUWntiDxbTJ4rF0X18ulPwYogB6HdXTXQe-UK5xYyGvg9oyyM4uvktJGjPddPNgUhTZ~CZ~LcfQpG53Ks3ZPzneJIbRTnRkJL3QxbsJCe4Wdk3gd5GOfgENcVmSAaIcS3Yg5QHs65Hi-azCUq2kH3d-Bk1lo~tOqCQp40AF7vJmDxffV1jkhSpJqTZVDBXaef7Ih5zi9TweL2Tw__",
-            tags: ["Vegan","Gluten Free", "Spicy"],
+            tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         {
             id: 5,
@@ -119,7 +123,7 @@ function SubcategoriesPage() {
             price: "$18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: "https://s3-alpha-sig.figma.com/img/9158/5ae6/91cd6b3c6142bc2dcb419fbe86a014dd?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=L1nuo~AC5OVaX-zdZxlTTDp5ULpNwhYjOvg4PNHs~IXkcG9bro4~emYNwKVTbqpMK~BKeEB01k8pEpUUNG2B9DvDgMlMzc6vDQ03z-qj0Xc2RkXrAybEzA4gueYnLKXVF6C8DfPWtbipmMSDOYYMfuzK6t168Uq2gsV7L0PP~PpJM54VzhZwgGvcisHOGDTYG5yrYFOrb6PUwFt9N3bai1g0XcjR59~dRI2CMv~Md4q6zVLxBiJHK1eAU3el7aAqQPJ6DT~z4GgP6u-Gv0w7Le5IieCQKGpPALRo4rfaucwNtNL72fR0rdeRMKZZOY9oC6v3TPxgghjYV3NKFiwiJA__",
-            tags: [ "Spicy"],
+            tags: ["Spicy"],
         },
         // Add more products as needed
     ];
@@ -148,148 +152,154 @@ function SubcategoriesPage() {
                         <h2 className="ml-2">Appetizers Specials Deals</h2>
                     </div>
                     <div className="header-right">
-                        <FaList className="view-icon text-primary" onClick={() => setisGrid(true)} />
-                        <FaTh className="view-icon text-primary" onClick={() => setisGrid(false)} />
+                        <FaList className="view-icon text-primary" onClick={() => setisGrid(false)} />
+                        <FaTh className="view-icon text-primary" onClick={() => setisGrid(true)} />
                     </div>
                 </div>
 
                 <div className="row">
                     {productData.map((product) => (
-                        isGrid ? 
-                        <div key={product.id} className=" p-2 col-md-4">
-                            <div className="product-card">
-                                <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
-                                    <div className="overlay">
-                                        <span className="product-category-tag">{product.tags[0]}</span>
+                        isGrid ?
+                            <div key={product.id} className=" p-2 col-md-4">
+                                <div className="product-card">
+                                    <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
+                                        <div className="overlay">
+                                            <span className="product-category-tag">{product.tags[0]}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            <div className="product-details">
-                                <div className="product-row">
-                                    <h5 className="product-title">{product.title}</h5>
-                                    <div className="product-price">{product.price}</div>
-                                </div>
-                                <p className="product-description">{product.description}</p>
-                                <div className="product-row">
-                                    <div className="product-tags">
-                                        {product.tags.map((tag, index) => (
-                                            <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                {tag === "Gluten Free" && <img style={{height:10,width:10}} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                {tag === "Spicy" && <img style={{height:10,width:10}} src={chilleIcon} alt="Spicy Icon" />}
-                                                {tag === "Vegan" && <img style={{height:10,width:10}} src={leafIcon} alt="Vegan Icon" />}
-                                                {tag}
+                                    <div className="product-details">
+                                        <div className="product-row">
+                                            <h5 className="product-title">{product.title}</h5>
+                                            <div className="product-price">{product.price}</div>
+                                        </div>
+                                        <p className="product-description">{product.description}</p>
+                                        <div className="product-row">
+                                            <div className="product-tags">
+                                                {product.tags.map((tag, index) => (
+                                                    <div key={index} className={`tag ${formatTag(tag)}`}>
+                                                        {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
+                                                        {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
+                                                        {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
+                                                        {tag}
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
+                                            <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                                                data-bs-target="#productModal" onClick={() => setSelectedProduct(product)}>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
+                                                    <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
                                     </div>
-                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                data-bs-target="#productModal" onClick={() => setSelectedProduct(product)}>
-                                        <img style={{ height:16,width:16}} src={moreIcon} />
-                                    </button>
                                 </div>
-                                
                             </div>
-                            </div>
-                        </div>
-                         :
-                         <div key={product.id} className=" p-2 col-md-12">
-                            <div className="product-card d-flex justify-content-between">
-                            <div className="product-details">
-                                <div className="product-row">
-                                    <h5 className="product-title">{product.title}</h5>
-                                    <div className="product-price">{product.price}</div>
-                                </div>
-                                <p className="product-description">{product.description}</p>
-                                <div className="product-row">
-                                    <div className="product-tags">
-                                        {product.tags.map((tag, index) => (
-                                            <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                {tag === "Gluten Free" && <img style={{height:10,width:10}} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                {tag === "Spicy" && <img style={{height:10,width:10}} src={chilleIcon} alt="Spicy Icon" />}
-                                                {tag === "Vegan" && <img style={{height:10,width:10}} src={leafIcon} alt="Vegan Icon" />}
-                                                {tag}
+                            :
+                            <div key={product.id} className=" p-2 col-md-12">
+                                <div className="product-card d-flex justify-content-between">
+                                    <div className="product-details">
+                                        <div className="product-row">
+                                            <h5 className="product-title">{product.title}</h5>
+                                            <div className="product-price">{product.price}</div>
+                                        </div>
+                                        <p className="product-description">{product.description}</p>
+                                        <div className="product-row">
+                                            <div className="product-tags">
+                                                {product.tags.map((tag, index) => (
+                                                    <div key={index} className={`tag ${formatTag(tag)}`}>
+                                                        {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
+                                                        {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
+                                                        {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
+                                                        {tag}
+                                                    </div>
+                                                ))}
                                             </div>
-                                        ))}
+                                            <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                                                data-bs-target="#productModal">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
+                                                    <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
+                                                </svg>
+                                            </button>
+                                        </div>
+
                                     </div>
-                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                data-bs-target="#productModal">
-                                        <img style={{ height:16,width:16}} src={moreIcon} />
-                                    </button>
-                                </div>
-                                
-                            </div>
-                            <div className="product-image" style={{  
-                                backgroundImage: `url(${product.image})`,
-                                width: "200px",  // Adjust as needed
-                                height: "220px",
-                                backgroundSize: "cover",
-                                backgroundPosition: "center",
-                                backgroundRepeat: "no-repeat",
-                                flexShrink: 0 
-                                 }}>
-                                <div className="overlay">
-                                    <span className="product-category-tag">{product.tags[0]}</span>
+                                    <div className="product-image" style={{
+                                        backgroundImage: `url(${product.image})`,
+                                        width: "200px",  // Adjust as needed
+                                        height: "220px",
+                                        backgroundSize: "cover",
+                                        backgroundPosition: "center",
+                                        backgroundRepeat: "no-repeat",
+                                        flexShrink: 0
+                                    }}>
+                                        <div className="overlay">
+                                            <span className="product-category-tag">{product.tags[0]}</span>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            </div>
-                        </div>
                     ))}
                 </div>
-            <div
-                            className="modal border-none fade"
-                            id="productModal"
-                            tabIndex="-1"
-                            aria-labelledby="productModalLabel"
-                            aria-hidden="true"
-                        >
-                            <div className="modal-dialog border-none">
-                                <div className="modal-content bg-transparent border-none">
-                                    <div className="modal-header">
-                                        <button
-                                            type="button"
-                                            className="btn-close text-white"
-                                            data-bs-dismiss="modal"
-                                            aria-label="Close"
-                                        ></button>
-                                    </div>
-                                    <div className="modal-body">
-                                        {selectedProduct && (
-                                            <>
-                                                <div key={selectedProduct.id} className="product-card">
-                                                    <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
-                                                        <div className="overlay">
-                                                            <span className="product-category-tag">{selectedProduct.tags[0]}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div className="product-details">
-                                                        <div className="product-row">
-                                                            <h5 className="product-title">{selectedProduct.title}</h5>
-                                                            <div className="product-price">{selectedProduct.price}</div>
-                                                        </div>
-                                                        <p className="product-description">{selectedProduct.description}</p>
-                                                        <div className="product-row">
-                                                            <div className="product-tags">
-                                                                {selectedProduct.tags.map((tag, index) => (
-                                                                    <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                                        {tag === "Gluten Free" && <img style={{height:10,width:10}} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                                        {tag === "Spicy" && <img style={{height:10,width:10}} src={chilleIcon} alt="Spicy Icon" />}
-                                                                        {tag === "Vegan" && <img style={{height:10,width:10}} src={leafIcon} alt="Vegan Icon" />}
-                                                                        {tag}
-                                                                    </div>
-                                                                ))}
-                                                            </div>
-                                                            <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                        data-bs-target="#productModal">
-                                                                <img style={{ height:16,width:16}} src={moreIcon} />
-                                                            </button>
-                                                        </div>
-                                                    </div>
+                <div
+                    className="modal border-none fade"
+                    id="productModal"
+                    tabIndex="-1"
+                    aria-labelledby="productModalLabel"
+                    aria-hidden="true"
+                >
+                    <div className="modal-dialog border-none">
+                        <div className="modal-content bg-transparent border-none">
+                            <div className="modal-header">
+                                <button
+                                    type="button"
+                                    className="btn-close text-white"
+                                    data-bs-dismiss="modal"
+                                    aria-label="Close"
+                                ></button>
+                            </div>
+                            <div className="modal-body">
+                                {selectedProduct && (
+                                    <>
+                                        <div key={selectedProduct.id} className="product-card">
+                                            <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
+                                                <div className="overlay">
+                                                    <span className="product-category-tag">{selectedProduct.tags[0]}</span>
                                                 </div>
-                                            </>
-                                        )}
-                                    </div>
-                                </div>
+                                            </div>
+                                            <div className="product-details">
+                                                <div className="product-row">
+                                                    <h5 className="product-title">{selectedProduct.title}</h5>
+                                                    <div className="product-price">{selectedProduct.price}</div>
+                                                </div>
+                                                <p className="product-description">{selectedProduct.description}</p>
+                                                <div className="product-row">
+                                                    <div className="product-tags">
+                                                        {selectedProduct.tags.map((tag, index) => (
+                                                            <div key={index} className={`tag ${formatTag(tag)}`}>
+                                                                {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
+                                                                {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
+                                                                {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
+                                                                {tag}
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                                                        data-bs-target="#productModal">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
+                                                            <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
         );
     };
 
