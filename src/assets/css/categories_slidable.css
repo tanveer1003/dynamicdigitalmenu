@@ -1,0 +1,69 @@
+/* Scrollable Category Row */
+.categories-container {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 10px;
+    padding-bottom: 15px;
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    max-width: 100%;
+    cursor: grab;
+    white-space: nowrap; /* Ensures items don’t wrap */
+}
+
+    /* Hides scrollbar in Chrome, Safari, Edge */
+    .categories-container::-webkit-scrollbar {
+        display: none;
+    }
+
+.category-card {
+    flex: 0 0 250px;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    scroll-snap-align: center;
+    user-select: none;
+}
+
+    /* Dark overlay for text readability */
+    .category-card .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+.category-text {
+    position: relative;
+    z-index: 1;
+}
+
+/* Scrollbar Indicator */
+.scroll-indicator {
+    width: 100%;
+    height: 4px;
+    background: #ddd;
+    border-radius: 2px;
+    position: relative;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.scroll-indicator-fill {
+    height: 100%;
+    background: #007bff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
