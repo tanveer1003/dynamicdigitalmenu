@@ -45,8 +45,6 @@ function Home() {
 
     return (
         <div >
-            {/* Navbar */}
-            <Header />
 
             <div className='pt-3' style={{ background: "rgb(243 246 250)" }} >
                 <div className="container rounded-3 bg-white p-3">
