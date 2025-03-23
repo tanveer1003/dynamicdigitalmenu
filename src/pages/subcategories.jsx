@@ -23,7 +23,7 @@ function SubcategoriesPage() {
     ];
 
     const Categories = () => {
-        /*
+
         const scrollRef = useRef(null);
         const [scrollWidth, setScrollWidth] = useState(1);
         const [scrollLeft, setScrollLeft] = useState(0);
@@ -43,7 +43,7 @@ function SubcategoriesPage() {
         const handleScroll = () => {
             setScrollLeft(scrollRef.current.scrollLeft);
         };
-        */
+
         return (
             <div className="container pt-2">
                 <h2 className="mb-4">Categories</h2>
@@ -61,8 +61,8 @@ function SubcategoriesPage() {
                 </div>
 
                 {/* Scrollbar Indicator */}
-                {/*<div className="scroll-indicator"></div>*/}
-                {/*
+                <div className="scroll-indicator"></div>
+
                 <div className="scroll-indicator">
                     <div
                         className="scroll-indicator-fill"
@@ -71,7 +71,7 @@ function SubcategoriesPage() {
                         }}
                     ></div>
                 </div>
-                */}
+
             </div>
         );
     };
@@ -198,12 +198,14 @@ function SubcategoriesPage() {
                             :
                             <div key={product.id} className=" p-2 col-md-12">
                                 <div className="product-card d-flex justify-content-between">
-                                    <div className="product-details">
-                                        <div className="product-row">
-                                            <h5 className="product-title">{product.title}</h5>
-                                            <div className="product-price">{product.price}</div>
+                                    <div className="product-details d-flex flex-column justify-content-between">
+                                        <div>
+                                            <div className="product-row">
+                                                <h5 className="product-title">{product.title}</h5>
+                                                <div className="product-price">{product.price}</div>
+                                            </div>
+                                            <p className="product-description">{product.description}</p>
                                         </div>
-                                        <p className="product-description">{product.description}</p>
                                         <div className="product-row">
                                             <div className="product-tags">
                                                 {product.tags.map((tag, index) => (
@@ -216,7 +218,8 @@ function SubcategoriesPage() {
                                                 ))}
                                             </div>
                                             <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                data-bs-target="#productModal">
+                                                data-bs-target="#productModal"
+                                                onClick={() => setSelectedProduct(product)}>
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
                                                     <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
                                                 </svg>
@@ -242,63 +245,63 @@ function SubcategoriesPage() {
                     ))}
                 </div>
                 <div
-                    className="modal border-none fade"
-                    id="productModal"
-                    tabIndex="-1"
-                    aria-labelledby="productModalLabel"
-                    aria-hidden="true"
-                >
-                    <div className="modal-dialog border-none">
-                        <div className="modal-content bg-transparent border-none">
-                            <div className="modal-header">
-                                <button
-                                    type="button"
-                                    className="btn-close text-white"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close"
-                                ></button>
-                            </div>
-                            <div className="modal-body">
-                                {selectedProduct && (
-                                    <>
-                                        <div key={selectedProduct.id} className="product-card">
-                                            <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
-                                                <div className="overlay">
-                                                    <span className="product-category-tag">{selectedProduct.tags[0]}</span>
-                                                </div>
+                                    className="modal border border-0 fade "
+                                    id="productModal"
+                                    tabIndex="-1"
+                                    aria-labelledby="productModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div className="modal-dialog border border-0">
+                                        <div className="modal-content bg-transparent border border-0">
+                                            <div className="modal-header border border-0">
+                                                <button
+                                                    type="button"
+                                                    className="btn-close text-white"
+                                                    data-bs-dismiss="modal"
+                                                    aria-label="Close"
+                                                ></button>
                                             </div>
-                                            <div className="product-details">
-                                                <div className="product-row">
-                                                    <h5 className="product-title">{selectedProduct.title}</h5>
-                                                    <div className="product-price">{selectedProduct.price}</div>
-                                                </div>
-                                                <p className="product-description">{selectedProduct.description}</p>
-                                                <div className="product-row">
-                                                    <div className="product-tags">
-                                                        {selectedProduct.tags.map((tag, index) => (
-                                                            <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                                {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                                {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
-                                                                {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                                {tag}
+                                            <div className="modal-body">
+                                                {selectedProduct && (
+                                                    <>
+                                                        <div key={selectedProduct.id} className="product-card">
+                                                            <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
+                                                                <div className="overlay">
+                                                                    <span className="product-category-tag">{selectedProduct.tags[0]}</span>
+                                                                </div>
                                                             </div>
-                                                        ))}
-                                                    </div>
-                                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                        data-bs-target="#productModal">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
-                                                            <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
-                                                        </svg>
-                                                    </button>
-                                                </div>
+                                                            <div className="product-details">
+                                                                <div className="product-row">
+                                                                    <h5 className="product-title">{selectedProduct.title}</h5>
+                                                                    <div className="product-price">{selectedProduct.price}</div>
+                                                                </div>
+                                                                <p className="product-description">{selectedProduct.description}</p>
+                                                                <div className="product-row">
+                                                                    <div className="product-tags">
+                                                                        {selectedProduct.tags.map((tag, index) => (
+                                                                            <div key={index} className={`tag ${formatTag(tag)}`}>
+                                                                                {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
+                                                                                {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
+                                                                                {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
+                                                                                {tag}
+                                                                            </div>
+                                                                        ))}
+                                                                    </div>
+                                                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                                                                        data-bs-target="#productModal">
+                                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
+                                                                            <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
+                                                                        </svg>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </>
+                                                )}
                                             </div>
                                         </div>
-                                    </>
-                                )}
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    </div>
+                                </div>
             </div>
         );
     };
