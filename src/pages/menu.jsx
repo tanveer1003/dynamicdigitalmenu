@@ -28,7 +28,7 @@ function Menu() {
 
     const Menus = () => {
         return (
-            <div className="container menu-container"    >
+            <div className="container menu-container" style={{maxWidth:407}}   >
                 <img className='img-fluid rounded-5'style={{ height:308, width:407 }}  src="https://s3-alpha-sig.figma.com/img/032b/40ed/912ecf9755692a28c26fda31c42979eb?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=V-PUb-9d6xEezCslyyzM~Vi4TKn8swPXbi1KsxNASN-3qkznzjKiFue833Jx5U-ZboExCCSILKYnERYiIFJL0bvsGFJDxT1TCxA8x3FiKScZRgJCvXLEwbRN9L4LXhjhZ-ofZLIb485QRT~tKsgMf9fowXeX7CqYvrj9ydTw33vRDnp3GIR2tdiutafcmmh3AuqHws5QS78YpMwRLCiIcoFvW7mxxYIvWhl4qvQUPtqXnGjuIME9mYAOc-wiA0BCVjO6wFS1kSIJcOu8AaxHTivr0yY~ffQNe1pbZq6eQeYj8O14-tcYxdKUyO83ADDLH77reGkEC3A0rDWxDzJXCQ__" />
                 <div className="row">
                     {menus.map((menu, index) => (
