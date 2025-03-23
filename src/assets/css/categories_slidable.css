@@ -1,31 +1,24 @@
+/* Scrollable Category Row */
 .categories-container {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 10px;
     padding-bottom: 15px;
-    white-space: nowrap; /* Ensures items stay in a single row */
-    scrollbar-width: thin; /* Firefox scrollbar */
-    scrollbar-color: #007bff #ccc; /* Blue scrollbar */
-  }
-  
-  /* Webkit Browsers (Chrome, Edge, Safari) */
-  .categories-container::-webkit-scrollbar {
-    height: 6px;
-  }
-  
-  .categories-container::-webkit-scrollbar-track {
-    background: #ccc;
-    border-radius: 10px;
-  }
-  
-  .categories-container::-webkit-scrollbar-thumb {
-    background: #007bff;
-    border-radius: 10px;
-  }
-  
-  .category-card {
-    flex: 0 0 250px; /* Fixed width for each card */
+    scrollbar-width: none; /* Hide scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hide scrollbar in IE/Edge */
+    max-width: 100%;
+    cursor: grab;
+    white-space: nowrap; /* Ensures items don�t wrap */
+}
+
+    /* Hides scrollbar in Chrome, Safari, Edge */
+    .categories-container::-webkit-scrollbar {
+        display: none;
+    }
+
+.category-card {
+    flex: 0 0 250px;
     height: 200px;
     background-size: cover;
     background-position: center;
@@ -39,41 +32,38 @@
     font-weight: bold;
     text-transform: uppercase;
     scroll-snap-align: center;
-    white-space: normal; /* Ensures text wraps properly */
-  }
-  
-  .category-card .overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-  }
-  
-  .category-text {
+    user-select: none;
+}
+
+    /* Dark overlay for text readability */
+    .category-card .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+    }
+
+.category-text {
     position: relative;
     z-index: 1;
-  }
-  
-  /* Scrollbar Indicator */
-  .scroll-indicator {
+}
+
+/* Scrollbar Indicator */
+.scroll-indicator {
     width: 100%;
     height: 4px;
-    background: #ccc;
+    background: #ddd;
     border-radius: 2px;
     position: relative;
     margin-top: 10px;
-  }
-  
-  .scroll-indicator::after {
-    content: "";
-    width: 30%;
+    overflow: hidden;
+}
+
+.scroll-indicator-fill {
     height: 100%;
     background: #007bff;
-    position: absolute;
-    left: 0;
     border-radius: 2px;
     transition: all 0.3s ease;
-  }
-  
+}
