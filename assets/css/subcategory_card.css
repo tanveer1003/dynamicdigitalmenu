@@ -1,0 +1,34 @@
+.category-tag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-radius: 8px;
+    width: 300px;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+.category-info {
+    display: flex;
+    flex-direction: column;
+    text-align: left; /* Ensures left alignment */
+}
+
+.subcategory {
+    margin: 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.category {
+    margin: 0;
+    font-size: 14px;
+}
+
+.category-image {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    margin-left: auto; /* Pushes image to the right */
+}
