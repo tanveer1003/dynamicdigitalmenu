@@ -22,6 +22,8 @@ function CategoryproductsPage({ language }) {
         { name: "Main Course", image: "https://s3-alpha-sig.figma.com/img/da6e/0072/3035095c8694b1fecb5a8978bc04f554?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VlqWE4h7xtGunDG8IHQPnQAEQFuKsQXqscpUa7vVMtImnfLKgFxaCCUyNO7HcEdAVRrdxy3H-RYSF0OEU6HyVmvQS8WZOkIhCxGKx8Kt-qFL0dxjRccSa-IYK2wuBxFloi0j-V9mu21BSGVczSzLd5Cy6XqutG5jBYn3vBjb6saAsZEdn5eX12laXNtxE-QvNB6dl4TTvycL8KA4B54opxMKVw1n2NKP7SN9zghWnQ87ET6BvFM74S35Ak~I2eub7vEwJuREvZOkblm1ItjDO0GxBBCIa-P7x4MJpWCYULlTOhlQEkxaVL-M2~nOh-XTr46iUex-8zk6nzjtrNadOA__" },
         { name: "Desserts", image: "https://s3-alpha-sig.figma.com/img/ceff/b7a3/68aecebd398f9c726343810117badbe3?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=k-QjtpFt6NZM7rRW0ESSk2Ijyidix2zoeL3sRSG4oKVBOfiObFZFAWJsfUDHpklsP8tZ0APX4n-CeIAdYUWGGTas9Dpysto5IPhVBeaRLYdOb1T0DQXKw8DH5Y~31sBY-2K21-Ct8AYq5TBuhoZ1VdzCymODKZ-Qody6WUllBS51Ob3SCNgH78dWBPeogdlrFSx-tk5yVM2rOlAoKEU~qHZt0Js5Ra1vrfmIgZKa9s4kVEGkKuU0KvSbrB82hcC7JYBSmkvXDOAR-xqd59FVJzrVIi9NfA3hzCKEDeRF6X8MzbxvMpfrcpV1l7PEAk6LQN8TL09bS2bSK2ZB1yz3EQ__" },
         { name: "Drinks", image: "https://s3-alpha-sig.figma.com/img/e9a9/466f/e1f5cf6664854aa30c855585ec161324?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Gq5iaes2WNym6oOPh1aJ0k8wAKBePt6uOd7isHKXEFnysdkCNmG9FcRclBvS1lIJCWFFzE5sFTvNIl15QKJaZUJBdVmS2cXel8W~JFDBcLc0OSHbK~~pCndZ~BjDCHR1n6wf0EQdL8wDaWCF4C4tuRThFV4Pa59zIaHXf-wLvqZDySApBHO9pkgzptM1kQY9QrMnTDz4zK3P~wf1V~k-KS0ADxQinm5qoN5kzgztjzcnH9IQgaTniXor2RbiW4BetqMwQYS1UwZprLYz6ZBuyCRlkGgX7gYWtsGHnfiTtzVsUfQoEcZYYgiiU2cPDsqPzXrz7z0kh32iQqxPA5acJA__" },
+        { name: "Main Course", image: "https://s3-alpha-sig.figma.com/img/da6e/0072/3035095c8694b1fecb5a8978bc04f554?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VlqWE4h7xtGunDG8IHQPnQAEQFuKsQXqscpUa7vVMtImnfLKgFxaCCUyNO7HcEdAVRrdxy3H-RYSF0OEU6HyVmvQS8WZOkIhCxGKx8Kt-qFL0dxjRccSa-IYK2wuBxFloi0j-V9mu21BSGVczSzLd5Cy6XqutG5jBYn3vBjb6saAsZEdn5eX12laXNtxE-QvNB6dl4TTvycL8KA4B54opxMKVw1n2NKP7SN9zghWnQ87ET6BvFM74S35Ak~I2eub7vEwJuREvZOkblm1ItjDO0GxBBCIa-P7x4MJpWCYULlTOhlQEkxaVL-M2~nOh-XTr46iUex-8zk6nzjtrNadOA__" },
+        { name: "Desserts", image: "https://s3-alpha-sig.figma.com/img/ceff/b7a3/68aecebd398f9c726343810117badbe3?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=k-QjtpFt6NZM7rRW0ESSk2Ijyidix2zoeL3sRSG4oKVBOfiObFZFAWJsfUDHpklsP8tZ0APX4n-CeIAdYUWGGTas9Dpysto5IPhVBeaRLYdOb1T0DQXKw8DH5Y~31sBY-2K21-Ct8AYq5TBuhoZ1VdzCymODKZ-Qody6WUllBS51Ob3SCNgH78dWBPeogdlrFSx-tk5yVM2rOlAoKEU~qHZt0Js5Ra1vrfmIgZKa9s4kVEGkKuU0KvSbrB82hcC7JYBSmkvXDOAR-xqd59FVJzrVIi9NfA3hzCKEDeRF6X8MzbxvMpfrcpV1l7PEAk6LQN8TL09bS2bSK2ZB1yz3EQ__" },
 
     ];
 
@@ -196,7 +198,7 @@ function CategoryproductsPage({ language }) {
                 <div className="row">
                     {productData.map((product) => (
                         isGrid ?
-                            <div key={product.id} className=" p-2 col-md-4">
+                            <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
@@ -223,6 +225,7 @@ function CategoryproductsPage({ language }) {
                                             <button type="button" className="read-more-btn" data-bs-toggle="modal"
                                                 data-bs-target="#productModal"
                                                 onClick={() => setSelectedProduct(product)}>
+                                                    <span className='mr-2'>Read More</span>  
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
                                                     <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
                                                 </svg>
@@ -235,7 +238,7 @@ function CategoryproductsPage({ language }) {
                             :
                             <div key={product.id} className=" p-2 col-md-12">
                                 <div className="product-card d-flex justify-content-between">
-                                    <div className="product-details d-flex flex-column justify-content-between">
+                                    <div className="product-details w-100 d-flex flex-column justify-content-between">
                                         <div>
                                             <div className="product-row">
                                                 <h5 className="product-title">{product.title}</h5>
@@ -254,13 +257,6 @@ function CategoryproductsPage({ language }) {
                                                     </div>
                                                 ))}
                                             </div>
-                                            <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                data-bs-target="#productModal"
-                                                onClick={() => setSelectedProduct(product)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
-                                                    <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
-                                                </svg>
-                                            </button>
                                         </div>
 
                                     </div>
@@ -390,6 +386,7 @@ function CategoryproductsPage({ language }) {
             image: "https://s3-alpha-sig.figma.com/img/da9f/e36b/c06681dac53ca4b02650b6f3721f472c?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dJTZh2Zh~udbihEs1G~LCyBm5NCrO1BVmcfX4rFYMzYnhbMgDFp4EXBXoah88jGg1f8GDMF2Wa~3jltKnEkU7Wz55zYWwEH6ldKja~hmeqadeQoAtFKAXu1nOD~yaxJGSs1AnE6BWs052FEeHjkj6FefaO~uGWySSpjt3fZQFD-iLtzy0E-w-ZozGS6en6SPfKhdw-6A~N6UNNjMkavbv1pyBP8a~0QcUO0PQ6SDIiytfzb101jhcjwUaPJq0TUb1q2u9~2oGIJ2zdoBzg03Jq58sG9IDYiTyCbsxh2976X0V8g5W7iy6VN155ImTwte9giHSoQ4znzWwzlTF-IMMw__",
             tags: ["Gluten Free", "Spicy"],
         },
+        
         // Add more products as needed
     ];
 

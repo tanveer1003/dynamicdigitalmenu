@@ -2,6 +2,7 @@
 import Footer from './../components/footer';
 //import Header from './../components/header';
 import searchComponent from './../components/searchcomponent';
+import ReadMoreText from './../components/readmore';
 import { FaFilter, FaSearch } from "react-icons/fa";
 import './../assets/css/categories_slidable.css';
 import './../assets/css/productCard.css';
@@ -21,6 +22,8 @@ function SubcategoriesPage({ language }) {
         { name: "Main Course", image: "https://s3-alpha-sig.figma.com/img/da6e/0072/3035095c8694b1fecb5a8978bc04f554?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VlqWE4h7xtGunDG8IHQPnQAEQFuKsQXqscpUa7vVMtImnfLKgFxaCCUyNO7HcEdAVRrdxy3H-RYSF0OEU6HyVmvQS8WZOkIhCxGKx8Kt-qFL0dxjRccSa-IYK2wuBxFloi0j-V9mu21BSGVczSzLd5Cy6XqutG5jBYn3vBjb6saAsZEdn5eX12laXNtxE-QvNB6dl4TTvycL8KA4B54opxMKVw1n2NKP7SN9zghWnQ87ET6BvFM74S35Ak~I2eub7vEwJuREvZOkblm1ItjDO0GxBBCIa-P7x4MJpWCYULlTOhlQEkxaVL-M2~nOh-XTr46iUex-8zk6nzjtrNadOA__" },
         { name: "Desserts", image: "https://s3-alpha-sig.figma.com/img/ceff/b7a3/68aecebd398f9c726343810117badbe3?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=k-QjtpFt6NZM7rRW0ESSk2Ijyidix2zoeL3sRSG4oKVBOfiObFZFAWJsfUDHpklsP8tZ0APX4n-CeIAdYUWGGTas9Dpysto5IPhVBeaRLYdOb1T0DQXKw8DH5Y~31sBY-2K21-Ct8AYq5TBuhoZ1VdzCymODKZ-Qody6WUllBS51Ob3SCNgH78dWBPeogdlrFSx-tk5yVM2rOlAoKEU~qHZt0Js5Ra1vrfmIgZKa9s4kVEGkKuU0KvSbrB82hcC7JYBSmkvXDOAR-xqd59FVJzrVIi9NfA3hzCKEDeRF6X8MzbxvMpfrcpV1l7PEAk6LQN8TL09bS2bSK2ZB1yz3EQ__" },
         { name: "Drinks", image: "https://s3-alpha-sig.figma.com/img/e9a9/466f/e1f5cf6664854aa30c855585ec161324?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Gq5iaes2WNym6oOPh1aJ0k8wAKBePt6uOd7isHKXEFnysdkCNmG9FcRclBvS1lIJCWFFzE5sFTvNIl15QKJaZUJBdVmS2cXel8W~JFDBcLc0OSHbK~~pCndZ~BjDCHR1n6wf0EQdL8wDaWCF4C4tuRThFV4Pa59zIaHXf-wLvqZDySApBHO9pkgzptM1kQY9QrMnTDz4zK3P~wf1V~k-KS0ADxQinm5qoN5kzgztjzcnH9IQgaTniXor2RbiW4BetqMwQYS1UwZprLYz6ZBuyCRlkGgX7gYWtsGHnfiTtzVsUfQoEcZYYgiiU2cPDsqPzXrz7z0kh32iQqxPA5acJA__" },
+        { name: "Main Course", image: "https://s3-alpha-sig.figma.com/img/da6e/0072/3035095c8694b1fecb5a8978bc04f554?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VlqWE4h7xtGunDG8IHQPnQAEQFuKsQXqscpUa7vVMtImnfLKgFxaCCUyNO7HcEdAVRrdxy3H-RYSF0OEU6HyVmvQS8WZOkIhCxGKx8Kt-qFL0dxjRccSa-IYK2wuBxFloi0j-V9mu21BSGVczSzLd5Cy6XqutG5jBYn3vBjb6saAsZEdn5eX12laXNtxE-QvNB6dl4TTvycL8KA4B54opxMKVw1n2NKP7SN9zghWnQ87ET6BvFM74S35Ak~I2eub7vEwJuREvZOkblm1ItjDO0GxBBCIa-P7x4MJpWCYULlTOhlQEkxaVL-M2~nOh-XTr46iUex-8zk6nzjtrNadOA__" },
+        { name: "Desserts", image: "https://s3-alpha-sig.figma.com/img/ceff/b7a3/68aecebd398f9c726343810117badbe3?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=k-QjtpFt6NZM7rRW0ESSk2Ijyidix2zoeL3sRSG4oKVBOfiObFZFAWJsfUDHpklsP8tZ0APX4n-CeIAdYUWGGTas9Dpysto5IPhVBeaRLYdOb1T0DQXKw8DH5Y~31sBY-2K21-Ct8AYq5TBuhoZ1VdzCymODKZ-Qody6WUllBS51Ob3SCNgH78dWBPeogdlrFSx-tk5yVM2rOlAoKEU~qHZt0Js5Ra1vrfmIgZKa9s4kVEGkKuU0KvSbrB82hcC7JYBSmkvXDOAR-xqd59FVJzrVIi9NfA3hzCKEDeRF6X8MzbxvMpfrcpV1l7PEAk6LQN8TL09bS2bSK2ZB1yz3EQ__" },
     ];
 
     const categoryTranslations = {
@@ -89,50 +92,50 @@ function SubcategoriesPage({ language }) {
     const productData = [
         {
             id: 1,
-            title: "Fermented grape juice Wines",
+            title: "Mediterranean Salad",
             price: "15.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/c3af/e9da/f969b2f918bcb80a8d07ef057b6022ac?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=le6bl3nNd4y96pvRVaCOKpytLA2WeL2d9s10BgFVPwyjp02IipvySuF6W2T~IKTTJXiYtg2-0d0K3UGK8OoTQ550Bss19utnBAq0xah2cwCwkLksqxgqracMVzHdYdNgmFXY0oDFocJYUG45kom-n4BRuerIMOPmomJB5EZ5kFaALUqz~0sw1CpfmDkZxm5kcRyilnX1GrZX1rUReTTHP6yGg~NY290pgID-0Dgk41bEzE~9pnXJPI7pWPsR5HRW0kXBT-prXYpzYb8iiN~cY1ownvT6F3oBpmOA~7OplJtO6oHdvKslluR-BQXGlbEoNHVxqrV5CJg3mgPJG3mnOg__",
+            description: "Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal!Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal! 🥗✨Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal! 🥗✨Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes",
+            image: "https://s3-alpha-sig.figma.com/img/d0eb/8e0c/a260d8a11f4b6635b008a86cd0ab6545?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=O8iq3ifVYfp-Ke9GJkH7DfsnEN9IxUS3OStSsVQ2AzgYUW4ISKWY-TFyLK44fULsyrjPzouoZuw3UECsRqFrfuFxIdslV22WQpBQgpMSosrhL3pd87Y7mO64U4RsKQj2FnQHR78qrDk7R9jb4WIpTDUDDqjOHV6B1xY8j3cbJVFzdUKxwacdSuQAqrVyD34VMMEFUPjOMm8~Xt0eNFNEYWyTjTEdKLxJz-7i~NRBL2t2nFf7LD~Bh9eA7LfLkVkPaxQwPD~Sv8DNuU9YW0-R7mlE90Es5v-jcoE47k4KatQCB~schxSkVLM2Ee5CUcGaxBqxTovw2NSFCQyjNRsJ7A__",
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         {
             id: 2,
-            title: "sparkling wines",
+            title: "Savory Bites",
             price: "12.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/a302/cb0d/86eed69da8abfe31171f5463cbb4e19b?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DDsK4qi~ZyJX4X1QydLdcpVDWK6fNGLt4TGNRhCdpF~UUkgY9FOhGpk9KzNPOilxrxq4KGR9mdSxUNaGmgiQH0ubA8UPETdZgB4X4qjr~CI2jpAz6wUbuGWSEjta~crqGzYZcny7AtoYigF0c8ngIK-Ox2O1vz2hcNrtw8ChBsT2fHp1i-H3Lk~4T8WeFyL2ub2b4f4eA11Q-2Q6e-rrOT2UYszG0tULjFYLuUyzw2Fu1tD8c~sH6BL7ry3aQB-6xFxsFgWjl~efU5fteCs1u25-b-SGgv9-C9XYP~MPaBeXY~5os1Wnm0v9OTCjdICsivg7CH0Iw2B-I~xMlqRo0g__",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            image: "https://s3-alpha-sig.figma.com/img/5bf8/1698/b192a626318b9c0aac51e1e0699715db?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oGKlngoM692Nev5An3333gN5zy5GhYUojDAhMaiMo4Cd81EVG1wVsjcpIyXLYT0S57ZLd3Pa4a3oLsV09HNmTuvt2MHCDYsAL5eLlCVtVZYjcE1kHN3obI~8AQewYpnttKBX4IwkBzFoCKg2AFrp2-kAwqh7nrFUUl3h5Z0rzNmFgiGR97FCokSaCLzrsA0FL8H9~Kdg0~rPP6NM27FjfJ04Zlg7Je5mEGhqhKwwLDFM393GC3dimEJ8678pAdPz-kDkgWahA0Vbhu3Mogjb6qE69~bpEhegA5bn2bb7x~yJ~UjhRIwXDEB7zNNoPp5Id2ANilFCP3h3Nid8-p1ByQ__",
             tags: ["Vegan", "Spicy"],
         },
         {
             id: 3,
-            title: "Red Wines",
+            title: "Golden Crisps",
             price: "8.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/980c/29a3/c27a1019d04e849572646c4f7c34a8a2?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kI9~w0Fx2wsTNfsVXyYJL~~m6PSbcO5YcrWNU7zv0jtuBsPmdaDopD86RTDcZyF-i5fuVKb7Rvro13YQ2pjg-z~gfzhNMsirY~WUH1lUZbRZeg-i5S2M2tQoeFx6jlKgfB7KOZfHHR6jxq1unmJ1eH8VC5PzViEOgveRysFjvykmaDXV8x0EO2FZVF5oPqRNkD6Pj2R~KA1CKETDLFhhZvypE4zoh0c6So3ZA2t7szkyxaz8JbK-pi4KCc8hf6V1EMXAdNTRpnyjwD4TkgRTYYgKwEO2UCMHqn4Mu0MMfJT6kdNNLCupvsfIcJVfEcLZ05QsrnBkkt0skuNVr0yXmg__",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            image: "https://s3-alpha-sig.figma.com/img/6735/8f17/9e3f0ea0f628a90245aba14dfeaea960?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cLpPnx7pLILcJB~TVrdD7JH-Dn5uPQhCL1a6hLUtqj-nQCLx2~dYtCAAtjSgrr1La2t7bA3jUR5fhkMmjiREfC6CQIuy9qWcj0iGFRLSNIUkBUbwo0vmEjZ0Pq56SMIHQsQH4WdCxX5rF24NEVFm2Nv0fGXstvF2XzgJsgK9sLIDbxPg66CwmQBPuxbRq130rVLcxdmIt78B55~CMdiUU7SVoUxJBS2fvNciFPnLpu49Ny644qHn2YfhAkt-LlT2UCXNtxiqq9-tZT46Fl9F6CEOW43uXwb~h9n1AdF2UNKdGaY-4ykwhgph7VdjkwSkZ63IeWrA7tysZMvwTBFw~A__",
             tags: ["Spicy"],
         },
         {
             id: 4,
-            title: "Fermented grape juice Wines",
+            title: "Signature Starters",
             price: "18.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/1f8d/695f/155cd34f89482fea75dbdd7f29da3edb?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=QmhXxsWJ6~jLsYAO6zvxdJ-jSoMPWCm~98Fsk-1H320MfGj41GmF94TOK-046k6LUUOlEmQa6y8lyvw1PgbnTR7wnX2dgJnZFsIEdnkah9Yc4D9aZZi-9zBF6pSb3DKGvqLq-afOUWntiDxbTJ4rF0X18ulPwYogB6HdXTXQe-UK5xYyGvg9oyyM4uvktJGjPddPNgUhTZ~CZ~LcfQpG53Ks3ZPzneJIbRTnRkJL3QxbsJCe4Wdk3gd5GOfgENcVmSAaIcS3Yg5QHs65Hi-azCUq2kH3d-Bk1lo~tOqCQp40AF7vJmDxffV1jkhSpJqTZVDBXaef7Ih5zi9TweL2Tw__",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            image: "https://s3-alpha-sig.figma.com/img/166b/42a5/8f2469f84df42dde82f18dd82cba20b9?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Ox4ighfl2EznhVEqrbmHM8P9Ecn7P6wag4hjJaAh~9vD-GFeZVD16OpCc3LJfzip6FJyiKVDSx6hhC7mUVK67nx2Tb37cuQIaMMZLxPlRNrJCoRGkleAMQ2XFT8VEGJL-DnzaoAaTM1H8tCebkwQ56LHmzhPXaEXENUYF1TInsksbLpkrWYdP4kh1Wq7FpwEyYdrglwVUhG9yDBZstl9GCp88xXDUrZQkJRACUBv8XzwaOtqrFx9HXe-KeKVHLcQOjKWdKn5v1~DDu2v2DBZtFtXNPP~IH4fKhoytUx2WsVfcLrozOfCtfOw5EC5VCb2ySaQhjqOb59QnR-KcoEI1g__",
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         {
             id: 5,
-            title: "sparkling wines",
+            title: "Crispy Temptations",
             price: "18.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/e0c9/c8de/03d786195b1bd865e263c79ebc2e36cd?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=WvVUwB-SC3XTtWekKcQ3Hj88kxYUilQNUzDa06ugmQBKXQqWbLO6M~9-9PVIB-vkBPfUQVfjqBZeqfu6SOmULW9QT7jGzx4f-WEJtRd7o3P1gzxHeetJDmd68oi94T-97DmBtCCA7Ox3DwQKgYrvQGwlchDfSW5lejEPMfQKmaxr7cXqb8ZYWuBijWcFoPW1RXVmLzPA9qqhWqkDH4RAY0sZh6b6bf3KwfAKXyucxhnlTl2t-lalfVfWr~eNlsp8wYwDZ6Y8hzRMKj4l8G1ypbSr7P4bKe79EanPYQkSGfllFSqrC5w9~bfuTkkmjwIvZLuTdO6ZRtOpfJBSMymhWQ__",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            image: "https://s3-alpha-sig.figma.com/img/3aa6/941e/c9dbabf5d0e6227d6209f8546495a35e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=lSGx9kVce5QoGsWv~Js6STifms~nHJVx6KwkgZ96Dqn2FSIGEST4Hz7SVm6nNfPknrc6h7HUdgNIpU8ZhQgHXyk5g1XUiKP9piDHVSnAugz71KVJzXCsmS~XPuAhTivcpXoXK2wNvwNEB-1oXzXX9UwYEAWny-5LP74Fqnz-mkZ1DYx7cQim88QnUZ5eg~oXWv66C2vi9zcvMYBbrWoq5krDnsXCVlBhJZCONnO08kkY0miXW82~fE91NoS0lmlVOOdqV3TwKouLekUoTl~K8GrJADqJsGkTbnzweYZTKD9W0JRpyTjkmUcaQKFnAtLPUZh1l3uqkH~83uYgF8Pdew__",
             tags: ["Vegan", "Spicy"],
         },
         {
             id: 6,
-            title: "Red Wines",
+            title: "Mini Indulgence",
             price: "18.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/9158/5ae6/91cd6b3c6142bc2dcb419fbe86a014dd?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=L1nuo~AC5OVaX-zdZxlTTDp5ULpNwhYjOvg4PNHs~IXkcG9bro4~emYNwKVTbqpMK~BKeEB01k8pEpUUNG2B9DvDgMlMzc6vDQ03z-qj0Xc2RkXrAybEzA4gueYnLKXVF6C8DfPWtbipmMSDOYYMfuzK6t168Uq2gsV7L0PP~PpJM54VzhZwgGvcisHOGDTYG5yrYFOrb6PUwFt9N3bai1g0XcjR59~dRI2CMv~Md4q6zVLxBiJHK1eAU3el7aAqQPJ6DT~z4GgP6u-Gv0w7Le5IieCQKGpPALRo4rfaucwNtNL72fR0rdeRMKZZOY9oC6v3TPxgghjYV3NKFiwiJA__",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            image: "https://s3-alpha-sig.figma.com/img/01c3/52d1/f284588c2064d3bfa8bf45ef9a63015c?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ltI8UMsYuSU4FQoldBnB1gGmk2NTRgloPjjvoOJf32jtCBPXNX3Ce1xznXUyJ8dGU39kf2K8NI7E0okh~S~QApKwJivRZNWz9Fb5Nysdbk2OJE4c9qfQBcNCtw3FWNvZAOM~DrCGF1pUGPyFUsIjMoTzbceO43YBGqLDko4C05PybvvxhXum8aKvb3HeQ-2n2b-0CjFF5LIInyCewvq~2b1HD118C92DBEyVErLKj2Tkk8TRugd7kmLeRWV1er27AIvDsQ9NH6LX3oFbcyN6~Tyl7v9JYnfFHi5-c4YHcdPU6bwPvYHmxxZpiuydMBO7l2gLRnppWwmNM54HPk~IXg__",
             tags: ["Spicy"],
         },
         // Add more products as needed
@@ -166,7 +169,7 @@ function SubcategoriesPage({ language }) {
                 <div className="row">
                     {productData.map((product) => (
                         isGrid ?
-                            <div key={product.id} className=" p-2 col-md-4">
+                            <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
@@ -184,8 +187,8 @@ function SubcategoriesPage({ language }) {
                                                     ? "דולר" : "$" } {product.price}</div>
                                         </div>
                                         <p className="product-description">{language === "he"
-                                                    ? productTranslations[language][product.title].description || product.title
-                                                    : product.description}</p>
+                                                    ? productTranslations[language][product.title].description.substring(0, 100) || product.title
+                                                    :  product.description.substring(0, 100)}</p>
                                         <div className="product-row">
                                             <div className="product-tags">
                                                 {product.tags.map((tag, index) => (
@@ -202,6 +205,7 @@ function SubcategoriesPage({ language }) {
                                             </div>
                                             <button type="button" className="read-more-btn" data-bs-toggle="modal"
                                                 data-bs-target="#productModal" onClick={() => setSelectedProduct(product)}>
+                                                    Read More 
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
                                                     <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
                                                 </svg>
@@ -214,18 +218,26 @@ function SubcategoriesPage({ language }) {
                             :
                             <div key={product.id} className=" p-2 col-md-12">
                                 <div className={`product-card d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between`}>
-                                    <div className={`product-details d-flex flex-column justify-content-between`}>
+                                    <div className={`product-details w-100 d-flex flex-column justify-content-between`}>
                                         <div>
-                                            <div className="product-row">
-                                                <h5 className="product-title">{language === "he"
+                                            <div className="product-row d-flex justify-content-between">
+                                                <h5>{language === "he"
                                                     ? productTranslations[language][product.title].title || product.title
-                                                    : product.title}   </h5>
+                                                    : product.title}   
+                                                </h5>
                                                 <div className="product-price"> {language === "he"
-                                                    ? "דולר" : "$" }  {product.price}</div>
+                                                    ? "דולר" : "$" }  {product.price}
+                                                </div>
                                             </div>
-                                            <p className="product-description"> {language === "he"
-                                                ? productTranslations[language][product.title].description || product.description
-                                                : product.description}</p>
+                                            <p className="product-description"> 
+                                                <ReadMoreText
+                                                    text={
+                                                        language === "he"
+                                                        ? productTranslations[language][product.title].description || product.title
+                                                        : product.description
+                                                    }
+                                                    maxLength={150}  // Adjust the maxLength as needed
+                                                    /></p>
                                         </div>
                                         <div className="product-row">
                                             <div className="product-tags">
@@ -240,20 +252,13 @@ function SubcategoriesPage({ language }) {
                                                     </div>
                                                 ))}
                                             </div>
-                                            <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                data-bs-target="#productModal"
-                                                onClick={() => setSelectedProduct(product)}>
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
-                                                    <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
-                                                </svg>
-                                            </button>
                                         </div>
 
                                     </div>
                                     <div className="product-image" style={{
                                         backgroundImage: `url(${product.image})`,
-                                        width: "200px",  // Adjust as needed
-                                        height: "220px",
+                                        width: "257px",  // Adjust as needed
+                                        height: "257px",
                                         backgroundSize: "cover",
                                         backgroundPosition: "center",
                                         backgroundRepeat: "no-repeat",
@@ -281,7 +286,7 @@ function SubcategoriesPage({ language }) {
                             <div className="modal-header border border-0">
                                 <button
                                     type="button"
-                                    className="btn-close text-white"
+                                    className="btn-close "
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                 ></button>
@@ -292,13 +297,18 @@ function SubcategoriesPage({ language }) {
                                         <div key={selectedProduct.id} className="product-card">
                                             <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
                                                 <div className="overlay">
-                                                    <span className="product-category-tag">{selectedProduct.tags[0]}</span>
+                                                    <span className="product-category-tag">{language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
+                                                    : selectedProduct.tags[0]}</span>
                                                 </div>
                                             </div>
                                             <div className="product-details">
                                                 <div className="product-row">
-                                                    <h5 className="product-title">{selectedProduct.title}</h5>
-                                                    <div className="product-price">{selectedProduct.price}</div>
+                                                    <h5 className="product-title"> {language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
+                                                    : selectedProduct.title} </h5>
+                                                    <div className="product-price">{language === "he"
+                                                    ? "דולר" : "$" } {selectedProduct.price}</div>
                                                 </div>
                                                 <p className="product-description">{selectedProduct.description}</p>
                                                 <div className="product-row">
@@ -308,16 +318,12 @@ function SubcategoriesPage({ language }) {
                                                                 {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
                                                                 {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                 {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                                {tag}
+                                                                {language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                    : selectedProduct.tags[index]}
                                                             </div>
                                                         ))}
                                                     </div>
-                                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                        data-bs-target="#productModal">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
-                                                            <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
-                                                        </svg>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

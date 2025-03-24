@@ -1,39 +1,69 @@
 // productTranslations.js
 const productTranslations = {
     en: {
-      "Fermented grape juice Wines": {
-        title: "Fermented grape juice Wines",
-        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+      "Mediterranean Salad": {
+        title: "Mediterranean Salad",
+        description: "Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal!Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal! 🥗✨Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal! 🥗✨Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes",
         tags: ["Vegan", "Gluten Free", "Spicy"],
         category:"Special Deal"
       },
-      "sparkling wines": {
-        title: "sparkling wines",
-        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+      "Savory Bites": {
+        title: "Savory Bites",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
         tags: ["Vegan", "Gluten Free", "Spicy"],
         category:"Special Deal"
       },
-      "Red Wines": {
-        title: "Red Wines",
-        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+      "Signature Starters": {
+        title: "Signature Starters",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Gluten Free", "Spicy"],
+        category:"Special Deal"
+      },
+      "Crispy Temptations": {
+        title: "Crispy Temptations",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Gluten Free", "Spicy"],
+        category:"Special Deal"
+      },
+      "Mini Indulgence": {
+        title: "Mini Indulgence",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
         tags: ["Vegan", "Gluten Free", "Spicy"],
         category:"Special Deal"
       },
     },
     he: {
-      "Fermented grape juice Wines": {
+      "Mediterranean Salad": {
         title: "יין מיץ ענבים מותסס",
         description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
         tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"],
         category:"עסקה מיוחדת"
       },
-      "sparkling wines": {
+      "Savory Bites": {
         title: "יינות מבעבעים",
         description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
         tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"],
         category:"עסקה מיוחדת"
       },
-      "Red Wines": {
+      "Golden Crisps": {
+        title: "יינות אדומים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"],
+        category:"עסקה מיוחדת"
+      },
+      "Signature Starters": {
+        title: "יינות אדומים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"],
+        category:"עסקה מיוחדת"
+      },
+      "Crispy Temptations": {
+        title: "יינות אדומים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"],
+        category:"עסקה מיוחדת"
+      },
+      "Mini Indulgence": {
         title: "יינות אדומים",
         description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
         tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"],
