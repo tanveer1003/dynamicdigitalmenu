@@ -43,18 +43,18 @@ function Menu() {
                     ))}
                     <Link to="/home">
                         <div className="col-12 bg-primary text-white text-center border border-light  rounded p-3" style={{fontSize:26}}>
-                            View Menu
+                            View Menu 
                         </div>
                     </Link>
-                    <Link to="/menu-managemnet">
-                        <p className='text-center'>
-                            Do you have a business? <a className='text-white'>Join here</a>
-                        </p>
-                    </Link>
+                    <p className='text-center'>
+                        Do you have a business? <Link to="/menu-managemnet" className='text-white'>Join here</Link>
+                    </p>
                 </div>
             </div>
         );
     };
+    
+
     return (
         <div>
             <div className='p-5' 
