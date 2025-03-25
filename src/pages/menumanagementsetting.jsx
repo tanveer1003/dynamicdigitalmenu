@@ -24,7 +24,7 @@ function MenuManagementSetting(){
     return (
         <div>
             <AdminHeader />
-            <div className="container-fluid" style={{ background:"#F9FAFB"}}>
+            <div className="container-fluid" style={{ background:"#fff"}}>
                 
                 <div className="row">
                     <div className="col-md-6 p-3">
