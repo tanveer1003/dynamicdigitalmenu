@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route,useLocation } from "react-router-dom";
 import Header from './components/header';
 import Footer from './components/footer';
 import Home from "./pages/home"; // Example pages
@@ -14,30 +14,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import translations from './components/languagues';
 
-function App() {
-  const [language, setLanguage] = useState('en'); 
+function AppContent() {
+  const [language, setLanguage] = useState('en');
+  const location = useLocation(); // Now this works correctly
 
-  const hideHeaderRoutes = ['/menu-managemnet', '/menu-managemnet-add', '/menu-managemnet-setting'];
+  const hideHeaderFooterRoutes = [
+    '/',
+    '/menu-managemnet',
+    '/menu-managemnet-add',
+    '/menu-managemnet-setting'
+  ];
+
+  const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(location.pathname);
 
   return (
-    <Router>
-       {!hideHeaderRoutes.includes(location.pathname) && (
-        <Header language={language} setLanguage={setLanguage} />
-      )}
-
+    <>
+      {!shouldHideHeaderFooter && <Header language={language} setLanguage={setLanguage} />}
+      
       <Routes>
-      <Route path="/subcategories" element={<Subcategories language={language} />} />
-        {/* Correct usage of the Subcategories route, passing language prop */}
+        <Route path="/subcategories" element={<Subcategories language={language} />} />
         <Route path="/" element={<Menu />} />
-        <Route path="/home" element={<Home language={language}  />} />
+        <Route path="/home" element={<Home language={language} />} />
         <Route path="/categoryproducts" element={<Categoryproducts language={language} />} />
         <Route path="/menu-managemnet" element={<MenuManagement />} />
         <Route path="/menu-managemnet-add" element={<MenuManagementAdd />} />
         <Route path="/menu-managemnet-setting" element={<MenuManagementSetting />} />
       </Routes>
-      {!hideHeaderRoutes.includes(location.pathname) && (
-        <Footer language={language}  />
-      )}
+
+      {!shouldHideHeaderFooter && <Footer language={language} />}
+    </>
+  );
+}
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   );
 }
