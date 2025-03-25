@@ -27,17 +27,71 @@ function Home({ language }) {
         return (
             <div className="container my-5">
                 <h2 className="mb-4">Categories</h2>
+                <div className="">
+                <hr />
+                    <div className="row justify-content-center">  {/* Added justify-content-center */}
+                        {categories.map((category, index) => (
+                            <div 
+                            key={index} 
+                            className="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 mb-4 d-flex justify-content-center"  // Responsive column classes
+                            >
+                            <Link className='text-white text-decoration-none' to="/subcategories">
+                                <div 
+                                className="category-card p-3"  // Reduced padding
+                                style={{
+                                    height: '240px',  // Using relative units
+                                    width: '240px',
+                                    backgroundImage: `url(${category.image})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center'
+                                }}
+                                >
+                                <div className="overlay"></div>
+                                <h5 className="category-text text-white m-0">{category.name}</h5>
+                                </div>
+                            </Link>
+                            </div>
+                        ))}
+                    </div>
+                    <hr />
+                    <div className="d-flex flex-wrap justify-content-center gap-4 "> {/* Flex container */}
+  {categories.map((category, index) => (
+    <Link 
+      key={index} 
+      to="/subcategories" 
+      className="text-white text-decoration-none"
+    >
+      <div 
+        className="category-card p-3 d-flex align-items-center justify-content-center"
+        style={{
+          height: "200px",
+          width: "200px",
+          backgroundImage: `url(${category.image})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      >
+        <div className="overlay"></div>
+        <h5 className="category-text text-white m-0 text-center">{category.name}</h5>
+      </div>
+    </Link>
+  ))}
+</div>
+<hr />
+                    
+                </div>
                 <div className="row">
                     {categories.map((category, index) => (
                         
                         <div key={index} className="col-md-3 col-6 mb-4 text-center">
                             <Link className='text-white link-offset-2 link-underline link-underline-opacity-0' to="/subcategories">
-                            <div className="category-card p-5"  style={{ backgroundImage: `url(${category.image})` }}>
+                            <div className="category-card p-5"  style={{  backgroundImage: `url(${category.image})` }}>
                                 <div className="overlay"></div>
                                 <h5 className="category-text text-white">{category.name}</h5>
                             </div>
                             </Link>
                         </div>
+                        
                     ))}
                 </div>
             </div>
