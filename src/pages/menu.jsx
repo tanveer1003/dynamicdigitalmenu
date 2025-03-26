@@ -68,7 +68,7 @@ function Menu() {
                 }} >
                 <div className="container p-5">
                     <div className="row">
-                        <div className="col-md-2">
+                        <div className="col-md-2 col-12">
                             <div className='container  my-5'>
                                 <div className="dropdown">
                                     <button
@@ -186,13 +186,13 @@ function Menu() {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-md-8 ">
+                        <div className="col-md-8 col-12">
                             <Menus />
                         </div>
                     </div>
                 </div>
             </div>
-            <div className="bg-dark text-center text-white">
+            <div className="bg-dark text-center text-white p-4">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">

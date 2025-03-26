@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const ReadMoreText = ({ text, maxLength = 100 }) => {
+const ReadMoreText = ({ text, maxLength = 300 }) => {
   const [expanded, setExpanded] = useState(false);
 
   // If text is short enough, simply display it.
@@ -16,8 +16,8 @@ const ReadMoreText = ({ text, maxLength = 100 }) => {
 
   return (
     <div>
-      <p>{displayedText}</p>
-      <button onClick={toggleExpanded} className="btn btn-link p-0">
+      <p  style={{ marginBottom: 0 }}>{displayedText}</p>
+      <button onClick={toggleExpanded} className="btn btn-link p-0"  style={{ marginTop: 2 } }>
         {expanded ? "Read Less" : "Read More"}
       </button>
     </div>
