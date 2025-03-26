@@ -212,7 +212,7 @@ function SubcategoriesPage({ language }) {
                             :
                             <div key={product.id} className=" p-2 col-md-12">
                                 <div className={`product-card d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between`}>
-                                    <div className={`product-details d-flex flex-column justify-content-between`}>
+                                    <div className={`product-details w-100 d-flex flex-column justify-content-between`}>
                                         <div>
                                             <div className="product-row">
                                                 <h5 className="product-title">{language === "he"
@@ -246,14 +246,14 @@ function SubcategoriesPage({ language }) {
                                         </div>
 
                                     </div>
-                                    <div className="product-image" style={{
+                                    <div className=" product-grid w-100" style={{
                                         backgroundImage: `url(${product.image})`,
-                                        width: "200px",  // Adjust as needed
-                                        height: "220px",
-                                        backgroundSize: "cover",
-                                        backgroundPosition: "center",
-                                        backgroundRepeat: "no-repeat",
-                                        flexShrink: 0
+                                        //width: "257px",  // Adjust as needed
+                                        //height: "257px",
+                                        //backgroundSize: "cover",
+                                        //backgroundPosition: "center",
+                                        //backgroundRepeat: "no-repeat",
+                                        //flexShrink: 0
                                     }}>
                                         <div className="overlay">
                                             <span className="product-category-tag">{product.tags[0]}</span>
