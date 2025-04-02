@@ -12,7 +12,7 @@ import image7 from './../assets/icons/Image-7.png';
 import image8 from './../assets/icons/Image-8.png';
 import image9 from './../assets/icons/Image-9.png';
 
-import background from './../assets/img/home-background.png';
+import background from './../assets/img/home-background.jpg';
 import menuImage from './../assets/img/logo-menu.png';
 
 import vector from './../assets/icons/Vector-4.png';
@@ -62,7 +62,7 @@ function Menu() {
         <div>
             <div className='p-5' 
             style={{ 
-                backgroundImage: `url({{background}})`,
+                backgroundImage: `url({background})`,
                 //backgroundSize: "cover",  // Makes it fit
                 //backgroundPosition: "center",  // Centers it
                // backgroundRepeat: "no-repeat",  // Prevents tiling
