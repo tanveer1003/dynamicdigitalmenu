@@ -6,13 +6,18 @@ import { FaFilter, FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import translations from '../../src/components/languagues';
 
+import category1 from './../assets/img/category-1.png';
+import category2 from './../assets/img/category-2.png';
+import category3 from './../assets/img/category-3.png';
+import category4 from './../assets/img/category-4.png';
+
 function Home({ language }) {
 
     const categories = [
-        { name: "Appetizers", image: "https://s3-alpha-sig.figma.com/img/af99/bb38/066fa85c4ddb4079400be84797edaf0d?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VPHV02Iwva66kEktsYeqIRJSKMj1UybO0mstSsxAIBWG1SWn59iLoCCtxNfXeVfkzCIntIpSgk-Cjj1aXJ1fqauNE2KkVNRZZ85dJGbrJYkiXJE1TLOpEl6S-fDja2cr0xY9AUgdrgXz5CGTxjm0YhluyNZod4ivvOzB1Zyd7qeWA00Opd22tOgCxYaBaBU3TyA~xfxjWz8aNf4HgHoLNhn3AQfyrp2atCozM~71Ve8h7wh993P8~AjZI75fOPMpLf44Gq2iuDv7b~bWjecwCepF~-1eAXGFT~JfAxEBIWbyvYqKFFhgot6Wr~hJjJcmbT3zvJPVhsDLv7~0R08iSw__" },
-        { name: "Main Course", image: "https://s3-alpha-sig.figma.com/img/da6e/0072/3035095c8694b1fecb5a8978bc04f554?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=VlqWE4h7xtGunDG8IHQPnQAEQFuKsQXqscpUa7vVMtImnfLKgFxaCCUyNO7HcEdAVRrdxy3H-RYSF0OEU6HyVmvQS8WZOkIhCxGKx8Kt-qFL0dxjRccSa-IYK2wuBxFloi0j-V9mu21BSGVczSzLd5Cy6XqutG5jBYn3vBjb6saAsZEdn5eX12laXNtxE-QvNB6dl4TTvycL8KA4B54opxMKVw1n2NKP7SN9zghWnQ87ET6BvFM74S35Ak~I2eub7vEwJuREvZOkblm1ItjDO0GxBBCIa-P7x4MJpWCYULlTOhlQEkxaVL-M2~nOh-XTr46iUex-8zk6nzjtrNadOA__" },
-        { name: "Desserts", image: "https://s3-alpha-sig.figma.com/img/ceff/b7a3/68aecebd398f9c726343810117badbe3?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=k-QjtpFt6NZM7rRW0ESSk2Ijyidix2zoeL3sRSG4oKVBOfiObFZFAWJsfUDHpklsP8tZ0APX4n-CeIAdYUWGGTas9Dpysto5IPhVBeaRLYdOb1T0DQXKw8DH5Y~31sBY-2K21-Ct8AYq5TBuhoZ1VdzCymODKZ-Qody6WUllBS51Ob3SCNgH78dWBPeogdlrFSx-tk5yVM2rOlAoKEU~qHZt0Js5Ra1vrfmIgZKa9s4kVEGkKuU0KvSbrB82hcC7JYBSmkvXDOAR-xqd59FVJzrVIi9NfA3hzCKEDeRF6X8MzbxvMpfrcpV1l7PEAk6LQN8TL09bS2bSK2ZB1yz3EQ__" },
-        { name: "Starters", image: "https://s3-alpha-sig.figma.com/img/e9a9/466f/e1f5cf6664854aa30c855585ec161324?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Gq5iaes2WNym6oOPh1aJ0k8wAKBePt6uOd7isHKXEFnysdkCNmG9FcRclBvS1lIJCWFFzE5sFTvNIl15QKJaZUJBdVmS2cXel8W~JFDBcLc0OSHbK~~pCndZ~BjDCHR1n6wf0EQdL8wDaWCF4C4tuRThFV4Pa59zIaHXf-wLvqZDySApBHO9pkgzptM1kQY9QrMnTDz4zK3P~wf1V~k-KS0ADxQinm5qoN5kzgztjzcnH9IQgaTniXor2RbiW4BetqMwQYS1UwZprLYz6ZBuyCRlkGgX7gYWtsGHnfiTtzVsUfQoEcZYYgiiU2cPDsqPzXrz7z0kh32iQqxPA5acJA__" },
+        { name: "Appetizers", image: category1 },
+        { name: "Main Course", image: category2 },
+        { name: "Desserts", image: category3 },
+        { name: "Starters", image: category4 },
         { name: "Starters", image: "https://s3-alpha-sig.figma.com/img/d2e8/7191/74c237403708f9c2ddffb04a8d9bf94e?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=SahIidCo9QNOxVuDMqjmieOfw8arS93z-o16aUWWpbpTS2~gRxBreC9hBR5AOsxt3V2F2wJz67Yleu7ADT7GgZmdbLbD9BgKtRtkNzoiITpw7q~5S9E2EL~aLcBQs7D52b9AeTBMkvjjfIcFIuyoNYbMf5oxDMUDUEAJpzHPolACEp0PMlhwdyz-9P2gSpOaqfaxl2mVQNJxdRgM~cn~tZ13hBeepWHwy-WYXrFBNjGa0Y5XNkk08bSo3n5fl1vy1fGawsBjKNjnW~iF~hNdvS4GUOhoGpyPYy6wRNkR05gCcycy13A2uwlfK9oAkBETqJrUIchbbEecOKJIZ7coXQ__" },
         { name: "Cocktails", image: "https://s3-alpha-sig.figma.com/img/111f/f306/e06980019ed870c68840453ec1b01b0b?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=QhwEBCznNw0f9umomk1Fv2KoVmX9c~XeR3wbwjWYPhJ8-kjYZOt1sM3narblSKzErXoZTy1skTb-9L7QPp814aay4a3J~BoUj~QTuUOG2hcTKpFXutvlHUUd0sYAPERXRoqK8y9NTS-a~pKk4mPScFliEnfS1yhU-ErhZzlRn8icConcqWI~NLG31-gVQeTQlPJp7T5fx5ZeZroJjtOGrVj7j2arZdeUA9Q0nJADrOLBTTOSFkXe6-uI~w3UtYHDJxAJ8E9XFjFJmpnYgEXTd4OtgEwt-B-G4ECht9l2EYC-0qntQ2nY2PEA0KdS9d~HAYIPqFsOYu8ptzk8z~o0WA__" },
         { name: "Wines", image: "https://s3-alpha-sig.figma.com/img/7141/bc63/ca03bede5ad3c3503b9646326bf75e6b?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=X6Hy6ya0dR0YXW2EwDVzcs8WL-mWW7X7tRKeaKe94wteRHoBba7jvYqVaZHGJLxuGCqVtJCebTXKSI1mTZMXCLaAnfmJ1BwObluJcCnJzW0vt8EP8S5Dyzqd2HV161MDSZazdhTbxtx2WcvKGxlMrejHeCM32174wM9wEXAywH4dlEBDPFUOA6sjNN4GoLIHw6lJKKOa2MZH1MKQAlNOe2YTUAktc8xGdQoojIh48RMUJPZRY20LBPPcas-md-gK471fIIyCaYcvOQwBvlDcb497v4sBnblQIl30~0qBf2zScm~v3PZGcXrqQpJW6VrtqBsZ0AmvisD7PLw8GjrQbA__" },
