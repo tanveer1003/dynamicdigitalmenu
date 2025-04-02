@@ -25,12 +25,12 @@ import subcategory1 from './../assets/img/drinks-subcategories-1.png';
 import subcategory2 from './../assets/img/drinks-subcategories-2.png';
 import subcategory3 from './../assets/img/drinks-subcategories-3.png';
 
-import drink1 from './../assets/img/drink-1.png';
-import drink2 from './../assets/img/drink-2.png';
-import drink3 from './../assets/img/drink-3.png';
-import drink4 from './../assets/img/drink-4.png';
-import drink5 from './../assets/img/drink-5.png';
-import drink6 from './../assets/img/drink-6.png';
+import drink1 from './../assets/img/drink-1.jpg';
+import drink2 from './../assets/img/drink-2.jpg';
+import drink3 from './../assets/img/drink-3.jpg';
+import drink4 from './../assets/img/drink-4.jpg';
+import drink5 from './../assets/img/drink-5.jpg';
+import drink6 from './../assets/img/drink-6.jpg';
 
 function CategoryproductsPage({ language }) {
 
