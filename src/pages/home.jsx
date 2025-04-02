@@ -10,14 +10,14 @@ import category1 from './../assets/img/category-1.png';
 import category2 from './../assets/img/category-2.png';
 import category3 from './../assets/img/category-3.png';
 import category4 from './../assets/img/category-4.png';
-import category5 from './../assets/img/category-5.png';
-import category6 from './../assets/img/category-6.png';
-import category7 from './../assets/img/category-7.png';
-import category8 from './../assets/img/category-8.png';
-import category9 from './../assets/img/category-9.png';
-import category10 from './../assets/img/category-10.png';
-import category11 from './../assets/img/category-11.png';
-import category12 from './../assets/img/category-12.png';
+import category5 from './../assets/img/category-5.jpg';
+import category6 from './../assets/img/category-6.jpg';
+import category7 from './../assets/img/category-7.jpg';
+import category8 from './../assets/img/category-8.jpg';
+import category9 from './../assets/img/category-9.jpg';
+import category10 from './../assets/img/category-10.jpg';
+import category11 from './../assets/img/category-11.jpg';
+import category12 from './../assets/img/category-12.jpg';
 
 function Home({ language }) {
 
