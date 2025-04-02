@@ -12,6 +12,9 @@ import image7 from './../assets/icons/Image-7.png';
 import image8 from './../assets/icons/Image-8.png';
 import image9 from './../assets/icons/Image-9.png';
 
+import background from './../assets/img/home-background.png';
+import menuImage from './../assets/img/logo-menu.png';
+
 import vector from './../assets/icons/Vector-4.png';
 
 function Menu() {
@@ -29,7 +32,7 @@ function Menu() {
     const Menus = () => {
         return (
             <div className="container menu-container"  style={{maxWidth:407}}  >
-                <img className='img-fluid rounded-5'style={{ height:308, width:407 }}  src="https://s3-alpha-sig.figma.com/img/032b/40ed/912ecf9755692a28c26fda31c42979eb?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=V-PUb-9d6xEezCslyyzM~Vi4TKn8swPXbi1KsxNASN-3qkznzjKiFue833Jx5U-ZboExCCSILKYnERYiIFJL0bvsGFJDxT1TCxA8x3FiKScZRgJCvXLEwbRN9L4LXhjhZ-ofZLIb485QRT~tKsgMf9fowXeX7CqYvrj9ydTw33vRDnp3GIR2tdiutafcmmh3AuqHws5QS78YpMwRLCiIcoFvW7mxxYIvWhl4qvQUPtqXnGjuIME9mYAOc-wiA0BCVjO6wFS1kSIJcOu8AaxHTivr0yY~ffQNe1pbZq6eQeYj8O14-tcYxdKUyO83ADDLH77reGkEC3A0rDWxDzJXCQ__" />
+                <img className='img-fluid rounded-5'style={{ height:308, width:407 }}  src={menuImage} />
                 <div className="row">
                     {menus.map((menu, index) => (
                         <div key={index} className="col-md-3 col-4 mb-4 g-2">
@@ -59,7 +62,7 @@ function Menu() {
         <div>
             <div className='p-5' 
             style={{ 
-                backgroundImage: `url('https://s3-alpha-sig.figma.com/img/de5a/5bed/a3a3b4f0a1fa1551ef0756b5df3f1905?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cLSdJCESCflIsNbl7Iqr39sb-JqndC6N0L9-YbssBpGADb31fGM2-CjIvIwGNx2fmwYydTIeUeKqeeRAWw316-NxJNrgnj2320xqhk0l6Ppz9DyznB6FeRQCMamZKUFEsbC1RGc31n-STggLtEQdskxuB4HZ1KEW~JDaM9G0CRUl~ZA4pSiFiWA2CBBia8Xkj~GuWVhvwUVWa~tPOD18eXVX2Q-m9EmsdY66JCEIEDSZ8Xfjthv4YGuLn8NJZ-iJz4DwGvzlNVeSKwA7NTcanFQeorZZW3LReHiSXVdZZZuzvSndB4~Y20WgBhCsIpQ7~sgYuA4edgzR3V3Uyvs6Lg__')`,
+                backgroundImage: `url({{background}})`,
                 //backgroundSize: "cover",  // Makes it fit
                 //backgroundPosition: "center",  // Centers it
                // backgroundRepeat: "no-repeat",  // Prevents tiling
