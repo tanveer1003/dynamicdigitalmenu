@@ -21,6 +21,17 @@ import category2 from './../assets/img/category-2.png';
 import category3 from './../assets/img/category-3.png';
 import category4 from './../assets/img/category-4.png';
 
+import subcategory1 from './../assets/img/drinks-subcategories-1.png';
+import subcategory2 from './../assets/img/drinks-subcategories-2.png';
+import subcategory3 from './../assets/img/drinks-subcategories-3.png';
+
+import drink1 from './../assets/img/drink-1.png';
+import drink2 from './../assets/img/drink-2.png';
+import drink3 from './../assets/img/drink-3.png';
+import drink4 from './../assets/img/drink-4.png';
+import drink5 from './../assets/img/drink-5.png';
+import drink6 from './../assets/img/drink-6.png';
+
 function CategoryproductsPage({ language }) {
 
     const categories = [
@@ -104,7 +115,7 @@ function CategoryproductsPage({ language }) {
             title: "Fermented grape juice Wines",
             price: "$15.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/c3af/e9da/f969b2f918bcb80a8d07ef057b6022ac?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=le6bl3nNd4y96pvRVaCOKpytLA2WeL2d9s10BgFVPwyjp02IipvySuF6W2T~IKTTJXiYtg2-0d0K3UGK8OoTQ550Bss19utnBAq0xah2cwCwkLksqxgqracMVzHdYdNgmFXY0oDFocJYUG45kom-n4BRuerIMOPmomJB5EZ5kFaALUqz~0sw1CpfmDkZxm5kcRyilnX1GrZX1rUReTTHP6yGg~NY290pgID-0Dgk41bEzE~9pnXJPI7pWPsR5HRW0kXBT-prXYpzYb8iiN~cY1ownvT6F3oBpmOA~7OplJtO6oHdvKslluR-BQXGlbEoNHVxqrV5CJg3mgPJG3mnOg__",
+            image: drink1,
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         {
@@ -112,7 +123,7 @@ function CategoryproductsPage({ language }) {
             title: "sparkling wines",
             price: "$12.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/a302/cb0d/86eed69da8abfe31171f5463cbb4e19b?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=DDsK4qi~ZyJX4X1QydLdcpVDWK6fNGLt4TGNRhCdpF~UUkgY9FOhGpk9KzNPOilxrxq4KGR9mdSxUNaGmgiQH0ubA8UPETdZgB4X4qjr~CI2jpAz6wUbuGWSEjta~crqGzYZcny7AtoYigF0c8ngIK-Ox2O1vz2hcNrtw8ChBsT2fHp1i-H3Lk~4T8WeFyL2ub2b4f4eA11Q-2Q6e-rrOT2UYszG0tULjFYLuUyzw2Fu1tD8c~sH6BL7ry3aQB-6xFxsFgWjl~efU5fteCs1u25-b-SGgv9-C9XYP~MPaBeXY~5os1Wnm0v9OTCjdICsivg7CH0Iw2B-I~xMlqRo0g__",
+            image: drink2,
             tags: ["Vegan", "Spicy"],
         },
         {
@@ -120,7 +131,7 @@ function CategoryproductsPage({ language }) {
             title: "Red Wines",
             price: "$8.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/980c/29a3/c27a1019d04e849572646c4f7c34a8a2?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kI9~w0Fx2wsTNfsVXyYJL~~m6PSbcO5YcrWNU7zv0jtuBsPmdaDopD86RTDcZyF-i5fuVKb7Rvro13YQ2pjg-z~gfzhNMsirY~WUH1lUZbRZeg-i5S2M2tQoeFx6jlKgfB7KOZfHHR6jxq1unmJ1eH8VC5PzViEOgveRysFjvykmaDXV8x0EO2FZVF5oPqRNkD6Pj2R~KA1CKETDLFhhZvypE4zoh0c6So3ZA2t7szkyxaz8JbK-pi4KCc8hf6V1EMXAdNTRpnyjwD4TkgRTYYgKwEO2UCMHqn4Mu0MMfJT6kdNNLCupvsfIcJVfEcLZ05QsrnBkkt0skuNVr0yXmg__",
+            image: drink3,
             tags: ["Spicy"],
         },
         {
@@ -128,7 +139,7 @@ function CategoryproductsPage({ language }) {
             title: "Fermented grape juice Wines",
             price: "$18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/1f8d/695f/155cd34f89482fea75dbdd7f29da3edb?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=QmhXxsWJ6~jLsYAO6zvxdJ-jSoMPWCm~98Fsk-1H320MfGj41GmF94TOK-046k6LUUOlEmQa6y8lyvw1PgbnTR7wnX2dgJnZFsIEdnkah9Yc4D9aZZi-9zBF6pSb3DKGvqLq-afOUWntiDxbTJ4rF0X18ulPwYogB6HdXTXQe-UK5xYyGvg9oyyM4uvktJGjPddPNgUhTZ~CZ~LcfQpG53Ks3ZPzneJIbRTnRkJL3QxbsJCe4Wdk3gd5GOfgENcVmSAaIcS3Yg5QHs65Hi-azCUq2kH3d-Bk1lo~tOqCQp40AF7vJmDxffV1jkhSpJqTZVDBXaef7Ih5zi9TweL2Tw__",
+            image: drink4,
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         {
@@ -136,7 +147,7 @@ function CategoryproductsPage({ language }) {
             title: "sparkling wines",
             price: "$18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/e0c9/c8de/03d786195b1bd865e263c79ebc2e36cd?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=WvVUwB-SC3XTtWekKcQ3Hj88kxYUilQNUzDa06ugmQBKXQqWbLO6M~9-9PVIB-vkBPfUQVfjqBZeqfu6SOmULW9QT7jGzx4f-WEJtRd7o3P1gzxHeetJDmd68oi94T-97DmBtCCA7Ox3DwQKgYrvQGwlchDfSW5lejEPMfQKmaxr7cXqb8ZYWuBijWcFoPW1RXVmLzPA9qqhWqkDH4RAY0sZh6b6bf3KwfAKXyucxhnlTl2t-lalfVfWr~eNlsp8wYwDZ6Y8hzRMKj4l8G1ypbSr7P4bKe79EanPYQkSGfllFSqrC5w9~bfuTkkmjwIvZLuTdO6ZRtOpfJBSMymhWQ__",
+            image: drink5,
             tags: ["Vegan", "Spicy"],
         },
         {
@@ -144,7 +155,7 @@ function CategoryproductsPage({ language }) {
             title: "Red Wines",
             price: "$18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
-            image: "https://s3-alpha-sig.figma.com/img/9158/5ae6/91cd6b3c6142bc2dcb419fbe86a014dd?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=L1nuo~AC5OVaX-zdZxlTTDp5ULpNwhYjOvg4PNHs~IXkcG9bro4~emYNwKVTbqpMK~BKeEB01k8pEpUUNG2B9DvDgMlMzc6vDQ03z-qj0Xc2RkXrAybEzA4gueYnLKXVF6C8DfPWtbipmMSDOYYMfuzK6t168Uq2gsV7L0PP~PpJM54VzhZwgGvcisHOGDTYG5yrYFOrb6PUwFt9N3bai1g0XcjR59~dRI2CMv~Md4q6zVLxBiJHK1eAU3el7aAqQPJ6DT~z4GgP6u-Gv0w7Le5IieCQKGpPALRo4rfaucwNtNL72fR0rdeRMKZZOY9oC6v3TPxgghjYV3NKFiwiJA__",
+            image: drink6,
             tags: ["Spicy"],
         },
         // Add more products as needed
@@ -334,7 +345,7 @@ function CategoryproductsPage({ language }) {
             subcategory: "Wine",
             background: "#373738",
             category: "Drink",
-            image: "https://s3-alpha-sig.figma.com/img/acab/5971/119ecb05340117ea9b2df528318ce4d3?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cK~2OztUmsneSKzqcc-sivWo4GcwpYfNczjHfIAh4o093FyAM6608wuwCHetCLxmfHRwkYf~iqA9x9p-~xNq7ShzPaflifMffQ2L0q94lSiU3ylq6v3d-wvr1gVLXDsNEJhuOx3veZXc4g5Z2~5pdgjWtI~W94KD~SU9EkIzilbI4gwLzrUKOYvFobOI7NbDfzLTx7q1TgYInq~obj4YqQKYuyHmnIOx3c5GKop54FNwuM2~dUUXx5VluCmalI3aghlZ3005PODdAdwWkiwqjxoHHnNwuJiKMuBzZw9-ZJHFA6XLqbaB7yP1OfkyI5YnfpzEErai9~NGukvaSXvusQ__",
+            image: subcategory1,
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         {
@@ -342,7 +353,7 @@ function CategoryproductsPage({ language }) {
             subcategory: "Beer",
             background: "#827C64",
             category: "Drink",
-            image: "https://s3-alpha-sig.figma.com/img/da9f/e36b/c06681dac53ca4b02650b6f3721f472c?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dJTZh2Zh~udbihEs1G~LCyBm5NCrO1BVmcfX4rFYMzYnhbMgDFp4EXBXoah88jGg1f8GDMF2Wa~3jltKnEkU7Wz55zYWwEH6ldKja~hmeqadeQoAtFKAXu1nOD~yaxJGSs1AnE6BWs052FEeHjkj6FefaO~uGWySSpjt3fZQFD-iLtzy0E-w-ZozGS6en6SPfKhdw-6A~N6UNNjMkavbv1pyBP8a~0QcUO0PQ6SDIiytfzb101jhcjwUaPJq0TUb1q2u9~2oGIJ2zdoBzg03Jq58sG9IDYiTyCbsxh2976X0V8g5W7iy6VN155ImTwte9giHSoQ4znzWwzlTF-IMMw__",
+            image: subcategory2,
             tags: ["Gluten Free", "Spicy"],
         },
         {
@@ -350,7 +361,7 @@ function CategoryproductsPage({ language }) {
             subcategory: "Spirits &\n Liquors",
             background: "#C6552D",
             category: "Drink",
-            image: "https://s3-alpha-sig.figma.com/img/960e/0a0e/f029eec19365f2afe391cc43556c1f41?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=P3951UZFPVWR8HEmDxufcMzknRZPLDUKkfFgsl~oszLOVBFgovDBRAtrPMACuvebn2K5k-RtGNpnm-T-Hich5-~O2zlKp8bnum3cREyRzhhdT~sP~zBGUi9ddycZA81SRgCl24-ek9qG8OI3xvn7WxpLiYDpCVD5qJnnHRkFtU9zEbE9n6fMPR0tETC373cVuMRSbux9nGuLa1fxxwMXmptc3kWbv5sdqQECyF5beZsvh3M20xYWvPzo0iDq9krIp9nwEgp4CxOUHwD0C3N7pgPk2kkqnbo7XRzU258n5a~jUMpoaOblggJ2vw8osq~LpAKNp~IjS9IKWOR0kILi6w__",
+            image: subcategory3,
             tags: ["Vegan"],
         },
         {
@@ -358,7 +369,7 @@ function CategoryproductsPage({ language }) {
             subcategory: "Cocktails",
             background: "#B1834E",
             category: "Drink",
-            image: "https://s3-alpha-sig.figma.com/img/da9f/e36b/c06681dac53ca4b02650b6f3721f472c?Expires=1743379200&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=dJTZh2Zh~udbihEs1G~LCyBm5NCrO1BVmcfX4rFYMzYnhbMgDFp4EXBXoah88jGg1f8GDMF2Wa~3jltKnEkU7Wz55zYWwEH6ldKja~hmeqadeQoAtFKAXu1nOD~yaxJGSs1AnE6BWs052FEeHjkj6FefaO~uGWySSpjt3fZQFD-iLtzy0E-w-ZozGS6en6SPfKhdw-6A~N6UNNjMkavbv1pyBP8a~0QcUO0PQ6SDIiytfzb101jhcjwUaPJq0TUb1q2u9~2oGIJ2zdoBzg03Jq58sG9IDYiTyCbsxh2976X0V8g5W7iy6VN155ImTwte9giHSoQ4znzWwzlTF-IMMw__",
+            image: subcategory2,
             tags: ["Gluten Free", "Spicy"],
         },
         
