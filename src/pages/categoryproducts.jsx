@@ -16,10 +16,10 @@ import chilleIcon from './../assets/icons/Vector-chille.png';
 import moreIcon from './../assets/icons/Vector-more.png';
 import translations from '../../src/components/languagues';
 
-import category1 from './../assets/img/category-1.jpg';
-import category2 from './../assets/img/category-2.jpg';
-import category3 from './../assets/img/category-3.jpg';
-import category4 from './../assets/img/category-4.jpg';
+import category1 from './../assets/img/category-1.png';
+import category2 from './../assets/img/category-2.png';
+import category3 from './../assets/img/category-3.png';
+import category4 from './../assets/img/category-4.png';
 
 function CategoryproductsPage({ language }) {
 
