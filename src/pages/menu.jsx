@@ -62,7 +62,7 @@ function Menu() {
         <div>
             <div className='p-5' 
             style={{ 
-                backgroundImage: `url({background})`,
+                backgroundImage: `url({{background}})`,
                 //backgroundSize: "cover",  // Makes it fit
                 //backgroundPosition: "center",  // Centers it
                // backgroundRepeat: "no-repeat",  // Prevents tiling
