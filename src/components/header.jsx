@@ -27,8 +27,10 @@ const Header = ({ language, setLanguage }) => {
         <nav className="navbar   px-3 d-flex justify-content-between">
             {/* Left Side - Logo */}
             <a className="navbar-brand" href="/">
-                <img src={Logo} />
-                Restaurant Name
+                <div className="d-flex flex-column justiy-content-center">
+                    <img src={Logo} />
+                    Restaurant Name
+                </div>
             </a>
 
             {/* Center - Clock */}
