@@ -28,7 +28,7 @@ const Header = ({ language, setLanguage }) => {
             {/* Left Side - Logo */}
             <a className="navbar-brand" href="/">
                 <div className="d-flex flex-column justiy-content-center">
-                    <span>
+                    <span className="text-center">
                         <img src={Logo} />
                     </span>
                     <span>
