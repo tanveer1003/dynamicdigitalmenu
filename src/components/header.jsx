@@ -28,6 +28,7 @@ const Header = ({ language, setLanguage }) => {
             {/* Left Side - Logo */}
             <a className="navbar-brand" href="/">
                 <img src={Logo} />
+                Restaurant Name
             </a>
 
             {/* Center - Clock */}
