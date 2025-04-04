@@ -50,7 +50,7 @@ function Menu() {
                         </div>
                     </Link>
                     <p className='text-center'>
-                        Do you have a business? <Link to="/menu-managemnet" className='text-white'>Join here</Link>
+                        מעוניין בתפריט דיגיטלי – לחץ כאן <Link to="/menu-managemnet" className='text-white'>Join here</Link>
                     </p>
                 </div>
             </div>
