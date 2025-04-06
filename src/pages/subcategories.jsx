@@ -99,7 +99,7 @@ function SubcategoriesPage({ language }) {
             id: 1,
             title: "Mediterranean Salad",
             price: "15.00",
-            description: "Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal!Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal! 🥗✨Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers, tossed with olives, feta cheese, and a zesty olive oil and lemon dressing. It’s a light, flavorful, and healthy salad perfect for any meal! 🥗✨Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes",
+            description: "Mediterranean Salad is a fresh and vibrant dish made with crisp vegetables like cucumbers, tomatoes, and bell peppers. ",
             image: "https://s3-alpha-sig.figma.com/img/d0eb/8e0c/a260d8a11f4b6635b008a86cd0ab6545?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=O8iq3ifVYfp-Ke9GJkH7DfsnEN9IxUS3OStSsVQ2AzgYUW4ISKWY-TFyLK44fULsyrjPzouoZuw3UECsRqFrfuFxIdslV22WQpBQgpMSosrhL3pd87Y7mO64U4RsKQj2FnQHR78qrDk7R9jb4WIpTDUDDqjOHV6B1xY8j3cbJVFzdUKxwacdSuQAqrVyD34VMMEFUPjOMm8~Xt0eNFNEYWyTjTEdKLxJz-7i~NRBL2t2nFf7LD~Bh9eA7LfLkVkPaxQwPD~Sv8DNuU9YW0-R7mlE90Es5v-jcoE47k4KatQCB~schxSkVLM2Ee5CUcGaxBqxTovw2NSFCQyjNRsJ7A__",
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
@@ -107,7 +107,7 @@ function SubcategoriesPage({ language }) {
             id: 2,
             title: "Savory Bites",
             price: "12.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens.",
             image: "https://s3-alpha-sig.figma.com/img/5bf8/1698/b192a626318b9c0aac51e1e0699715db?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=oGKlngoM692Nev5An3333gN5zy5GhYUojDAhMaiMo4Cd81EVG1wVsjcpIyXLYT0S57ZLd3Pa4a3oLsV09HNmTuvt2MHCDYsAL5eLlCVtVZYjcE1kHN3obI~8AQewYpnttKBX4IwkBzFoCKg2AFrp2-kAwqh7nrFUUl3h5Z0rzNmFgiGR97FCokSaCLzrsA0FL8H9~Kdg0~rPP6NM27FjfJ04Zlg7Je5mEGhqhKwwLDFM393GC3dimEJ8678pAdPz-kDkgWahA0Vbhu3Mogjb6qE69~bpEhegA5bn2bb7x~yJ~UjhRIwXDEB7zNNoPp5Id2ANilFCP3h3Nid8-p1ByQ__",
             tags: ["Vegan", "Spicy"],
         },
@@ -115,7 +115,7 @@ function SubcategoriesPage({ language }) {
             id: 3,
             title: "Golden Crisps",
             price: "8.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens.",
             image: "https://s3-alpha-sig.figma.com/img/6735/8f17/9e3f0ea0f628a90245aba14dfeaea960?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=cLpPnx7pLILcJB~TVrdD7JH-Dn5uPQhCL1a6hLUtqj-nQCLx2~dYtCAAtjSgrr1La2t7bA3jUR5fhkMmjiREfC6CQIuy9qWcj0iGFRLSNIUkBUbwo0vmEjZ0Pq56SMIHQsQH4WdCxX5rF24NEVFm2Nv0fGXstvF2XzgJsgK9sLIDbxPg66CwmQBPuxbRq130rVLcxdmIt78B55~CMdiUU7SVoUxJBS2fvNciFPnLpu49Ny644qHn2YfhAkt-LlT2UCXNtxiqq9-tZT46Fl9F6CEOW43uXwb~h9n1AdF2UNKdGaY-4ykwhgph7VdjkwSkZ63IeWrA7tysZMvwTBFw~A__",
             tags: ["Spicy"],
         },
@@ -123,7 +123,7 @@ function SubcategoriesPage({ language }) {
             id: 4,
             title: "Signature Starters",
             price: "18.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens.",
             image: "https://s3-alpha-sig.figma.com/img/166b/42a5/8f2469f84df42dde82f18dd82cba20b9?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=Ox4ighfl2EznhVEqrbmHM8P9Ecn7P6wag4hjJaAh~9vD-GFeZVD16OpCc3LJfzip6FJyiKVDSx6hhC7mUVK67nx2Tb37cuQIaMMZLxPlRNrJCoRGkleAMQ2XFT8VEGJL-DnzaoAaTM1H8tCebkwQ56LHmzhPXaEXENUYF1TInsksbLpkrWYdP4kh1Wq7FpwEyYdrglwVUhG9yDBZstl9GCp88xXDUrZQkJRACUBv8XzwaOtqrFx9HXe-KeKVHLcQOjKWdKn5v1~DDu2v2DBZtFtXNPP~IH4fKhoytUx2WsVfcLrozOfCtfOw5EC5VCb2ySaQhjqOb59QnR-KcoEI1g__",
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
@@ -131,7 +131,7 @@ function SubcategoriesPage({ language }) {
             id: 5,
             title: "Crispy Temptations",
             price: "18.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            description: "",
             image: "https://s3-alpha-sig.figma.com/img/3aa6/941e/c9dbabf5d0e6227d6209f8546495a35e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=lSGx9kVce5QoGsWv~Js6STifms~nHJVx6KwkgZ96Dqn2FSIGEST4Hz7SVm6nNfPknrc6h7HUdgNIpU8ZhQgHXyk5g1XUiKP9piDHVSnAugz71KVJzXCsmS~XPuAhTivcpXoXK2wNvwNEB-1oXzXX9UwYEAWny-5LP74Fqnz-mkZ1DYx7cQim88QnUZ5eg~oXWv66C2vi9zcvMYBbrWoq5krDnsXCVlBhJZCONnO08kkY0miXW82~fE91NoS0lmlVOOdqV3TwKouLekUoTl~K8GrJADqJsGkTbnzweYZTKD9W0JRpyTjkmUcaQKFnAtLPUZh1l3uqkH~83uYgF8Pdew__",
             tags: ["Vegan", "Spicy"],
         },
@@ -139,7 +139,7 @@ function SubcategoriesPage({ language }) {
             id: 6,
             title: "Mini Indulgence",
             price: "18.00",
-            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens with feta cheese, olives, and house dressing.",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens.",
             image: "https://s3-alpha-sig.figma.com/img/01c3/52d1/f284588c2064d3bfa8bf45ef9a63015c?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ltI8UMsYuSU4FQoldBnB1gGmk2NTRgloPjjvoOJf32jtCBPXNX3Ce1xznXUyJ8dGU39kf2K8NI7E0okh~S~QApKwJivRZNWz9Fb5Nysdbk2OJE4c9qfQBcNCtw3FWNvZAOM~DrCGF1pUGPyFUsIjMoTzbceO43YBGqLDko4C05PybvvxhXum8aKvb3HeQ-2n2b-0CjFF5LIInyCewvq~2b1HD118C92DBEyVErLKj2Tkk8TRugd7kmLeRWV1er27AIvDsQ9NH6LX3oFbcyN6~Tyl7v9JYnfFHi5-c4YHcdPU6bwPvYHmxxZpiuydMBO7l2gLRnppWwmNM54HPk~IXg__",
             tags: ["Spicy"],
         },
@@ -191,7 +191,7 @@ function SubcategoriesPage({ language }) {
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}</h5>
                                             <div className="product-price"> {language === "he"
-                                                    ? "דולר" : "$" } {product.price}</div>
+                                                    ? "₪" : "₪" } {product.price}</div>
                                         </div>
                                         <p className="product-description">{language === "he"
                                                     ? productTranslations[language][product.title].description.substring(0, 100) || product.title

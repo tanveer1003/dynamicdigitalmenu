@@ -113,7 +113,8 @@ function CategoryproductsPage({ language }) {
         {
             id: 1,
             title: "Fermented grape juice Wines",
-            price: "$15.00",
+            drink_category_id:1,
+            price: "₪15.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink1,
             tags: ["Vegan", "Gluten Free", "Spicy"],
@@ -121,7 +122,8 @@ function CategoryproductsPage({ language }) {
         {
             id: 2,
             title: "sparkling wines",
-            price: "$12.00",
+            drink_category_id:1,
+            price: "₪12.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink2,
             tags: ["Vegan", "Spicy"],
@@ -129,7 +131,8 @@ function CategoryproductsPage({ language }) {
         {
             id: 3,
             title: "Red Wines",
-            price: "$8.00",
+            drink_category_id:1,
+            price: "₪8.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink3,
             tags: ["Spicy"],
@@ -137,7 +140,8 @@ function CategoryproductsPage({ language }) {
         {
             id: 4,
             title: "Fermented grape juice Wines",
-            price: "$18.00",
+            drink_category_id:1,
+            price: "₪18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink4,
             tags: ["Vegan", "Gluten Free", "Spicy"],
@@ -145,7 +149,8 @@ function CategoryproductsPage({ language }) {
         {
             id: 5,
             title: "sparkling wines",
-            price: "$18.00",
+            drink_category_id:1,
+            price: "₪18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
             tags: ["Vegan", "Spicy"],
@@ -153,7 +158,17 @@ function CategoryproductsPage({ language }) {
         {
             id: 6,
             title: "Red Wines",
-            price: "$18.00",
+            drink_category_id:1,
+            price: "₪18.00",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink6,
+            tags: ["Spicy"],
+        },
+        {
+            id: 7,
+            title: "Red Wines",
+            drink_category_id:2,
+            price: "₪18.00",
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink6,
             tags: ["Spicy"],
@@ -165,15 +180,59 @@ function CategoryproductsPage({ language }) {
         return tag.toLowerCase().replace(/\s+/g, "-");
     };
 
+    const [selectedProduct, setSelectedProduct] = useState();
+    const [selectedDrink,setSelectedDrink] = useState(1);
+
+    //const [selectedProduct, setSelectedProduct] =
+    const [selectedProducts, setSelectedProducts] = useState(
+        productData.filter(product => product.drink_category_id == selectedDrink)
+    );
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault(); // Prevent form submission and page reload
+
+        
+        // Filter categories based on search query
+        const filtered = productData.filter(product =>
+            product.title.toLowerCase().includes(searchQuery.toLowerCase())
+        );
+        //alert();
+        setSelectedProducts(filtered);
+        
+        const filteredProducts = productData.filter(product => {
+            const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            product.description.toLowerCase().includes(searchQuery.toLowerCase())
+            const matchesCategory = product.drink_category_id === selectedCategory;
+            return matchesSearch && matchesCategory;
+        });
+        //setSelectedProducts(filteredProducts);
+    };
+
+    const [searchQuery, setSearchQuery] = useState("");
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+   
+    const [selectedCategory, setSelectedCategory] = useState(1); // Default category (1)
+
+    // Filter products based on searchQuery and drink_category_id
+    const filteredProducts = productData.filter(product => {
+        const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+        const matchesCategory = product.drink_category_id === selectedCategory;
+        return matchesSearch && matchesCategory;
+    });
+
 
     const ProductsSection = () => {
-        const [selectedProduct, setSelectedProduct] = useState(null);
+        
         return (
             <div className="products-section container pb-4">
 
 
                 <div className="row">
-                    {productData.map((product) => (
+                    {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
                                 <button type="button" className="read-more-btn" data-bs-toggle="modal"
@@ -327,15 +386,15 @@ function CategoryproductsPage({ language }) {
         );
     };
 
-    const CategoryTag = ({ subcategory, category, imageUrl, backgroundColor }) => {
+    const CategoryTag = ({ subcategory,id, category, imageUrl, backgroundColor }) => {
         return (
-            <div className="category-tag" style={{ backgroundColor }}>
+            <button type="button" onClick={() =>  setSelectedProducts(productData.filter(product => product.drink_category_id == id)) } className="category-tag" style={{ border:0, backgroundColor: backgroundColor }}>
                 <div className="category-info">
                     <h3 className="subcategory">{subcategory}</h3>
                     <p className="category">{category}</p>
                 </div>
                 <img src={imageUrl} alt={subcategory} className="category-image" />
-            </div>
+            </button>
         );
     };
 
@@ -408,7 +467,7 @@ function CategoryproductsPage({ language }) {
 
                 <div className="px-2">
                     
-                    <div className="container py-2 bg-white d-flex align-items-center mb-3">
+                    <form onSubmit={handleSearchSubmit} className="container py-2 bg-white d-flex align-items-center mb-3">
                         {/* Search Input (95% on mobile, 80% on desktop) */}
                         <div className="flex-grow-1 me-2 w-sm-95 w-md-65">
                             <div className="input-group">
@@ -422,6 +481,8 @@ function CategoryproductsPage({ language }) {
                                     className="form-control border border-start-0 pl-0"
                                     placeholder={` ${translations[language].seachPlaceholder} ...`}
                                     aria-label="Search"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
                                     aria-describedby="search-icon"
                                     style={{ paddingLeft: "0px" }}
                                 />
@@ -439,14 +500,42 @@ function CategoryproductsPage({ language }) {
 
                         {/* Two Buttons (Hidden on mobile, 10% each on desktop) */}
                         <div className="d-none d-md-flex gap-2" style={{ width: "35%" }}>
-                                <button className="btn w-100 border bg-white text-dark">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
                                     <FaFilter className="me-1" />  {translations[language].FilterText}
                                 </button>
-                            <button className="btn btn-primary w-100">
+                            <button type="submit" className="btn btn-primary w-100">
                                     <FaSearch className="me-1" /> {translations[language].SearchText}
                                 </button>
                         </div>
+                    </form>
+                </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Search Filters</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                            <label class="form-check-label" for="exampleCheck1">Include Category</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                            <label class="form-check-label" for="exampleCheck1">Include  Sub-Category</label>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
+                            <label class="form-check-label" for="exampleCheck1">Include Products</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                    </div>
+                </div>
                 </div>
                 <ProductsPopup />
                 <Categories />
@@ -463,6 +552,7 @@ function CategoryproductsPage({ language }) {
                         {drinksData.map((drinks, index) => (
                             <CategoryTag
                                 subcategory={drinks.subcategory}
+                                id={drinks.id}
                                 category={drinks.category}
                                 imageUrl={drinks.image}
                                 backgroundColor={drinks.background} // Change this color as needed

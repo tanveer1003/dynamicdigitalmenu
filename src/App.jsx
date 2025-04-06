@@ -18,18 +18,28 @@ function AppContent() {
   const [language, setLanguage] = useState('en');
   const location = useLocation(); // Now this works correctly
 
-  const hideHeaderFooterRoutes = [
+  const hideHeaderRoutes = [
     '/',
     '/menu-managemnet',
     '/menu-managemnet-add',
     '/menu-managemnet-setting'
   ];
 
-  const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(location.pathname);
+  const hideFooterRoutes = [
+    '/home',
+    '/subcategories',
+    '/categoryproducts',
+    '/menu-managemnet',
+    '/menu-managemnet-add',
+    '/menu-managemnet-setting'
+  ];
+
+
+  //const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(location.pathname);
 
   return (
     <>
-      {!shouldHideHeaderFooter && <Header language={language} setLanguage={setLanguage} />}
+      {!hideHeaderRoutes.includes(location.pathname) && <Header language={language} setLanguage={setLanguage} />}
       
       <Routes>
         <Route path="/subcategories" element={<Subcategories language={language} />} />
@@ -41,7 +51,7 @@ function AppContent() {
         <Route path="/menu-managemnet-setting" element={<MenuManagementSetting />} />
       </Routes>
 
-      {!shouldHideHeaderFooter && <Footer language={language} />}
+      {!hideFooterRoutes.includes(location.pathname) && <Footer language={language} />}
     </>
   );
 }
