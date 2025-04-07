@@ -156,12 +156,28 @@ function Home({ language }) {
 
                         <div key={index} className="col-md-3 col-6 mb-4 text-center">
                             <Link className='text-white link-offset-2 link-underline link-underline-opacity-0' to="/subcategories">
-                                <div className="category-card p-5" style={{ backgroundImage: `url(${category.image})` }}>
-                                    <div className="overlay"></div>
-                                    <h5 className="category-text text-white"> {language === "he"
-                                    ? categoryTranslations[category.name] || category.name
-                                    : category.name} </h5>
+                            {/* Outer container with relative positioning */}
+                            <div 
+                                className="category-card position-relative" 
+                                style={{ 
+                                backgroundImage: `url(${category.image})`,
+                                paddingTop: '100%', // 1:1 aspect ratio (height = width)
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center',
+                                }}
+                            >
+                                {/* Overlay (absolute positioned to cover the entire square) */}
+                                <div className="overlay position-absolute top-0 start-0 w-100 h-100"></div>
+                                
+                                {/* Text container (centered inside the square) */}
+                                <div className="position-absolute top-50 start-50 translate-middle w-100 px-2">
+                                <h5 className="category-text text-white mb-0">
+                                    {language === "he" 
+                                    ? categoryTranslations[category.name] || category.name 
+                                    : category.name}
+                                </h5>
                                 </div>
+                            </div>
                             </Link>
                         </div>
 
@@ -225,7 +241,7 @@ function Home({ language }) {
                     <form onSubmit={handleSearchSubmit} className="container py-2 bg-white d-flex align-items-center mb-3">
                         
                             {/* Search Input (95% on mobile, 80% on desktop) */}
-                            <div className="flex-grow-1 me-2 w-sm-95 w-md-65">
+                            <div className="flex-grow-1 me-2 w-sm-95 w-md-80">
                                 <div className="input-group">
                                     <span className="input-group-text bg-white border border-end-0 pr-0" id="search-icon">
                                         <svg width="20" height="19" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -255,10 +271,7 @@ function Home({ language }) {
                             </button>
 
                             {/* Two Buttons (Hidden on mobile, 10% each on desktop) */}
-                            <div className="d-none d-md-flex gap-2" style={{ width: "35%" }}>
-                                    <button className="btn w-100 border bg-white text-dark">
-                                        <FaFilter className="me-1" />  {translations[language].FilterText}
-                                    </button>
+                            <div className="d-none d-md-flex gap-2" style={{ width: "20%" }}>
                                 <button type="submit" className="btn btn-primary w-100">
                                         <FaSearch className="me-1" /> {translations[language].SearchText}
                                     </button>

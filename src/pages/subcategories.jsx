@@ -38,6 +38,8 @@ function SubcategoriesPage({ language }) {
         "Drinks": "משקאות",
     };
 
+    
+
     const Categories = () => {
 
         const scrollRef = useRef(null);
@@ -131,7 +133,7 @@ function SubcategoriesPage({ language }) {
             id: 5,
             title: "Crispy Temptations",
             price: "18.00",
-            description: "",
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing Fresh mixed greens with feta cheese, olives, and house dressingFresh mixed greens.",
             image: "https://s3-alpha-sig.figma.com/img/3aa6/941e/c9dbabf5d0e6227d6209f8546495a35e?Expires=1743984000&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=lSGx9kVce5QoGsWv~Js6STifms~nHJVx6KwkgZ96Dqn2FSIGEST4Hz7SVm6nNfPknrc6h7HUdgNIpU8ZhQgHXyk5g1XUiKP9piDHVSnAugz71KVJzXCsmS~XPuAhTivcpXoXK2wNvwNEB-1oXzXX9UwYEAWny-5LP74Fqnz-mkZ1DYx7cQim88QnUZ5eg~oXWv66C2vi9zcvMYBbrWoq5krDnsXCVlBhJZCONnO08kkY0miXW82~fE91NoS0lmlVOOdqV3TwKouLekUoTl~K8GrJADqJsGkTbnzweYZTKD9W0JRpyTjkmUcaQKFnAtLPUZh1l3uqkH~83uYgF8Pdew__",
             tags: ["Vegan", "Spicy"],
         },
@@ -151,6 +153,31 @@ function SubcategoriesPage({ language }) {
     };
 
     const [isGrid, setisGrid] = useState(true);
+
+    const [selectedProducts, setSelectedProducts] = useState(
+        productData
+        );
+    const [searchQuery, setSearchQuery] = useState("");
+
+     const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const [priceRange, setPriceRange] = useState([0, 1000]);
+    const [minPrice, maxPrice] = priceRange;
+
+    const handleSearchSubmit = (event) => {
+        event.preventDefault(); // Prevent form submission and page reload
+
+        // Filter categories based on search query
+        const filtered = productData.filter(product =>
+            product.title.toLowerCase().includes(searchQuery.toLowerCase()) 
+            && product.price >= minPrice && product.price <= maxPrice
+        );
+        //alert();
+        setSelectedProducts(filtered);
+        
+    };
 
     const ProductsSection = () => {
         const [selectedProduct, setSelectedProduct] = useState(null);
@@ -172,7 +199,7 @@ function SubcategoriesPage({ language }) {
                 </div>
 
                 <div className="row">
-                    {productData.map((product) => (
+                    {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
                                 <button type="button" className="read-more-btn" data-bs-toggle="modal"
@@ -351,7 +378,7 @@ function SubcategoriesPage({ language }) {
             <div className='pt-2' style={{ background: "rgb(243 246 250)" }} >
                 <div className="px-2">
                     
-                    <div className="container py-2 bg-white d-flex align-items-center mb-3">
+                    <form onSubmit={handleSearchSubmit} className="container py-2 bg-white d-flex align-items-center mb-3">
                         {/* Search Input (95% on mobile, 80% on desktop) */}
                         <div className="flex-grow-1 me-2 w-sm-95 w-md-65">
                             <div className="input-group">
@@ -365,6 +392,8 @@ function SubcategoriesPage({ language }) {
                                     className="form-control border border-start-0 pl-0"
                                     placeholder={` ${translations[language].seachPlaceholder} ...`}
                                     aria-label="Search"
+                                    value={searchQuery}
+                                    onChange={handleSearchChange}
                                     aria-describedby="search-icon"
                                     style={{ paddingLeft: "0px" }}
                                 />
@@ -382,12 +411,54 @@ function SubcategoriesPage({ language }) {
 
                         {/* Two Buttons (Hidden on mobile, 10% each on desktop) */}
                         <div className="d-none d-md-flex gap-2" style={{ width: "35%" }}>
-                                <button className="btn w-100 border bg-white text-dark">
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
                                     <FaFilter className="me-1" />  {translations[language].FilterText}
                                 </button>
-                            <button className="btn btn-primary w-100">
+                            <button type="submit" className="btn btn-primary w-100">
                                     <FaSearch className="me-1" /> {translations[language].SearchText}
                                 </button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Search Filters</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <input
+                            type="range"
+                            min="0"
+                            max="1000"
+                            value={maxPrice}
+                            onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                            className="w-100"
+                            />
+                            <div className="d-flex justify-content-between">
+                                <div className="me-2">
+                                <label>Min ($)</label>
+                                <input
+                                    type="number"
+                                    value={minPrice}
+                                    onChange={(e) => setPriceRange([+e.target.value, maxPrice])}
+                                    className="form-control"
+                                />
+                                </div>
+                                <div>
+                                <label>Max ($)</label>
+                                <input
+                                    type="number"
+                                    value={maxPrice}
+                                    onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                                    className="form-control"
+                                />
+                                </div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>

@@ -26,9 +26,9 @@ function AppContent() {
   ];
 
   const hideFooterRoutes = [
-    '/home',
-    '/subcategories',
-    '/categoryproducts',
+    '/',
+    '/',
+    '/',
     '/menu-managemnet',
     '/menu-managemnet-add',
     '/menu-managemnet-setting'

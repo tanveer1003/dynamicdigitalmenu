@@ -35,15 +35,17 @@ import drink6 from './../assets/img/drink-6.jpg';
 function CategoryproductsPage({ language }) {
 
     const categories = [
-        { name: "Appetizers", image: category1 },
-        { name: "Main Course", image: category2 },
-        { name: "Desserts", image: category3 },
-        { name: "Drinks", image: category4 },
-        { name: "Main Course", image: category1 },
-        { name: "Desserts", image: category2 },
+        { id: 1 , name: "Appetizers", image: category1 },
+        { id: 2 , name: "Main Course", image: category2 },
+        { id: 3 , name: "Desserts", image: category3 },
+        { id: 4 , name: "Drinks", image: category4 },
+        { id: 5 , name: "Main Course", image: category1 },
+        { id: 6 , name: "Desserts", image: category2 },
 
     ];
 
+
+    const [selectedSubCategory,setSelectedSubCategory] = useState(1);
     const [isGrid, setisGrid] = useState(true);
 
     const Categories = () => {
@@ -87,10 +89,10 @@ function CategoryproductsPage({ language }) {
                 {/* Scrollable Row */}
                 <div className="categories-container">
                     {categories.map((category, index) => (
-                        <div key={index} className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
+                        <button key={index} onClick={ () => setSelectedSubCategory( drinksData.filter( drink => drink.categoryId == category.id))} className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
                             <div className="overlay"></div>
                             <h5 className="category-text">{category.name}</h5>
-                        </div>
+                        </button>
                     ))}
                 </div>
 
@@ -114,7 +116,7 @@ function CategoryproductsPage({ language }) {
             id: 1,
             title: "Fermented grape juice Wines",
             drink_category_id:1,
-            price: "₪15.00",
+            price: 15.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink1,
             tags: ["Vegan", "Gluten Free", "Spicy"],
@@ -123,7 +125,7 @@ function CategoryproductsPage({ language }) {
             id: 2,
             title: "sparkling wines",
             drink_category_id:1,
-            price: "₪12.00",
+            price: 12.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink2,
             tags: ["Vegan", "Spicy"],
@@ -132,7 +134,7 @@ function CategoryproductsPage({ language }) {
             id: 3,
             title: "Red Wines",
             drink_category_id:1,
-            price: "₪8.00",
+            price: 8.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink3,
             tags: ["Spicy"],
@@ -141,7 +143,7 @@ function CategoryproductsPage({ language }) {
             id: 4,
             title: "Fermented grape juice Wines",
             drink_category_id:1,
-            price: "₪18.00",
+            price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink4,
             tags: ["Vegan", "Gluten Free", "Spicy"],
@@ -150,7 +152,7 @@ function CategoryproductsPage({ language }) {
             id: 5,
             title: "sparkling wines",
             drink_category_id:1,
-            price: "₪18.00",
+            price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
             tags: ["Vegan", "Spicy"],
@@ -159,19 +161,37 @@ function CategoryproductsPage({ language }) {
             id: 6,
             title: "Red Wines",
             drink_category_id:1,
-            price: "₪18.00",
+            price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink6,
             tags: ["Spicy"],
         },
         {
-            id: 7,
+            id: 3,
             title: "Red Wines",
             drink_category_id:2,
-            price: "₪18.00",
+            price: 8.00,
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink3,
+            tags: ["Spicy"],
+        },
+        {
+            id: 6,
+            title: "Red Wines",
+            drink_category_id:3,
+            price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink6,
             tags: ["Spicy"],
+        },
+        {
+            id: 5,
+            title: "sparkling wines",
+            drink_category_id:4,
+            price: 18.00,
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink5,
+            tags: ["Vegan", "Spicy"],
         },
         // Add more products as needed
     ];
@@ -182,19 +202,28 @@ function CategoryproductsPage({ language }) {
 
     const [selectedProduct, setSelectedProduct] = useState();
     const [selectedDrink,setSelectedDrink] = useState(1);
+    
 
     //const [selectedProduct, setSelectedProduct] =
     const [selectedProducts, setSelectedProducts] = useState(
         productData.filter(product => product.drink_category_id == selectedDrink)
     );
 
+    const [priceRange, setPriceRange] = useState([0, 1000]);
+    const [minPrice, maxPrice] = priceRange;
+
+    // Update when user interacts with slider/inputs
+    const handlePriceChange = (event, newValue) => {
+        setPriceRange(newValue);
+    };
+
     const handleSearchSubmit = (event) => {
         event.preventDefault(); // Prevent form submission and page reload
 
-        
         // Filter categories based on search query
         const filtered = productData.filter(product =>
-            product.title.toLowerCase().includes(searchQuery.toLowerCase())
+            product.title.toLowerCase().includes(searchQuery.toLowerCase()) 
+            && product.price >= minPrice && product.price <= maxPrice
         );
         //alert();
         setSelectedProducts(filtered);
@@ -247,7 +276,7 @@ function CategoryproductsPage({ language }) {
                                     <div className="product-details">
                                         <div className="product-row">
                                             <h5 className="product-title">{product.title}</h5>
-                                            <div className="product-price">{product.price}</div>
+                                            <div className="product-price">₪ {product.price}</div>
                                         </div>
                                         <p className="product-description">{product.description.substring(0, 100)}</p>
                                         <div className="product-row">
@@ -284,7 +313,7 @@ function CategoryproductsPage({ language }) {
                                         <div>
                                             <div className="product-row">
                                                 <h5 className="product-title">{product.title}</h5>
-                                                <div className="product-price">{product.price}</div>
+                                                <div className="product-price">₪ {product.price}</div>
                                             </div>
                                             <p className="product-description"> <ReadMoreText
                                             text={ product.description
@@ -401,6 +430,7 @@ function CategoryproductsPage({ language }) {
     const drinksData = [
         {
             id: 1,
+            categoryId:1,
             subcategory: "Wine",
             background: "#373738",
             category: "Drink",
@@ -409,6 +439,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 2,
+            categoryId:1,
             subcategory: "Beer",
             background: "#827C64",
             category: "Drink",
@@ -417,6 +448,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 3,
+            categoryId:1,
             subcategory: "Spirits &\n Liquors",
             background: "#C6552D",
             category: "Drink",
@@ -425,6 +457,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 4,
+            categoryId:1,
             subcategory: "Cocktails",
             background: "#B1834E",
             category: "Drink",
@@ -456,8 +489,7 @@ function CategoryproductsPage({ language }) {
             </div>
         );
     }
-
-
+    
     return (
 
 
@@ -517,22 +549,35 @@ function CategoryproductsPage({ language }) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                            <label class="form-check-label" for="exampleCheck1">Include Category</label>
+                        
+                        <input
+                        type="range"
+                        min="0"
+                        max="1000"
+                        value={maxPrice}
+                        onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                        className="w-100"
+                        />
+                        <div className="d-flex justify-content-between">
+                            <div className="me-2">
+                            <label>Min ($)</label>
+                            <input
+                                type="number"
+                                value={minPrice}
+                                onChange={(e) => setPriceRange([+e.target.value, maxPrice])}
+                                className="form-control"
+                            />
+                            </div>
+                            <div>
+                            <label>Max ($)</label>
+                            <input
+                                type="number"
+                                value={maxPrice}
+                                onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                                className="form-control"
+                            />
+                            </div>
                         </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                            <label class="form-check-label" for="exampleCheck1">Include  Sub-Category</label>
-                        </div>
-                        <div class="mb-3 form-check">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-                            <label class="form-check-label" for="exampleCheck1">Include Products</label>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
                     </div>
                     </div>
                 </div>
@@ -549,7 +594,7 @@ function CategoryproductsPage({ language }) {
 
                     {/* Scrollable Row */}
                     <div className="categories-container">
-                        {drinksData.map((drinks, index) => (
+                        {drinksData.filter( subcategory => subcategory.categoryId == 1).map((drinks, index) => (
                             <CategoryTag
                                 subcategory={drinks.subcategory}
                                 id={drinks.id}
