@@ -523,7 +523,7 @@ function CategoryproductsPage({ language }) {
 
                         {/* Filter Button (Hidden on desktop) */}
 
-                        <button className=" d-md-none bg-white border-0  text-dark">
+                        <button data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" className=" d-md-none bg-white border-0  text-dark">
                             <svg width="15" height="13" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.6698 0.698597H1L5.26791 5.74541V9.23442L7.40187 10.3014V5.74541L11.6698 0.698597Z" stroke="#4B5563" stroke-width="1.28037" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
@@ -539,48 +539,59 @@ function CategoryproductsPage({ language }) {
                                     <FaSearch className="me-1" /> {translations[language].SearchText}
                                 </button>
                         </div>
+
                     </form>
-                </div>
-                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Search Filters</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        
-                        <input
-                        type="range"
-                        min="0"
-                        max="1000"
-                        value={maxPrice}
-                        onChange={(e) => setPriceRange([minPrice, +e.target.value])}
-                        className="w-100"
-                        />
-                        <div className="d-flex justify-content-between">
-                            <div className="me-2">
-                            <label>Min ($)</label>
-                            <input
-                                type="number"
-                                value={minPrice}
-                                onChange={(e) => setPriceRange([+e.target.value, maxPrice])}
-                                className="form-control"
-                            />
-                            </div>
-                            <div>
-                            <label>Max ($)</label>
-                            <input
-                                type="number"
-                                value={maxPrice}
-                                onChange={(e) => setPriceRange([minPrice, +e.target.value])}
-                                className="form-control"
-                            />
-                            </div>
+                    <div class="px-2 collapse  d-md-none" id="collapseExample">
+                        <div class="card card-body">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
+                                <FaFilter className="me-1" />  {translations[language].FilterText}
+                            </button>
+                            <button type="submit" onClick={handleSearchSubmit} className="btn btn-primary w-100">
+                                    <FaSearch className="me-1" /> {translations[language].SearchText}
+                            </button>
                         </div>
                     </div>
-                    </div>
                 </div>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Search Filters</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            
+                            <input
+                            type="range"
+                            min="0"
+                            max="1000"
+                            value={maxPrice}
+                            onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                            className="w-100"
+                            />
+                            <div className="d-flex justify-content-between">
+                                <div className="me-2">
+                                <label>Min ($)</label>
+                                <input
+                                    type="number"
+                                    value={minPrice}
+                                    onChange={(e) => setPriceRange([+e.target.value, maxPrice])}
+                                    className="form-control"
+                                />
+                                </div>
+                                <div>
+                                <label>Max ($)</label>
+                                <input
+                                    type="number"
+                                    value={maxPrice}
+                                    onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                                    className="form-control"
+                                />
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
                 </div>
                 <ProductsPopup />
                 <Categories />

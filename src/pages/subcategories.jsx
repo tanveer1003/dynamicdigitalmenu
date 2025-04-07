@@ -402,23 +402,34 @@ function SubcategoriesPage({ language }) {
 
                         {/* Filter Button (Hidden on desktop) */}
 
-                        <button className=" d-md-none bg-white border-0  text-dark">
+                        <button data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" className=" d-md-none bg-white border-0  text-dark">
                             <svg width="15" height="13" viewBox="0 0 13 11" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.6698 0.698597H1L5.26791 5.74541V9.23442L7.40187 10.3014V5.74541L11.6698 0.698597Z" stroke="#4B5563" stroke-width="1.28037" stroke-linecap="round" stroke-linejoin="round" />
                             </svg>
 
                         </button>
+                        
 
                         {/* Two Buttons (Hidden on mobile, 10% each on desktop) */}
                         <div className="d-none d-md-flex gap-2" style={{ width: "35%" }}>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
-                                    <FaFilter className="me-1" />  {translations[language].FilterText}
-                                </button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
+                                <FaFilter className="me-1" />  {translations[language].FilterText}
+                            </button>
                             <button type="submit" className="btn btn-primary w-100">
                                     <FaSearch className="me-1" /> {translations[language].SearchText}
-                                </button>
+                            </button>
                         </div>
                     </form>
+                    <div class="px-2 collapse  d-md-none" id="collapseExample">
+                        <div class="card card-body">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
+                                <FaFilter className="me-1" />  {translations[language].FilterText}
+                            </button>
+                            <button type="submit" onClick={handleSearchSubmit} className="btn btn-primary w-100">
+                                    <FaSearch className="me-1" /> {translations[language].SearchText}
+                            </button>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
