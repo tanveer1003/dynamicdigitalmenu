@@ -274,11 +274,11 @@ function CategoryproductsPage({ language }) {
                                         </div>
                                     </div>
                                     <div className="product-details">
-                                        <div className="product-row">
+                                        <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
                                             <h5 className="product-title">{product.title}</h5>
                                             <div className="product-price">₪ {product.price}</div>
                                         </div>
-                                        <p className="product-description">{product.description.substring(0, 100)}</p>
+                                        <p className="product-description " style={{textAlign: language === "he" ? "right" : "left"}}>{product.description.substring(0, 100)}</p>
                                         <div className="product-row">
                                             <div className="product-tags">
                                                 {product.tags.map((tag, index) => (
@@ -308,14 +308,14 @@ function CategoryproductsPage({ language }) {
                             </div>
                             :
                             <div key={product.id} className=" p-2 col-md-12">
-                                <div className="product-card d-flex justify-content-between">
+                                <div className={`product-card d-flex justify-content-between ${language === "he" ? "flex-row-reverse" : ""}`}>
                                     <div className="product-details w-100 d-flex flex-column justify-content-between">
                                         <div>
-                                            <div className="product-row">
+                                            <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
                                                 <h5 className="product-title">{product.title}</h5>
                                                 <div className="product-price">₪ {product.price}</div>
                                             </div>
-                                            <p className="product-description"> <ReadMoreText
+                                            <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}> <ReadMoreText
                                             text={ product.description
                                             }  // Adjust the maxLength as needed
                                             /> </p>

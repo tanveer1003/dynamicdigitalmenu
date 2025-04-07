@@ -64,7 +64,10 @@ function SubcategoriesPage({ language }) {
 
         return (
             <div className="container pt-2">
-                <h2 className="mb-4">{translations[language].categoryTitle}</h2>
+                <h2 className="mb-4" style={{ 
+                        textAlign: language === "he" ? "right" : "left",
+                        direction: language === "he" ? "rtl" : "ltr" 
+                    }}>{translations[language].categoryTitle}</h2>
 
                 {/* Scrollable Row */}
                 <div className="categories-container">
@@ -213,14 +216,14 @@ function SubcategoriesPage({ language }) {
                                         </div>
                                     </div>
                                     <div className="product-details">
-                                        <div className="product-row">
+                                        <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
                                             <h5 className="product-title">{language === "he"
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}</h5>
                                             <div className="product-price"> {language === "he"
                                                     ? "₪" : "₪" } {product.price}</div>
                                         </div>
-                                        <p className="product-description">{language === "he"
+                                        <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}>{language === "he"
                                                     ? productTranslations[language][product.title].description.substring(0, 100) || product.title
                                                     :  product.description.substring(0, 100)}</p>
                                         <div className="product-row">
@@ -257,7 +260,7 @@ function SubcategoriesPage({ language }) {
                                 <div className={`product-card d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between`}>
                                     <div className={`product-details w-100 d-flex flex-column justify-content-between`}>
                                         <div>
-                                            <div className="product-row gap-1 d-flex justify-content-between align-items-start">
+                                            <div className={`product-row gap-1 d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-start`}>
                                                 <h5>{language === "he"
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}   
@@ -266,7 +269,7 @@ function SubcategoriesPage({ language }) {
                                                     ? "דולר" : "$" }{product.price}
                                                 </div>
                                             </div>
-                                            <p className="product-description"> 
+                                            <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}> 
                                                 <ReadMoreText
                                                     text={
                                                         language === "he"
