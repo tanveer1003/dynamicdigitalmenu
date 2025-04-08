@@ -32,6 +32,8 @@ import drink4 from './../assets/img/drink-4.jpg';
 import drink5 from './../assets/img/drink-5.jpg';
 import drink6 from './../assets/img/drink-6.jpg';
 
+import productTranslations2 from '../languagues/productTranslations2';
+
 function CategoryproductsPage({ language }) {
 
     const categories = [
@@ -44,8 +46,97 @@ function CategoryproductsPage({ language }) {
 
     ];
 
+    const categoryTranslations = {
+        "Appetizers": "מנות פתיחה",
+        "Main Course": "מנה עיקרית",
+        "Desserts": "קינוחים",
+        "Drinks": "משקאות",
+    };
 
-    const [selectedSubCategory,setSelectedSubCategory] = useState(1);
+    const drinksData = [
+        {
+            id: 1,
+            categoryId:1,
+            subcategory: "Wine",
+            background: "#373738",
+            category: "Drink",
+            image: subcategory1,
+            tags: ["Vegan", "Gluten Free", "Spicy"],
+        },
+        {
+            id: 2,
+            categoryId:4,
+            subcategory: "Beer",
+            background: "#827C64",
+            category: "Drink",
+            image: subcategory2,
+            tags: ["Gluten Free", "Spicy"],
+        },
+        {
+            id: 3,
+            categoryId:1,
+            subcategory: "Spirits &\n Liquors",
+            background: "#C6552D",
+            category: "Drink",
+            image: subcategory3,
+            tags: ["Vegan"],
+        },
+        {
+            id: 4,
+            categoryId:1,
+            subcategory: "Cocktails",
+            background: "#B1834E",
+            category: "Drink",
+            image: subcategory2,
+            tags: ["Gluten Free", "Spicy"],
+        },
+        
+        // Add more products as needed
+    ];
+
+    const drinksDataHebrew = [
+        {
+          id: 1,
+          categoryId: 1,
+          subcategory: "יין", // Wine
+          background: "#373738",
+          category: "שתייה", // Drink
+          image: subcategory1,
+          tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
+        },
+        {
+          id: 2,
+          categoryId: 1,
+          subcategory: "בירה", // Beer
+          background: "#827C64",
+          category: "שתייה", // Drink
+          image: subcategory2,
+          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+        },
+        {
+          id: 3,
+          categoryId: 1,
+          subcategory: "רוחות ואלכוהול", // Spirits & Liquors
+          background: "#C6552D",
+          category: "שתייה", // Drink
+          image: subcategory3,
+          tags: ["טִבעוֹנִי"], // Vegan
+        },
+        {
+          id: 4,
+          categoryId: 4,
+          subcategory: "קוקטיילים", // Cocktails
+          background: "#B1834E",
+          category: "שתייה", // Drink
+          image: subcategory2,
+          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+        },
+      
+        // Add more products as needed
+      ];
+
+
+    const [selectedSubCategory,setSelectedSubCategory] = useState(drinksData);
     const [isGrid, setisGrid] = useState(true);
 
     const Categories = () => {
@@ -72,9 +163,9 @@ function CategoryproductsPage({ language }) {
         return (
 
             <div className="container pt-1">
-                <div className="section-header d-flex justify-content-between align-items-center">
+                <div className={` section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center `}>
                     <div className="header-left d-flex align-items-center">
-                        <h2 className="ml-2">Categories</h2>
+                        <h2 className="ml-2" >{translations[language].categoryTitle}</h2>
                     </div>
                     <div className="header-right">
                         <button className='bg-light border border-0' onClick={() => setisGrid(false)}>
@@ -89,9 +180,14 @@ function CategoryproductsPage({ language }) {
                 {/* Scrollable Row */}
                 <div className="categories-container">
                     {categories.map((category, index) => (
-                        <button key={index} onClick={ () => setSelectedSubCategory( drinksData.filter( drink => drink.categoryId == category.id))} className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
+                        <button key={index} onClick={ () => { 
+                            setSelectedSubCategory( drinksData.filter( drink => drink.categoryId == category.id)); 
+                            setSelectedProducts([]);
+                            } } className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
                             <div className="overlay"></div>
-                            <h5 className="category-text">{category.name}</h5>
+                            <h5 className="category-text">{language === "he"
+                                    ? categoryTranslations[category.name] || category.name
+                                    : category.name}</h5>
                         </button>
                     ))}
                 </div>
@@ -260,7 +356,7 @@ function CategoryproductsPage({ language }) {
             <div className="products-section container pb-4">
 
 
-                <div className="row">
+                <div className={`row ${language === "he" ? "flex-row-reverse" : ""}`}>
                     {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
@@ -270,15 +366,23 @@ function CategoryproductsPage({ language }) {
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
-                                            <span className="product-category-tag">{product.tags[0]}</span>
+                                            <span className="product-category-tag"> {language === "he"
+                                                    ? productTranslations2[language][product.id].tags[0] 
+                                                    : product.tags[0]} </span>
                                         </div>
                                     </div>
                                     <div className="product-details">
                                         <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
-                                            <h5 className="product-title">{product.title}</h5>
+                                            <h5 className="product-title"> {language === "he"
+                                                    ? productTranslations2[language][product.id].title 
+                                                    : product.title} </h5>
                                             <div className="product-price">₪ {product.price}</div>
                                         </div>
-                                        <p className="product-description " style={{textAlign: language === "he" ? "right" : "left"}}>{product.description.substring(0, 100)}</p>
+                                        <p className="product-description " style={{textAlign: language === "he" ? "right" : "left"}}> 
+                                        {language === "he"
+                                                    ? productTranslations2[language][product.id].description.substring(0, 100) 
+                                                    : product.description.substring(0, 100)}
+                                        </p>
                                         <div className="product-row">
                                             <div className="product-tags">
                                                 {product.tags.map((tag, index) => (
@@ -286,7 +390,9 @@ function CategoryproductsPage({ language }) {
                                                         {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
                                                         {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                         {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                        {tag}
+                                                        {language === "he"
+                                                    ? productTranslations2[language][product.id].tags[index] 
+                                                    : product.tags[index]}
                                                     </div>
                                                 ))}
                                             </div>
@@ -312,13 +418,20 @@ function CategoryproductsPage({ language }) {
                                     <div className="product-details w-100 d-flex flex-column justify-content-between">
                                         <div>
                                             <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
-                                                <h5 className="product-title">{product.title}</h5>
+                                                <h5 className="product-title">{language === "he"
+                                                    ? productTranslations2[language][product.id].title 
+                                                    : product.title}</h5>
                                                 <div className="product-price">₪ {product.price}</div>
                                             </div>
-                                            <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}> <ReadMoreText
-                                            text={ product.description
-                                            }  // Adjust the maxLength as needed
-                                            /> </p>
+                                            <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}>
+                                                {language === "he"
+                                                    ? <ReadMoreText
+                                                    text={ productTranslations2[language][product.id].description.substring(0, 100)}  
+                                                    />  
+                                                    : <ReadMoreText
+                                                    text={ product.description.substring(0, 100) }  
+                                                    />  }
+                                                  </p>
                                         </div>
                                         <div className="product-row">
                                             <div className="product-tags">
@@ -327,7 +440,9 @@ function CategoryproductsPage({ language }) {
                                                         {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
                                                         {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                         {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                        {tag}
+                                                        {language === "he"
+                                                    ? productTranslations2[language][product.id].tags[index] 
+                                                    : product.tags[index]}
                                                     </div>
                                                 ))}
                                             </div>
@@ -344,7 +459,9 @@ function CategoryproductsPage({ language }) {
                                         //flexShrink: 0
                                     }}>
                                         <div className="overlay">
-                                            <span className="product-category-tag">{product.tags[0]}</span>
+                                            <span className="product-category-tag">{language === "he"
+                                                    ? productTranslations2[language][product.id].tags[0] 
+                                                    : product.tags[0]}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -419,54 +536,16 @@ function CategoryproductsPage({ language }) {
         return (
             <button type="button" onClick={() =>  setSelectedProducts(productData.filter(product => product.drink_category_id == id)) } className="category-tag" style={{ border:0, backgroundColor: backgroundColor }}>
                 <div className="category-info">
-                    <h3 className="subcategory">{subcategory}</h3>
-                    <p className="category">{category}</p>
+                    <h3 className="subcategory"> {language === "he" ? drinksDataHebrew.filter( product => product.id == id)[0] .subcategory  : subcategory} </h3>
+                    <p className="category">{language === "he" ? drinksDataHebrew.filter( product => product.id == id)[0] .category  : category}</p>
                 </div>
                 <img src={imageUrl} alt={subcategory} className="category-image" />
             </button>
         );
     };
 
-    const drinksData = [
-        {
-            id: 1,
-            categoryId:1,
-            subcategory: "Wine",
-            background: "#373738",
-            category: "Drink",
-            image: subcategory1,
-            tags: ["Vegan", "Gluten Free", "Spicy"],
-        },
-        {
-            id: 2,
-            categoryId:1,
-            subcategory: "Beer",
-            background: "#827C64",
-            category: "Drink",
-            image: subcategory2,
-            tags: ["Gluten Free", "Spicy"],
-        },
-        {
-            id: 3,
-            categoryId:1,
-            subcategory: "Spirits &\n Liquors",
-            background: "#C6552D",
-            category: "Drink",
-            image: subcategory3,
-            tags: ["Vegan"],
-        },
-        {
-            id: 4,
-            categoryId:1,
-            subcategory: "Cocktails",
-            background: "#B1834E",
-            category: "Drink",
-            image: subcategory2,
-            tags: ["Gluten Free", "Spicy"],
-        },
-        
-        // Add more products as needed
-    ];
+    
+      
 
     const ProductsPopup = () => {
         return (
@@ -596,16 +675,16 @@ function CategoryproductsPage({ language }) {
                 <ProductsPopup />
                 <Categories />
                 <div className="container my-5">
-                    <div className="section-header d-flex justify-content-between align-items-center">
-                        <div className="header-left d-flex align-items-start">
+                    <div className={`section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
+                        <div className={`header-left d-flex ${language === "he" ? "flex-row-reverse" : ""} align-items-start `} >
                             <FaStar className="star-icon" />
-                            <h2 className="ml-2">Drinks Subcategories</h2>
+                            <h2 className="ml-2" >Drinks {translations[language].subCategoryTitle}</h2>
                         </div>
                     </div>
 
                     {/* Scrollable Row */}
-                    <div className="categories-container">
-                        {drinksData.filter( subcategory => subcategory.categoryId == 1).map((drinks, index) => (
+                    <div className={`categories-container ${language === "he" ? "flex-row-reverse" : ""}`}>
+                        {selectedSubCategory.map((drinks, index) => (
                             <CategoryTag
                                 subcategory={drinks.subcategory}
                                 id={drinks.id}

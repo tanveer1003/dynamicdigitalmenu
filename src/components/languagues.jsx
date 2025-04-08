@@ -23,6 +23,7 @@ const translations = {
         seachPlaceholder:"Search",
         categoryTitle:"Categories",
         sectionTitle: "Appetizers Specials Deals",
+        subCategoryTitle: "Subcategories",
       // Other translatable strings for English
     },
     he: {
@@ -49,6 +50,7 @@ const translations = {
         seachPlaceholder:"לְחַפֵּשׂ",
         categoryTitle:"קטגוריות",
         sectionTitle: "הצעות מיוחדות של אפטיזר",
+        subCategoryTitle: "קטגוריות משנה",
         // Other translatable strings for Hebrew
     },
   };
