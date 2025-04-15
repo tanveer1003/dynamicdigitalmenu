@@ -60,7 +60,7 @@ function Menu() {
 
     return (
         <div>
-            <div className='p-5' 
+            <div className='p-xl-5 p-lg-5 p-md-5' 
             style={{
                 backgroundImage: `url(${background})`,
                 //backgroundSize: "cover",  // Makes it fit
