@@ -69,7 +69,7 @@ function Menu() {
                // width: "100%",  // Ensure it takes full width
                // height: "100vh" 
                 }} >
-                <div className="container p-5">
+                <div className="container p-xl-5 p-lg-5 p-md-5">
                     <div className="row">
                         <div className="col-md-2 col-12">
                             <div className='container  my-5'>
