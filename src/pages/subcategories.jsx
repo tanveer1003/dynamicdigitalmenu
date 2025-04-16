@@ -182,8 +182,21 @@ function SubcategoriesPage({ language }) {
         
     };
 
+    function useIsMobile() {
+        const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+        
+        useEffect(() => {
+            const handleResize = () => setIsMobile(window.innerWidth <= 768);
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
+        }, []);
+        
+        return isMobile;
+    }
+
     const ProductsSection = () => {
         const [selectedProduct, setSelectedProduct] = useState(null);
+        const isMobile = useIsMobile();
         return (
             <div className="products-section container pb-4">
                 <div className={`ection-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
@@ -261,7 +274,7 @@ function SubcategoriesPage({ language }) {
                                     <div className={`product-details w-100 d-flex flex-column justify-content-between`}>
                                         <div>
                                             <div className={`product-row gap-1 d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-start`}>
-                                                <h5>{language === "he"
+                                                <h5 className="product-title">{language === "he"
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}   
                                                 </h5>
@@ -276,6 +289,7 @@ function SubcategoriesPage({ language }) {
                                                         ? productTranslations[language][product.title].description || product.title
                                                         : product.description
                                                     } // Adjust the maxLength as needed
+                                                    maxLength={isMobile ? 30 : 100}
                                                     /></p>
                                         </div>
                                         <div className="product-row">

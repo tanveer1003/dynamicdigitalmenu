@@ -33,8 +33,21 @@ import drink5 from './../assets/img/drink-5.jpg';
 import drink6 from './../assets/img/drink-6.jpg';
 
 import productTranslations2 from '../languagues/productTranslations2';
+import { Modal } from 'bootstrap';
 
 function CategoryproductsPage({ language }) {
+
+    function useIsMobile() {
+        const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
+      
+        useEffect(() => {
+          const handleResize = () => setIsMobile(window.innerWidth <= 768);
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
+        }, []);
+      
+        return isMobile;
+      }
 
     const categories = [
         { id: 1 , name: "Appetizers", image: category1 },
@@ -296,7 +309,7 @@ function CategoryproductsPage({ language }) {
         return tag.toLowerCase().replace(/\s+/g, "-");
     };
 
-    const [selectedProduct, setSelectedProduct] = useState();
+    const [selectedProduct, setSelectedProduct] = useState(null);
     const [selectedDrink,setSelectedDrink] = useState(1);
     
 
@@ -349,9 +362,34 @@ function CategoryproductsPage({ language }) {
         return matchesSearch && matchesCategory;
     });
 
+    const modalRef = useRef(null);
+    const bsModal = useRef(null);
+
+    useEffect(() => {
+        if (selectedProduct && modalRef.current) {
+        bsModal.current = new Modal(modalRef.current);
+        bsModal.current.show();
+        }
+    }, [selectedProduct]);
+
+  const handleClick = (product) => {
+    
+    setSelectedProduct(product);
+    //useEffect( );
+    /*
+    setTimeout(() => {
+      if (bsModal.current) {
+        bsModal.current.show();
+      }
+    }, 100);
+    */
+    //alert(selectedProduct.title);
+    //alert(product.title);
+  };
+
 
     const ProductsSection = () => {
-        
+        const isMobile = useIsMobile();
         return (
             <div className="products-section container pb-4">
 
@@ -360,9 +398,8 @@ function CategoryproductsPage({ language }) {
                     {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
-                                <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                data-bs-target="#productModal"
-                                                onClick={() => setSelectedProduct(product)}>
+                                <button type="button" className="read-more-btn"
+                                                onClick={() => handleClick(product)}>
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
@@ -426,10 +463,10 @@ function CategoryproductsPage({ language }) {
                                             <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}>
                                                 {language === "he"
                                                     ? <ReadMoreText
-                                                    text={ productTranslations2[language][product.id].description.substring(0, 100)}  
+                                                    text={ productTranslations2[language][product.id].description.substring(0, isMobile ? 30 : 100)}  
                                                     />  
                                                     : <ReadMoreText
-                                                    text={ product.description.substring(0, 100) }  
+                                                    text={ product.description.substring(0, isMobile ? 30 : 100) }  
                                                     />  }
                                                   </p>
                                         </div>
@@ -471,11 +508,12 @@ function CategoryproductsPage({ language }) {
                 </div>
                 {/* Bootstrap Modal */}
                 <div
-                    className="modal border border-0 fade "
-                    id="productModal"
-                    tabIndex="-1"
-                    aria-labelledby="productModalLabel"
-                    aria-hidden="true"
+                     className="modal fade"
+                     id="productModal"
+                     tabIndex="-1"
+                     ref={modalRef}
+                     aria-labelledby="productModalLabel"
+                     aria-hidden="true"
                 >
                     <div className="modal-dialog border border-0">
                         <div className="modal-content bg-transparent border border-0">
@@ -547,27 +585,7 @@ function CategoryproductsPage({ language }) {
     
       
 
-    const ProductsPopup = () => {
-        return (
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            ...
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
-    }
+  
     
     return (
 
@@ -672,7 +690,6 @@ function CategoryproductsPage({ language }) {
                         </div>
                     </div>
                 </div>
-                <ProductsPopup />
                 <Categories />
                 <div className="container my-5">
                     <div className={`section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
