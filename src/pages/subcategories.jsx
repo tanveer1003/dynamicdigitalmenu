@@ -20,6 +20,8 @@ import category2 from './../assets/img/category-2.png';
 import category3 from './../assets/img/category-3.png';
 import category4 from './../assets/img/category-4.png';
 
+import closeIcon from './../assets/img/close-icon.png';
+
 function SubcategoriesPage({ language }) {
 
     const categories = [
@@ -339,7 +341,8 @@ function SubcategoriesPage({ language }) {
                             <div className="modal-header border border-0">
                                 <button
                                     type="button"
-                                    className="btn-close "
+                                    className="btn-close text-white"
+                                    style={{backgroundImage: `url(${closeIcon})`}}
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                 ></button>

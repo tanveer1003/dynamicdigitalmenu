@@ -31,6 +31,7 @@ import drink3 from './../assets/img/drink-3.jpg';
 import drink4 from './../assets/img/drink-4.jpg';
 import drink5 from './../assets/img/drink-5.jpg';
 import drink6 from './../assets/img/drink-6.jpg';
+import closeIcon from './../assets/img/close-icon.png';
 
 import productTranslations2 from '../languagues/productTranslations2';
 import { Modal } from 'bootstrap';
@@ -521,6 +522,7 @@ function CategoryproductsPage({ language }) {
                                 <button
                                     type="button"
                                     className="btn-close text-white"
+                                    style={{backgroundImage: `url(${closeIcon})`}}
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                 ></button>
