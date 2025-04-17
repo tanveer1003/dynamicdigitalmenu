@@ -84,43 +84,29 @@
         font-weight: 400;
         /*font-family: 'Outfit', 'poppins', 'monospace'; */
     }
-    .product-image-model {
-    height: 200px !important;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+   .product-image-model {
+        height: 340px;
+    }
     
 }
-
-@media (max-width: 1000px) {
-
+@media (min-width: 769px) and (max-width: 1000px) {
     .product-image-model {
-    height: 340px !important;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+        height: 340px;
+    }
 }
 
-@media (max-width: 1300px) {
-
+/* Small desktop */
+@media (min-width: 1001px) and (max-width: 1300px) {
     .product-image-model {
-    height: 500px !important;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+        height: 500px;
+    }
 }
 
-@media (max-width: 1900px) {
-
+/* Medium to large desktop */
+@media (min-width: 1301px) and (max-width: 1900px) {
     .product-image-model {
-    height: 600px !important;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
+        height: 600px;
+    }
 }
 
 .product-image {
