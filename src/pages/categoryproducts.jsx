@@ -34,7 +34,7 @@ import drink6 from './../assets/img/drink-6.jpg';
 import closeIcon from './../assets/img/close-icon.png';
 
 import productTranslations2 from '../languagues/productTranslations2';
-import { Modal } from 'bootstrap';
+//import { Modal } from 'bootstrap';
 
 function CategoryproductsPage({ language }) {
 
@@ -368,7 +368,7 @@ function CategoryproductsPage({ language }) {
 
     useEffect(() => {
         if (selectedProduct && modalRef.current) {
-        bsModal.current = new Modal(modalRef.current);
+        bsModal.current = new window.bootstrap.Modal(modalRef.current); //new Modal(modalRef.current);
         bsModal.current.show();
         }
     }, [selectedProduct]);
@@ -390,6 +390,7 @@ function CategoryproductsPage({ language }) {
 
 
     const ProductsSection = () => {
+        const [selectedProduct, setSelectedProduct] = useState(null);
         const isMobile = useIsMobile();
         return (
             <div className="products-section container pb-4">
@@ -399,8 +400,8 @@ function CategoryproductsPage({ language }) {
                     {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
-                                <button type="button" className="read-more-btn"
-                                                onClick={() => handleClick(product)}>
+                                <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                                                data-bs-target="#productModal" onClick={() => setSelectedProduct(product) }>
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
@@ -507,14 +508,12 @@ function CategoryproductsPage({ language }) {
 
                     ))}
                 </div>
-                {/* Bootstrap Modal */}
                 <div
-                     className="modal fade"
-                     id="productModal"
-                     tabIndex="-1"
-                     ref={modalRef}
-                     aria-labelledby="productModalLabel"
-                     aria-hidden="true"
+                    className="modal border border-0 fade "
+                    id="productModal"
+                    tabIndex="-1"
+                    aria-labelledby="productModalLabel"
+                    aria-hidden="true"
                 >
                     <div className="modal-dialog border border-0">
                         <div className="modal-content bg-transparent border border-0">
@@ -533,13 +532,18 @@ function CategoryproductsPage({ language }) {
                                         <div key={selectedProduct.id} className="product-card">
                                             <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
                                                 <div className="overlay">
-                                                    <span className="product-category-tag">{selectedProduct.tags[0]}</span>
+                                                    <span className="product-category-tag">{language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
+                                                    : selectedProduct.tags[0]}</span>
                                                 </div>
                                             </div>
                                             <div className="product-details">
                                                 <div className="product-row">
-                                                    <h5 className="product-title">{selectedProduct.title}</h5>
-                                                    <div className="product-price">{selectedProduct.price}</div>
+                                                    <h5 className="product-title"> {language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
+                                                    : selectedProduct.title} </h5>
+                                                    <div className="product-price">{language === "he"
+                                                    ? "דולר" : "$" } {selectedProduct.price}</div>
                                                 </div>
                                                 <p className="product-description">{selectedProduct.description}</p>
                                                 <div className="product-row">
@@ -549,16 +553,12 @@ function CategoryproductsPage({ language }) {
                                                                 {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
                                                                 {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                 {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                                {tag}
+                                                                {language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                    : selectedProduct.tags[index]}
                                                             </div>
                                                         ))}
                                                     </div>
-                                                    <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                        data-bs-target="#productModal">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
-                                                            <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
-                                                        </svg>
-                                                    </button>
                                                 </div>
                                             </div>
                                         </div>

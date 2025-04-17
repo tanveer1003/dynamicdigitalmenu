@@ -204,7 +204,7 @@ function SubcategoriesPage({ language }) {
                 <div className={`ection-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
                     <div className="header-left d-flex align-items-center">
                         <FaStar className="star-icon" />
-                        <h2 className="ml-2">{translations[language].sectionTitle}</h2>
+                        <h2 className="ml-2" style={{ textAlign: "right"}}>{translations[language].sectionTitle}</h2>
                     </div>
                     <div className="header-right">
                         <button className='bg-light border border-0' onClick={() => setisGrid(false)}>
@@ -221,7 +221,7 @@ function SubcategoriesPage({ language }) {
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
                                 <button type="button" className="read-more-btn" data-bs-toggle="modal"
-                                                data-bs-target="#productModal" onClick={() => setSelectedProduct(product)}>
+                                                data-bs-target="#productModal" onClick={() => setSelectedProduct(product) }>
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
