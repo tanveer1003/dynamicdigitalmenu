@@ -515,7 +515,7 @@ function CategoryproductsPage({ language }) {
                     aria-labelledby="productModalLabel"
                     aria-hidden="true"
                 >
-                    <div className="modal-dialog border border-0">
+                    <div className="modal-dialog border border-0" style={{ maxWidth: 900 }}>
                         <div className="modal-content bg-transparent border border-0">
                             <div className="modal-header border border-0">
                                 <button
