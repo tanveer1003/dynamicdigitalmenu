@@ -91,21 +91,21 @@
 }
 @media (min-width: 769px) and (max-width: 1000px) {
     .product-image-model {
-        height: 340px;
+        height: 340px !important;
     }
 }
 
 /* Small desktop */
 @media (min-width: 1001px) and (max-width: 1300px) {
     .product-image-model {
-        height: 500px;
+        height: 500px !important;
     }
 }
 
 /* Medium to large desktop */
 @media (min-width: 1301px) and (max-width: 1900px) {
     .product-image-model {
-        height: 600px;
+        height: 600px !important;
     }
 }
 
