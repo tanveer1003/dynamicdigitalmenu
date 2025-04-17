@@ -85,7 +85,7 @@
         /*font-family: 'Outfit', 'poppins', 'monospace'; */
     }
     .product-image-model {
-    height: 200px;
+    height: 200px !important;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -96,7 +96,7 @@
 @media (max-width: 1000px) {
 
     .product-image-model {
-    height: 340px;
+    height: 340px !important;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -106,7 +106,7 @@
 @media (max-width: 1300px) {
 
     .product-image-model {
-    height: 500px;
+    height: 500px !important;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -116,7 +116,7 @@
 @media (max-width: 1900px) {
 
     .product-image-model {
-    height: 600px;
+    height: 600px !important;
     background-size: cover;
     background-position: center;
     position: relative;
