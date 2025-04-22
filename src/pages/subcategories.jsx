@@ -230,7 +230,7 @@ function SubcategoriesPage({ language }) {
                                 <button type="button" className="read-more-btn" data-bs-toggle="modal"
                                                 data-bs-target="#productModal" onClick={() => setSelectedProduct(product) }>
                                 <div className="product-card">
-                                    <div className="product-image-model" style={{ backgroundImage: `url(${product.image})` }}>
+                                    <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
                                         <div className="overlay">
                                             <span className="product-category-tag">{language === "he"
                                                     ? productTranslations[language][product.title].tags[0] || product.title
@@ -358,7 +358,7 @@ function SubcategoriesPage({ language }) {
                                 {selectedProduct && (
                                     <>
                                         <div key={selectedProduct.id} className="product-card">
-                                            <div className="product-image" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
+                                            <div className="product-image-model" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
                                                 <div className="overlay">
                                                     <span className="product-category-tag">{language === "he"
                                                     ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
