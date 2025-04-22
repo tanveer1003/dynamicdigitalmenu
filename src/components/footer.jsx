@@ -9,7 +9,7 @@ const Footer = ({ language }) => {
                 <div className="row">
 
                     {/* Column 1: Hours of Operation */}
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         <h5 style={{
                             textAlign: language === "he" ? "right" : "left",
                             direction: language === "he" ? "rtl" : "ltr"
@@ -24,7 +24,8 @@ const Footer = ({ language }) => {
                         </ul>
                     </div>
 
-                    {/* Column 2: Contact Us */}
+                    
+                    {/* Column 2: Contact Us 
                     <div className="col-md-4">
                         <h5 style={{
                             textAlign: language === "he" ? "right" : "left",
@@ -70,9 +71,9 @@ const Footer = ({ language }) => {
                             <li> {translations[language].Address2} </li>
                         </ul>
                     </div>
-
+                    */}
                     {/* Column 3: Connect With Us */}
-                    <div className="col-md-4">
+                    <div className="col-md-6">
                         <h5 style={{
                             textAlign: language === "he" ? "right" : "left",
                             direction: language === "he" ? "rtl" : "ltr"
