@@ -285,8 +285,8 @@ function SubcategoriesPage({ language }) {
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}   
                                                 </h5>
-                                                <div className="product-price"> {language === "he"
-                                                    ? "דולר" : "$" }{product.price}
+                                                <div className="product-price">  {language === "he"
+                                                    ? "₪" : "₪" }{product.price}
                                                 </div>
                                             </div>
                                             <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}> 
@@ -368,8 +368,8 @@ function SubcategoriesPage({ language }) {
                                                     <h5 className="product-title"> {language === "he"
                                                     ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
                                                     : selectedProduct.title} </h5>
-                                                    <div className="product-price">{language === "he"
-                                                    ? "דולר" : "$" } {selectedProduct.price}</div>
+                                                    <div className="product-price"> {language === "he"
+                                                    ? "₪" : "₪" } {selectedProduct.price}</div>
                                                 </div>
                                                 <p className="product-description">{selectedProduct.description}</p>
                                                 <div className="product-row">
