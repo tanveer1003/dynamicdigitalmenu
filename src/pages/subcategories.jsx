@@ -209,7 +209,9 @@ function SubcategoriesPage({ language }) {
                 <div className={`ection-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
                     <div className="header-left d-flex align-items-center">
                         <FaStar className="star-icon" />
+                        {/*
                         <h2 className="ml-2" style={{ textAlign: "right"}}>{translations[language].sectionTitle}</h2>
+                        */}
                     </div>
                     <div className="header-right">
                         <button className='bg-light border border-0' onClick={() => setisGrid(false)}>
