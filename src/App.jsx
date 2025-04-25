@@ -51,7 +51,7 @@ function AppContent() {
         <Route path="/menu-managemnet-setting" element={<MenuManagementSetting />} />
       </Routes>
 
-      {!hideFooterRoutes.includes(location.pathname) && <Footer language={language} />}
+     {/*    {!hideFooterRoutes.includes(location.pathname) && <Footer language={language} />} */}
     </>
   );
 }

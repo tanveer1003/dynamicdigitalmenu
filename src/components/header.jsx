@@ -30,6 +30,7 @@ const Header = ({ language, setLanguage }) => {
             {/* Center - Clock */}
             <div className=" d-flex align-items-center">
 
+                {/* 
                 <span className="me-2" >
                     <svg width="26" height="25" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <g clip-path="url(#clip0_141_2898)">
@@ -45,6 +46,7 @@ const Header = ({ language, setLanguage }) => {
 
                 </span>
                 <span className="d-md-block d-none"> {translations[language].headerTiming} </span>
+                */}
             </div>
 
             {/* Left Side - Logo */}

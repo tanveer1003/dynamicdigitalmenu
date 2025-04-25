@@ -245,9 +245,11 @@ function SubcategoriesPage({ language }) {
                                             <div className="product-price"> {language === "he"
                                                     ? "₪" : "₪" } {product.price}</div>
                                         </div>
-                                        <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}>{language === "he"
+                                        <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}>
+                                            {language === "he"
                                                     ? productTranslations[language][product.title].description.substring(0, 100) || product.title
-                                                    :  product.description.substring(0, 100)}</p>
+                                                    :  product.description.substring(0, 100)}
+                                            </p>
                                         <div className="product-row">
                                             <div className="product-tags">
                                                 {product.tags.map((tag, index) => (
@@ -263,7 +265,7 @@ function SubcategoriesPage({ language }) {
                                                 ))}
                                             </div>
                                             <div className="g-2 d-flex align-items-center">
-                                                <span >Read More</span> 
+                                                <span >{ language === "he"  ? "קרא עוד" :  "Read More" }</span> 
                                                 <span style={{ paddingLeft:"5px"}}> 
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
                                                         <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
@@ -299,7 +301,9 @@ function SubcategoriesPage({ language }) {
                                                         : product.description
                                                     } // Adjust the maxLength as needed
                                                     maxLength={isMobile ? 30 : 100}
-                                                    /></p>
+                                                    lang={language} 
+                                                    />
+                                                </p>
                                         </div>
                                         <div className="product-row">
                                             <div className="product-tags">
@@ -373,7 +377,9 @@ function SubcategoriesPage({ language }) {
                                                     <div className="product-price"> {language === "he"
                                                     ? "₪" : "₪" } {selectedProduct.price}</div>
                                                 </div>
-                                                <p className="product-description">{selectedProduct.description}</p>
+                                                <p className="product-description"> { language === "he"
+                                                        ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
+                                                        : selectedProduct.description} </p>
                                                 <div className="product-row">
                                                     <div className="product-tags">
                                                         {selectedProduct.tags.map((tag, index) => (
