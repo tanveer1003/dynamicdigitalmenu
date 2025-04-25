@@ -70,6 +70,29 @@
     background-position: center;
     position: relative;
 }
+
+.product-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.product-image-model {
+    width: 100%;
+    max-height: 400px;
+    aspect-ratio: 4 / 3;
+    background-size: cover;
+    background-position: center;
+}
+
+
+.product-image-model::before {
+    content: "";
+    display: block;
+    padding-top: 75%; /* 4:3 aspect ratio fallback */
+}
+
 @media (max-width: 768px) {
     .product-grid {
         width: 100%;
@@ -84,43 +107,8 @@
         font-weight: 400;
         /*font-family: 'Outfit', 'poppins', 'monospace'; */
     }
-   .product-image-model {
-        height: 340px;
-    }
+   
     
-}
-@media (min-width: 769px) and (max-width: 1000px) {
-    .product-image-model {
-        height: 340px !important;
-    }
-}
-
-/* Small desktop */
-@media (min-width: 1001px) and (max-width: 1300px) {
-    .product-image-model {
-        height: 500px !important;
-    }
-}
-
-/* Medium to large desktop */
-@media (min-width: 1301px) and (max-width: 1900px) {
-    .product-image-model {
-        height: 600px !important;
-    }
-}
-
-.product-image {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-
-.product-image-model {
-    height: 200px;
-    background-size: cover;
-    background-position: center;
-    position: relative;
 }
 
 .overlay {

@@ -528,8 +528,15 @@ function CategoryproductsPage({ language }) {
                             <div className="modal-header border border-0">
                                 <button
                                     type="button"
-                                    className="btn-close text-white"
-                                    style={{backgroundImage: `url(${closeIcon})`}}
+                                    className="btn-close close-btn"
+                                    style={{
+                                        backgroundImage: `url(${closeIcon})`,
+                                        width: '10px',
+                                        height: '10px',
+                                        aspectRatio: '1',
+                                        backgroundSize: 'cover',
+                                        backgroundPosition: 'center',
+                                    }}
                                     data-bs-dismiss="modal"
                                     aria-label="Close"
                                 ></button>
