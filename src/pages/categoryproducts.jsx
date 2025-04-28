@@ -522,6 +522,7 @@ function CategoryproductsPage({ language }) {
                     tabIndex="-1"
                     aria-labelledby="productModalLabel"
                     aria-hidden="true"
+                    style={{ "alignContent":"center"}}
                 >
                     <div className="modal-dialog border border-0" style={{ maxWidth: 900 }}>
                         <div className="modal-content bg-transparent border border-0">
@@ -545,24 +546,63 @@ function CategoryproductsPage({ language }) {
                                 {selectedProduct && (
                                     <>
                                         <div key={selectedProduct.id} className="product-card">
+                                            <div class="card" style={{ width: '100%', position: 'relative', overflow: 'hidden' }}                                        >
+                                                <img src={selectedProduct.image} class="card-img-top" style={{ maxHeight: '70vh',overflowY: 'auto' }} alt="Card Image" />
+
+                                                <span class="badge bg-primary position-absolute top-0 start-0 m-2">
+                                                    {language === "he"
+                                                        ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
+                                                        : selectedProduct.tags[0]}
+                                                </span>
+
+                                                <div class="card-body">
+                                                    <div className="product-row">
+                                                        <h5 className="product-title"> {language === "he"
+                                                            ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
+                                                            : selectedProduct.title} </h5>
+                                                        <div className="product-price"> {language === "he"
+                                                            ? "₪" : "₪"} {selectedProduct.price}</div>
+                                                    </div>
+                                                    <p className="product-description"> {language === "he"
+                                                        ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
+                                                        : selectedProduct.description}
+                                                    </p>
+                                                    <div className="product-row">
+                                                        <div className="product-tags">
+                                                            {selectedProduct.tags.map((tag, index) => (
+                                                                <div key={index} className={`tag ${formatTag(tag)}`}>
+                                                                    {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
+                                                                    {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
+                                                                    {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
+                                                                    {language === "he"
+                                                                        ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                                        : selectedProduct.tags[index]}
+                                                                </div>
+                                                            ))}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {/* 
                                             <div className="product-image-model" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
                                                 <div className="overlay">
                                                     <span className="product-category-tag">{language === "he"
-                                                    ? productTranslations2[language][selectedProduct.id].tags[0] || selectedProduct.title
-                                                    : selectedProduct.tags[0]}</span>
+                                                        ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
+                                                        : selectedProduct.tags[0]}</span>
                                                 </div>
                                             </div>
                                             <div className="product-details">
                                                 <div className="product-row">
                                                     <h5 className="product-title"> {language === "he"
-                                                    ? productTranslations2[language][selectedProduct.id].title || selectedProduct.title
-                                                    : selectedProduct.title} </h5>
+                                                        ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
+                                                        : selectedProduct.title} </h5>
                                                     <div className="product-price"> {language === "he"
-                                                    ? "₪" : "₪" } {selectedProduct.price}</div>
+                                                        ? "₪" : "₪"} {selectedProduct.price}</div>
                                                 </div>
-                                                <p className="product-description">{ language === "he"
-                                                        ? productTranslations2[language][selectedProduct.id].description || selectedProduct.title
-                                                        : selectedProduct.description}</p>
+                                                <p className="product-description"> {language === "he"
+                                                    ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
+                                                    : selectedProduct.description}
+                                                </p>
                                                 <div className="product-row">
                                                     <div className="product-tags">
                                                         {selectedProduct.tags.map((tag, index) => (
@@ -571,13 +611,14 @@ function CategoryproductsPage({ language }) {
                                                                 {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                 {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                                 {language === "he"
-                                                    ? productTranslations2[language][selectedProduct.id].tags[index] || selectedProduct.title
-                                                    : selectedProduct.tags[index]}
+                                                                    ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                                    : selectedProduct.tags[index]}
                                                             </div>
                                                         ))}
                                                     </div>
                                                 </div>
                                             </div>
+                                            */ }
                                         </div>
                                     </>
                                 )}
