@@ -11,23 +11,46 @@ import image6 from './../assets/icons/Image-6.png';
 import image7 from './../assets/icons/Image-7.png';
 import image8 from './../assets/icons/Image-8.png';
 import image9 from './../assets/icons/Image-9.png';
+import React, { useRef, useEffect, useState } from "react";
 
 import background from './../assets/img/home-background.jpg';
 import menuImage from './../assets/img/logo-menu.png';
 
 import vector from './../assets/icons/Vector-4.png';
 
+import setTitle from '../components/setTitle';
+
 function Menu() {
+
     const menus = [
         { name: "Reservation", image: image2 },
-        { name: "Webaite", image: image3 },
+        { name: "Website", image: image3 },
         { name: "Call", image: image4 },
         { name: "StL6 002", image: image5 },
         { name: "Review", image: image6 },
         { name: "Review", image: image7 },
-        { name: "Socal Media", image: image8 },
+        { name: "Social Media", image: image8 },
         { name: "Riamy Canl", image: image9 },
     ];
+
+    setTitle("Menu - DynamicDigitalMenu"); 
+    
+    /*
+      useEffect(() => {
+        document.title = "Menu - DynamicDigitalMenu";
+    
+        // Set favicon only once
+        const existingLink = document.querySelector("link[rel*='icon']");
+        if (!existingLink) {
+          const link = document.createElement("link");
+          link.rel = "icon";
+          link.href = "/favicon.ico"; // adjust this path if needed
+          document.head.appendChild(link);
+        }
+      }, []);
+    */
+    
+    
 
     const Menus = () => {
         return (

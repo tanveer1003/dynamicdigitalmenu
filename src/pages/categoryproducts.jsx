@@ -35,6 +35,7 @@ import closeIcon from './../assets/img/close-icon.png';
 
 import productTranslations2 from '../languagues/productTranslations2';
 //import { Modal } from 'bootstrap';
+import setTitle from '../components/setTitle';
 
 function CategoryproductsPage({ language }) {
 
@@ -66,6 +67,8 @@ function CategoryproductsPage({ language }) {
         "Desserts": "קינוחים",
         "Drinks": "משקאות",
     };
+
+    setTitle("Products - DynamicDigitalMenu");
 
     const drinksData = [
         {
@@ -103,6 +106,42 @@ function CategoryproductsPage({ language }) {
             category: "Drink",
             image: subcategory2,
             tags: ["Gluten Free", "Spicy"],
+        },
+        {
+            id: 5,
+            categoryId:2,
+            subcategory: "Wine",
+            background: "#373738",
+            category: "Drink",
+            image: subcategory1,
+            tags: ["Vegan", "Gluten Free", "Spicy"],
+        },
+        {
+            id: 6,
+            categoryId:3,
+            subcategory: "Spirits &\n Liquors",
+            background: "#C6552D",
+            category: "Drink",
+            image: subcategory3,
+            tags: ["Vegan"],
+        },
+        {
+            id: 7,
+            categoryId:5,
+            subcategory: "Cocktails",
+            background: "#B1834E",
+            category: "Drink",
+            image: subcategory2,
+            tags: ["Gluten Free", "Spicy"],
+        },
+        {
+            id: 8,
+            categoryId:6,
+            subcategory: "Wine",
+            background: "#373738",
+            category: "Drink",
+            image: subcategory1,
+            tags: ["Vegan", "Gluten Free", "Spicy"],
         },
         
         // Add more products as needed
@@ -145,7 +184,42 @@ function CategoryproductsPage({ language }) {
           image: subcategory2,
           tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
         },
-      
+        {
+            id: 5,
+            categoryId: 2,
+            subcategory: "יין", // Wine
+            background: "#373738",
+            category: "שתייה", // Drink
+            image: subcategory1,
+            tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
+          },
+          {
+            id: 6,
+            categoryId: 3,
+            subcategory: "רוחות ואלכוהול", // Spirits & Liquors
+            background: "#C6552D",
+            category: "שתייה", // Drink
+            image: subcategory3,
+            tags: ["טִבעוֹנִי"], // Vegan
+          },
+          {
+            id: 7,
+            categoryId: 5,
+            subcategory: "קוקטיילים", // Cocktails
+            background: "#B1834E",
+            category: "שתייה", // Drink
+            image: subcategory2,
+            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+          },
+          {
+            id: 8,
+            categoryId: 4,
+            subcategory: "קוקטיילים", // Cocktails
+            background: "#B1834E",
+            category: "שתייה", // Drink
+            image: subcategory2,
+            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+          },
         // Add more products as needed
       ];
 
@@ -277,7 +351,7 @@ function CategoryproductsPage({ language }) {
             tags: ["Spicy"],
         },
         {
-            id: 3,
+            id: 7,
             title: "Red Wines",
             drink_category_id:2,
             price: 8.00,
@@ -286,7 +360,7 @@ function CategoryproductsPage({ language }) {
             tags: ["Spicy"],
         },
         {
-            id: 6,
+            id: 8,
             title: "Red Wines",
             drink_category_id:3,
             price: 18.00,
@@ -295,9 +369,45 @@ function CategoryproductsPage({ language }) {
             tags: ["Spicy"],
         },
         {
-            id: 5,
+            id: 9,
             title: "sparkling wines",
             drink_category_id:4,
+            price: 18.00,
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink5,
+            tags: ["Vegan", "Spicy"],
+        },
+        {
+            id: 10,
+            title: "sparkling wines",
+            drink_category_id:5,
+            price: 18.00,
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink5,
+            tags: ["Vegan", "Spicy"],
+        },
+        {
+            id: 11,
+            title: "sparkling wines",
+            drink_category_id:6,
+            price: 18.00,
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink5,
+            tags: ["Vegan", "Spicy"],
+        },
+        {
+            id: 12,
+            title: "sparkling wines",
+            drink_category_id:7,
+            price: 18.00,
+            description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
+            image: drink5,
+            tags: ["Vegan", "Spicy"],
+        },
+        {
+            id: 13,
+            title: "sparkling wines",
+            drink_category_id:8,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -546,7 +656,7 @@ function CategoryproductsPage({ language }) {
                                 {selectedProduct && (
                                     <>
                                         <div key={selectedProduct.id} className="product-card">
-                                            <div class="card" style={{ width: '100%', position: 'relative', overflow: 'hidden' }}                                        >
+                                            <div class="card" style={{ width: '100%', position: 'relative', overflow: 'hidden' }} >
                                                 <img src={selectedProduct.image} class="card-img-top" style={{ maxHeight: '70vh',overflowY: 'auto' }} alt="Card Image" />
 
                                                 <span class="badge bg-primary position-absolute top-0 start-0 m-2">
@@ -643,13 +753,7 @@ function CategoryproductsPage({ language }) {
     };
 
     
-      
-
-  
-    
     return (
-
-
         <div >
 
             <div className='pt-2' style={{ background: "rgb(243 246 250)" }} >

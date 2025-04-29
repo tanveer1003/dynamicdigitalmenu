@@ -42,11 +42,67 @@ const productDataTranslations2 = {
         price: 18.00,
         category: "Wines",
       
-    },6:      {
+    },6:{
         
         title: "Red Wines",
         description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
         tags: ["Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },7:{
+        
+        title: "Red Wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },8:{
+        
+        title: "Red Wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },9:      {
+        
+        title: "Sparkling wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },10:      {
+        
+        title: "Sparkling wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },11:      {
+        
+        title: "Sparkling wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },12:      {
+        
+        title: "Sparkling wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Spicy"],
+        price: 18.00,
+        category: "Wines",
+      
+    },13:      {
+        
+        title: "Sparkling wines",
+        description: "Fresh mixed greens with feta cheese, olives, and house dressing.",
+        tags: ["Vegan", "Spicy"],
         price: 18.00,
         category: "Wines",
       
@@ -101,7 +157,61 @@ const productDataTranslations2 = {
         tags: ["חָרִיף"],
         price: 18.00,
         category: "יינות",
-      },
+      },7:      {
+        
+        title: "יינות אדומים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["חָרִיף"],
+        price: 18.00,
+        category: "יינות",
+      },8:      {
+        
+        title: "יינות אדומים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["חָרִיף"],
+        price: 18.00,
+        category: "יינות",
+      },9:      {
+        
+        title: "יינות מבעבעים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "חָרִיף"],
+        price: 12.00,
+        category: "יינות",
+      
+    },10:      {
+        
+        title: "יינות מבעבעים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "חָרִיף"],
+        price: 12.00,
+        category: "יינות",
+      
+    },11:      {
+        
+        title: "יינות מבעבעים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "חָרִיף"],
+        price: 12.00,
+        category: "יינות",
+      
+    },12:      {
+        
+        title: "יינות מבעבעים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "חָרִיף"],
+        price: 12.00,
+        category: "יינות",
+      
+    },13:      {
+        
+        title: "יינות מבעבעים",
+        description: "ירקות ירוקים טריים מעורבים עם גבינת פטה, זיתים ורוטב הבית.",
+        tags: ["טִבעוֹנִי", "חָרִיף"],
+        price: 12.00,
+        category: "יינות",
+      
+    },
   }
 };
   

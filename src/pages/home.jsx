@@ -19,6 +19,8 @@ import category10 from './../assets/img/category-10.jpg';
 import category11 from './../assets/img/category-11.jpg';
 import category12 from './../assets/img/category-12.jpg';
 
+import setTitle from '../components/setTitle';
+
 function Home({ language }) {
 
     const [searchQuery, setSearchQuery] = useState("");
@@ -65,6 +67,8 @@ function Home({ language }) {
         { name: "Desserts", image: category11 },
         { name: "Drinks", image: category12 },
     ];
+
+    setTitle("Categories - DynamicDigitalMenu"); 
 
     
 

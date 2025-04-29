@@ -26,6 +26,8 @@ import prodcut3 from './../assets/img/9e3f0ea0f628a90245aba14dfeaea960.png';
 import prodcut4 from './../assets/img/f284588c2064d3bfa8bf45ef9a63015c.jpeg';
 
 import closeIcon from './../assets/img/close-icon.png';
+import setTitle from '../components/setTitle';
+
 
 function SubcategoriesPage({ language }) {
 
@@ -45,6 +47,8 @@ function SubcategoriesPage({ language }) {
         "Drinks": "משקאות",
     };
 
+    
+    setTitle("Products - DynamicDigitalMenu");
 
 
     const Categories = () => {
