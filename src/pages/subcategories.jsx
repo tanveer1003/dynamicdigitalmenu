@@ -210,7 +210,7 @@ function SubcategoriesPage({ language }) {
         const isMobile = useIsMobile();
         return (
             <div className="products-section container pb-4">
-                <div className={`ection-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
+                <div className={`section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
                     <div className="header-left d-flex align-items-center">
                         <FaStar className="star-icon" />
                         {/*
@@ -269,9 +269,9 @@ function SubcategoriesPage({ language }) {
                                                     ))}
                                                 </div>
                                                 <div className="g-2 d-flex align-items-center">
-                                                    <span >{language === "he" ? "קרא עוד" : "Read More"}</span>
-                                                    <span style={{ paddingLeft: "5px" }}>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
+                                                    
+                                                    <span style={{ paddingLeft: "5px" }}><span >{language === "he" ? "קרא עוד " : "Read More "}</span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
                                                             <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
                                                         </svg>
                                                     </span>
@@ -363,6 +363,7 @@ function SubcategoriesPage({ language }) {
                                         backgroundImage: `url(${closeIcon})`,
                                         width: '10px',
                                         height: '10px',
+                                        marginRight:'10px',
                                         aspectRatio: '1',
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',

@@ -224,7 +224,7 @@ function CategoryproductsPage({ language }) {
       ];
 
 
-    const [selectedSubCategory,setSelectedSubCategory] = useState(drinksData);
+    const [selectedSubCategory,setSelectedSubCategory] =  useState(drinksData.filter(category =>category.categoryId == 1)); //useState(drinksData);
     const [isGrid, setisGrid] = useState(true);
 
     const Categories = () => {
@@ -421,7 +421,7 @@ function CategoryproductsPage({ language }) {
     };
 
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [selectedDrink,setSelectedDrink] = useState(1);
+    const [selectedDrink,setSelectedDrink] = useState(0);
     
 
     //const [selectedProduct, setSelectedProduct] =
@@ -509,8 +509,8 @@ function CategoryproductsPage({ language }) {
                 <div className={`row ${language === "he" ? "flex-row-reverse" : ""}`}>
                     {selectedProducts.map((product) => (
                         isGrid ?
-                            <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
-                                <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                            <div key={product.id} className="p-2 col-lg-6 col-xl-4 col-md-6 ">
+                                <button type="button" className="read-more-btn w-100" data-bs-toggle="modal"
                                                 data-bs-target="#productModal" onClick={() => setSelectedProduct(product) }>
                                 <div className="product-card">
                                     <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
@@ -553,9 +553,9 @@ function CategoryproductsPage({ language }) {
                                             </div>
                                             
                                             <div className="g-2 d-flex align-items-center">
-                                                <span>  { language === "he"  ? "קרא עוד" :  "Read More" }</span> 
                                                 <span style={{ paddingLeft:"5px"}}> 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 512 512">
+                                                <span>  { language === "he"  ? "קרא עוד " :  "Read More " }</span> 
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
                                                         <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
                                                     </svg>
                                                 </span>
@@ -636,7 +636,7 @@ function CategoryproductsPage({ language }) {
                 >
                     <div className="modal-dialog border border-0" style={{ maxWidth: 900 }}>
                         <div className="modal-content bg-transparent border border-0">
-                            <div className="modal-header border border-0">
+                            <div className="modal-header border border-0 ">
                                 <button
                                     type="button"
                                     className="btn-close close-btn"
@@ -644,6 +644,7 @@ function CategoryproductsPage({ language }) {
                                         backgroundImage: `url(${closeIcon})`,
                                         width: '10px',
                                         height: '10px',
+                                        marginRight:'10px',
                                         aspectRatio: '1',
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',
