@@ -218,6 +218,7 @@ function Menu() {
                     </div>
                 </div>
             </div>
+            {/* 
             <div className="bg-dark text-center text-white p-4">
                 <div className="container">
                     <div className="row">
@@ -233,6 +234,7 @@ function Menu() {
                     </div>
                 </div>
             </div>
+            */}
         </div>
     );
 }
