@@ -145,6 +145,10 @@
     color: #555;
     /*margin-top: 10px;*/
 }
+.product-description-hebrow{
+    direction: rtl;
+    text-align: right;
+}
 .product-row {
     display: flex;
     align-items: center;
