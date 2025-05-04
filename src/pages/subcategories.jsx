@@ -248,8 +248,8 @@ function SubcategoriesPage({ language }) {
                                                     : product.title}</h5>
                                                 <div className="product-price"> {language === "he"
                                                     ? "₪" : "₪"} {product.price}</div>
-                                            </div>
-                                            <p className={language === "he" ? "product-description product-description-hebrew" : "product-description"} style={{ textAlign: language === "he" ? "right" : "left" }}>
+                                            </div> 
+                                            <p className={ "product-description"} style={  language === "he" ? {  marginBottom: 0, direction: 'rtl', textAlign: 'right' } : { textAlign:"left" }} >
                                                 {language === "he"
                                                     ? productTranslations[language][product.title].description.substring(0, 100) || product.title
                                                     : product.description.substring(0, 100)}
@@ -297,7 +297,7 @@ function SubcategoriesPage({ language }) {
                                                     ? "₪" : "₪"}{product.price}
                                                 </div>
                                             </div>
-                                            <p className={language === "he" ? "product-description product-description-hebrew" : "product-description"} style={{ textAlign: language === "he" ? "right" : "left" }}>
+                                            <p className={ "product-description"} style={{ textAlign: language === "he" ? "right" : "left" }}>
                                                 <ReadMoreText
                                                     text={
                                                         language === "he"
@@ -393,7 +393,7 @@ function SubcategoriesPage({ language }) {
                                                         <div className="product-price"> {language === "he"
                                                             ? "₪" : "₪"} {selectedProduct.price}</div>
                                                     </div>
-                                                    <p className={language === "he" ? "product-description product-description-hebrew" : "product-description"} style={{ marginBottom: 0, direction: 'rtl', textAlign: 'right' }}> {language === "he"
+                                                    <p className={"product-description"} style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {}}> {language === "he"
                                                         ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
                                                         : selectedProduct.description}
                                                     </p>

@@ -662,20 +662,20 @@ function CategoryproductsPage({ language }) {
 
                                                 <span class="badge bg-primary position-absolute top-0 start-0 m-2">
                                                     {language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
+                                                        ? productTranslations2[language][selectedProduct.title].tags[0] || selectedProduct.title
                                                         : selectedProduct.tags[0]}
                                                 </span>
 
                                                 <div class="card-body">
                                                     <div className="product-row">
                                                         <h5 className="product-title"> {language === "he"
-                                                            ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
+                                                            ? productTranslations2[language][selectedProduct.title].title || selectedProduct.title
                                                             : selectedProduct.title} </h5>
                                                         <div className="product-price"> {language === "he"
                                                             ? "₪" : "₪"} {selectedProduct.price}</div>
                                                     </div>
                                                     <p className="product-description"> {language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
+                                                        ? productTranslations2[language][selectedProduct.title].description || selectedProduct.title
                                                         : selectedProduct.description}
                                                     </p>
                                                     <div className="product-row">
@@ -686,7 +686,7 @@ function CategoryproductsPage({ language }) {
                                                                     {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                     {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                                     {language === "he"
-                                                                        ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                                        ? productTranslations2[language][selectedProduct.title].tags[index] || selectedProduct.title
                                                                         : selectedProduct.tags[index]}
                                                                 </div>
                                                             ))}

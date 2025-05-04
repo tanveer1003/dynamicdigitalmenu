@@ -16,7 +16,7 @@ const ReadMoreText = ({ text, maxLength = 300,lang }) => {
 
   return (
     <div>
-      <p  style={{ marginBottom: 0;direction: 'rtl', textAlign: 'right'  }}>{displayedText}</p>
+      <p  style={lang === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {}}>{displayedText}</p>
       <button onClick={toggleExpanded} className="btn btn-link p-0"  style={{ marginTop: 2 } }>
 
         { lang === "he"  ? expanded ? "קרא פחות" : "קרא עוד"  : expanded ? "Read Less" : "Read More" }
