@@ -393,7 +393,7 @@ function SubcategoriesPage({ language }) {
                                                         <div className="product-price"> {language === "he"
                                                             ? "₪" : "₪"} {selectedProduct.price}</div>
                                                     </div>
-                                                    <p className={language === "he" ? "product-description product-description-hebrew" : "product-description"}> {language === "he"
+                                                    <p className={language === "he" ? "product-description product-description-hebrew" : "product-description"} style={{ marginBottom: 0, direction: 'rtl', textAlign: 'right' }}> {language === "he"
                                                         ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
                                                         : selectedProduct.description}
                                                     </p>
