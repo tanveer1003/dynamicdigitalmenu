@@ -249,7 +249,7 @@ function SubcategoriesPage({ language }) {
                                                 <div className="product-price"> {language === "he"
                                                     ? "₪" : "₪"} {product.price}</div>
                                             </div>
-                                            <p className="product-description" style={{ textAlign: language === "he" ? "right" : "left" }}>
+                                            <p className={{ language === "he" ? "product-description product-description-hebrow" : "product-description"}} style={{ textAlign: language === "he" ? "right" : "left" }}>
                                                 {language === "he"
                                                     ? productTranslations[language][product.title].description.substring(0, 100) || product.title
                                                     : product.description.substring(0, 100)}
