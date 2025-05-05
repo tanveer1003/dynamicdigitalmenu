@@ -109,7 +109,7 @@ const productDataTranslations2 = {
     },
 },
     he: {
-1:
+    1:
       {
         
         title: "יין מיץ ענבים מותסס",

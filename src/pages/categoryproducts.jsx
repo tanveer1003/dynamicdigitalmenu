@@ -527,7 +527,7 @@ function CategoryproductsPage({ language }) {
                                                     : product.title} </h5>
                                             <div className="product-price">₪ {product.price}</div>
                                         </div>
-                                        <p className="product-description " style={{textAlign: language === "he" ? "right" : "left"}}> 
+                                        <p className="product-description " style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {textAlign: 'left'}}> 
                                         {language === "he"
                                                     ? <ReadMoreText
                                                     text={ productTranslations2[language][product.id].description.substring(0, isMobile ? 30 : 100)} 
@@ -578,7 +578,7 @@ function CategoryproductsPage({ language }) {
                                                     : product.title}</h5>
                                                 <div className="product-price">₪ {product.price}</div>
                                             </div>
-                                            <p className="product-description" style={{textAlign: language === "he" ? "right" : "left"}}>
+                                            <p className="product-description" style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {textAlign: 'left'}}>
                                                 {language === "he"
                                                     ? <ReadMoreText
                                                     text={ productTranslations2[language][product.id].description.substring(0, isMobile ? 30 : 100)} 
@@ -662,20 +662,20 @@ function CategoryproductsPage({ language }) {
 
                                                 <span class="badge bg-primary position-absolute top-0 start-0 m-2">
                                                     {language === "he"
-                                                        ? productTranslations2[language][selectedProduct.title].tags[0] || selectedProduct.title
+                                                        ? productTranslations2[language][selectedProduct.id].tags[0]
                                                         : selectedProduct.tags[0]}
                                                 </span>
 
                                                 <div class="card-body">
                                                     <div className="product-row">
-                                                        <h5 className="product-title"> {language === "he"
-                                                            ? productTranslations2[language][selectedProduct.title].title || selectedProduct.title
+                                                        <h5 className="product-title"  > {language === "he"
+                                                            ? productTranslations2[language][selectedProduct.id].title
                                                             : selectedProduct.title} </h5>
                                                         <div className="product-price"> {language === "he"
                                                             ? "₪" : "₪"} {selectedProduct.price}</div>
                                                     </div>
-                                                    <p className="product-description"> {language === "he"
-                                                        ? productTranslations2[language][selectedProduct.title].description || selectedProduct.title
+                                                    <p className="product-description" style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {}}> {language === "he"
+                                                        ? productTranslations2[language][selectedProduct.id].description
                                                         : selectedProduct.description}
                                                     </p>
                                                     <div className="product-row">
@@ -686,7 +686,7 @@ function CategoryproductsPage({ language }) {
                                                                     {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                     {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                                     {language === "he"
-                                                                        ? productTranslations2[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                                        ? productTranslations2[language][selectedProduct.id].tags[index]
                                                                         : selectedProduct.tags[index]}
                                                                 </div>
                                                             ))}
