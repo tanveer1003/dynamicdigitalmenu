@@ -61,15 +61,6 @@ function CategoryproductsPage({ language }) {
 
     ];
 
-    const categoryTranslations = {
-        "Appetizers": "מנות פתיחה",
-        "Main Course": "מנה עיקרית",
-        "Desserts": "קינוחים",
-        "Drinks": "משקאות",
-    };
-
-    setTitle("Products - DynamicDigitalMenu");
-
     const drinksData = [
         {
             id: 1,
@@ -147,155 +138,7 @@ function CategoryproductsPage({ language }) {
         // Add more products as needed
     ];
 
-    const drinksDataHebrew = [
-        {
-          id: 1,
-          categoryId: 1,
-          subcategory: "יין", // Wine
-          background: "#373738",
-          category: "שתייה", // Drink
-          image: subcategory1,
-          tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
-        },
-        {
-          id: 2,
-          categoryId: 1,
-          subcategory: "בירה", // Beer
-          background: "#827C64",
-          category: "שתייה", // Drink
-          image: subcategory2,
-          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
-        },
-        {
-          id: 3,
-          categoryId: 1,
-          subcategory: "רוחות ואלכוהול", // Spirits & Liquors
-          background: "#C6552D",
-          category: "שתייה", // Drink
-          image: subcategory3,
-          tags: ["טִבעוֹנִי"], // Vegan
-        },
-        {
-          id: 4,
-          categoryId: 4,
-          subcategory: "קוקטיילים", // Cocktails
-          background: "#B1834E",
-          category: "שתייה", // Drink
-          image: subcategory2,
-          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
-        },
-        {
-            id: 5,
-            categoryId: 2,
-            subcategory: "יין", // Wine
-            background: "#373738",
-            category: "שתייה", // Drink
-            image: subcategory1,
-            tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
-          },
-          {
-            id: 6,
-            categoryId: 3,
-            subcategory: "רוחות ואלכוהול", // Spirits & Liquors
-            background: "#C6552D",
-            category: "שתייה", // Drink
-            image: subcategory3,
-            tags: ["טִבעוֹנִי"], // Vegan
-          },
-          {
-            id: 7,
-            categoryId: 5,
-            subcategory: "קוקטיילים", // Cocktails
-            background: "#B1834E",
-            category: "שתייה", // Drink
-            image: subcategory2,
-            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
-          },
-          {
-            id: 8,
-            categoryId: 4,
-            subcategory: "קוקטיילים", // Cocktails
-            background: "#B1834E",
-            category: "שתייה", // Drink
-            image: subcategory2,
-            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
-          },
-        // Add more products as needed
-      ];
-
-
-    const [selectedSubCategory,setSelectedSubCategory] =  useState(drinksData.filter(category =>category.categoryId == 1)); //useState(drinksData);
-    const [isGrid, setisGrid] = useState(true);
-
-    const Categories = () => {
-        const scrollRef = useRef(null);
-        const [scrollWidth, setScrollWidth] = useState(1);
-        const [scrollLeft, setScrollLeft] = useState(0);
-
-        useEffect(() => {
-            const updateScrollWidth = () => {
-                if (scrollRef.current) {
-                    const totalScrollableWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-                    setScrollWidth(totalScrollableWidth > 0 ? totalScrollableWidth : 1); // Ensure it�s never 0
-                }
-            };
-            updateScrollWidth();
-            window.addEventListener("resize", updateScrollWidth);
-            return () => window.removeEventListener("resize", updateScrollWidth);
-        }, []);
-
-        const handleScroll = () => {
-            setScrollLeft(scrollRef.current.scrollLeft);
-        };
-
-        return (
-
-            <div className="container pt-1">
-                <div className={` section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center `}>
-                    <div className="header-left d-flex align-items-center">
-                        <h2 className="ml-2" >{translations[language].categoryTitle}</h2>
-                    </div>
-                    <div className="header-right">
-                        <button className='bg-light border border-0' onClick={() => setisGrid(false)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="#007bff" d="M224 128a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8M40 72h176a8 8 0 0 0 0-16H40a8 8 0 0 0 0 16m176 112H40a8 8 0 0 0 0 16h176a8 8 0 0 0 0-16"/></svg>
-                        </button>
-                        <button className='bg-light border border-0' onClick={() => setisGrid(true)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="#007bff" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="007bff" d="M9 13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zm10 0a2 2 0 0 1 1.995 1.85L21 15v4a2 2 0 0 1-1.85 1.995L19 21h-4a2 2 0 0 1-1.995-1.85L13 19v-4a2 2 0 0 1 1.85-1.995L15 13zM9 15H5v4h4zm10 0h-4v4h4zm0-12a2 2 0 0 1 1.995 1.85L21 5v4a2 2 0 0 1-1.85 1.995L19 11h-4a2 2 0 0 1-1.995-1.85L13 9V5a2 2 0 0 1 1.85-1.995L15 3zM9 3a2 2 0 0 1 1.995 1.85L11 5v4a2 2 0 0 1-1.85 1.995L9 11H5a2 2 0 0 1-1.995-1.85L3 9V5a2 2 0 0 1 1.85-1.995L5 3zm10 2h-4v4h4zM9 5H5v4h4z"/></g></svg>
-                        </button>
-                    </div>
-                </div>
-
-                {/* Scrollable Row */}
-                <div className="categories-container">
-                    {categories.map((category, index) => (
-                        <button key={index} onClick={ () => { 
-                            setSelectedSubCategory( drinksData.filter( drink => drink.categoryId == category.id)); 
-                            setSelectedProducts([]);
-                            } } className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
-                            <div className="overlay"></div>
-                            <h5 className="category-text">{language === "he"
-                                    ? categoryTranslations[category.name] || category.name
-                                    : category.name}</h5>
-                        </button>
-                    ))}
-                </div>
-
-                {/* Scrollbar Indicator */}
-                {/*
-                <div className="scroll-indicator">
-                    <div
-                        className="scroll-indicator-fill"
-                        style={{
-                            width: scrollWidth > 1 ? `${(scrollLeft / scrollWidth) * 100}%` : "0%",
-                        }}
-                    ></div>
-                </div>
-                */}
-            </div>
-        );
-    };
-
-    const productData = [
+     const productData = [
         {
             id: 1,
             title: "Fermented grape juice Wines",
@@ -416,6 +259,177 @@ function CategoryproductsPage({ language }) {
         // Add more products as needed
     ];
 
+    const categoryTranslations = {
+        "Appetizers": "מנות פתיחה",
+        "Main Course": "מנה עיקרית",
+        "Desserts": "קינוחים",
+        "Drinks": "משקאות",
+    };
+
+    setTitle("Products - DynamicDigitalMenu");
+
+   
+
+    const drinksDataHebrew = [
+        {
+          id: 1,
+          categoryId: 1,
+          subcategory: "יין", // Wine
+          background: "#373738",
+          category: "שתייה", // Drink
+          image: subcategory1,
+          tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
+        },
+        {
+          id: 2,
+          categoryId: 1,
+          subcategory: "בירה", // Beer
+          background: "#827C64",
+          category: "שתייה", // Drink
+          image: subcategory2,
+          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+        },
+        {
+          id: 3,
+          categoryId: 1,
+          subcategory: "רוחות ואלכוהול", // Spirits & Liquors
+          background: "#C6552D",
+          category: "שתייה", // Drink
+          image: subcategory3,
+          tags: ["טִבעוֹנִי"], // Vegan
+        },
+        {
+          id: 4,
+          categoryId: 4,
+          subcategory: "קוקטיילים", // Cocktails
+          background: "#B1834E",
+          category: "שתייה", // Drink
+          image: subcategory2,
+          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+        },
+        {
+            id: 5,
+            categoryId: 2,
+            subcategory: "יין", // Wine
+            background: "#373738",
+            category: "שתייה", // Drink
+            image: subcategory1,
+            tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
+          },
+          {
+            id: 6,
+            categoryId: 3,
+            subcategory: "רוחות ואלכוהול", // Spirits & Liquors
+            background: "#C6552D",
+            category: "שתייה", // Drink
+            image: subcategory3,
+            tags: ["טִבעוֹנִי"], // Vegan
+          },
+          {
+            id: 7,
+            categoryId: 5,
+            subcategory: "קוקטיילים", // Cocktails
+            background: "#B1834E",
+            category: "שתייה", // Drink
+            image: subcategory2,
+            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+          },
+          {
+            id: 8,
+            categoryId: 4,
+            subcategory: "קוקטיילים", // Cocktails
+            background: "#B1834E",
+            category: "שתייה", // Drink
+            image: subcategory2,
+            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+          },
+        // Add more products as needed
+      ];
+
+
+    const [selectedSubCategory,setSelectedSubCategory] = useState(drinksData);//  useState(drinksData.filter(category =>category.categoryId == 1)); //useState(drinksData);
+    const [isGrid, setisGrid] = useState(true);
+
+    const Categories = () => {
+        const scrollRef = useRef(null);
+        const [scrollWidth, setScrollWidth] = useState(1);
+        const [scrollLeft, setScrollLeft] = useState(0);
+
+        useEffect(() => {
+            const updateScrollWidth = () => {
+                if (scrollRef.current) {
+                    const totalScrollableWidth = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+                    setScrollWidth(totalScrollableWidth > 0 ? totalScrollableWidth : 1); // Ensure it�s never 0
+                }
+            };
+            updateScrollWidth();
+            window.addEventListener("resize", updateScrollWidth);
+            return () => window.removeEventListener("resize", updateScrollWidth);
+        }, []);
+
+        const handleScroll = () => {
+            setScrollLeft(scrollRef.current.scrollLeft);
+        };
+
+        return (
+
+            <div className="container pt-1">
+                <div className={` section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center `}>
+                    <div className="header-left d-flex align-items-center">
+                        <h2 className="ml-2" >{translations[language].categoryTitle}</h2>
+                    </div>
+                    <div className="header-right">
+                        <button className='bg-light border border-0' onClick={() => setisGrid(false)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="#007bff" d="M224 128a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8M40 72h176a8 8 0 0 0 0-16H40a8 8 0 0 0 0 16m176 112H40a8 8 0 0 0 0 16h176a8 8 0 0 0 0-16"/></svg>
+                        </button>
+                        <button className='bg-light border border-0' onClick={() => setisGrid(true)}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="#007bff" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="007bff" d="M9 13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zm10 0a2 2 0 0 1 1.995 1.85L21 15v4a2 2 0 0 1-1.85 1.995L19 21h-4a2 2 0 0 1-1.995-1.85L13 19v-4a2 2 0 0 1 1.85-1.995L15 13zM9 15H5v4h4zm10 0h-4v4h4zm0-12a2 2 0 0 1 1.995 1.85L21 5v4a2 2 0 0 1-1.85 1.995L19 11h-4a2 2 0 0 1-1.995-1.85L13 9V5a2 2 0 0 1 1.85-1.995L15 3zM9 3a2 2 0 0 1 1.995 1.85L11 5v4a2 2 0 0 1-1.85 1.995L9 11H5a2 2 0 0 1-1.995-1.85L3 9V5a2 2 0 0 1 1.85-1.995L5 3zm10 2h-4v4h4zM9 5H5v4h4z"/></g></svg>
+                        </button>
+                    </div>
+                </div>
+
+                {/* Scrollable Row */}
+                <div className="categories-container">
+                    {categories.map((category, index) => (
+                        <button key={index} onClick={ () => { 
+                            const filteredDrinks = drinksData.filter(drink => drink.categoryId === category.id);
+                            const drinkCategoryIds = filteredDrinks.map(drink => drink.id);
+                            const filteredProducts = productData.filter(product =>
+                                drinkCategoryIds.includes(product.drink_category_id)
+                            );
+            
+                            setSelectedSubCategory(filteredDrinks);
+                            setSelectedProducts(filteredProducts);
+                            /*
+                            setSelectedSubCategory( drinksData.filter( drink => drink.categoryId == category.id)); 
+                            setSelectedProducts(productData.filter( product => product.drink_category_id ==  drink.categoryId ));
+                            */
+                            } } className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
+                            <div className="overlay"></div>
+                            <h5 className="category-text">{language === "he"
+                                    ? categoryTranslations[category.name] || category.name
+                                    : category.name}</h5>
+                        </button>
+                    ))}
+                </div>
+
+                {/* Scrollbar Indicator */}
+                {/*
+                <div className="scroll-indicator">
+                    <div
+                        className="scroll-indicator-fill"
+                        style={{
+                            width: scrollWidth > 1 ? `${(scrollLeft / scrollWidth) * 100}%` : "0%",
+                        }}
+                    ></div>
+                </div>
+                */}
+            </div>
+        );
+    };
+
+   
+
     const formatTag = (tag) => {
         return tag.toLowerCase().replace(/\s+/g, "-");
     };
@@ -426,7 +440,8 @@ function CategoryproductsPage({ language }) {
 
     //const [selectedProduct, setSelectedProduct] =
     const [selectedProducts, setSelectedProducts] = useState(
-        productData.filter(product => product.drink_category_id == selectedDrink)
+        //productData
+        productData.filter(product => product.drink_category_id == 1)
     );
 
     const [priceRange, setPriceRange] = useState([0, 1000]);
