@@ -15,7 +15,7 @@ import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import translations from './components/languagues';
 
 function AppContent() {
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('he');
   const location = useLocation(); // Now this works correctly
 
   const hideHeaderRoutes = [
