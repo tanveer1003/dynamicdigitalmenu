@@ -389,7 +389,7 @@ function CategoryproductsPage({ language }) {
                 </div>
 
                 {/* Scrollable Row */}
-                <div className="categories-container">
+                <div className="categories-container" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {categories.map((category, index) => (
                         <button key={index} onClick={ () => { 
                             const filteredDrinks = drinksData.filter(drink => drink.categoryId === category.id);
@@ -521,7 +521,7 @@ function CategoryproductsPage({ language }) {
             <div className="products-section container pb-4">
 
 
-                <div className={`row ${language === "he" ? "flex-row-reverse" : ""}`}>
+                <div className={`row ${language === "he" ? "flex-row-reverse" : ""}`} style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className="p-2 col-lg-6 col-xl-4 col-md-6 ">
@@ -880,7 +880,7 @@ function CategoryproductsPage({ language }) {
                     </div>
 
                     {/* Scrollable Row */}
-                    <div className={`categories-container ${language === "he" ? "flex-row-reverse" : ""}`}>
+                    <div className={`categories-container ${language === "he" ? "flex-row-reverse" : ""}`} style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                         {selectedSubCategory.map((drinks, index) => (
                             <CategoryTag
                                 subcategory={drinks.subcategory}
