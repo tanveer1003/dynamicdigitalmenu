@@ -227,7 +227,7 @@ function SubcategoriesPage({ language }) {
                     </div>
                 </div>
 
-                <div className="row">
+                <div className="row" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
