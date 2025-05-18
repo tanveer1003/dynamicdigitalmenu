@@ -81,7 +81,7 @@ function SubcategoriesPage({ language }) {
                 }}>{translations[language].categoryTitle}</h2>
 
                 {/* Scrollable Row */}
-                <div className="categories-container">
+                <div className="categories-container" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {categories.map((category, index) => (
                         <div key={index} className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
                             <Link className='text-white link-offset-2 link-underline link-underline-opacity-0' to="/categoryproducts">
