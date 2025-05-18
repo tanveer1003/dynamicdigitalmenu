@@ -155,7 +155,7 @@ function Home({ language }) {
 
                     </div>
                 */}
-                <div className="row">
+                <div className="row" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {filteredCategories.map((category, index) => (
 
                         <div key={index} className="col-md-3 col-6 mb-4 text-center">
