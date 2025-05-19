@@ -20,7 +20,7 @@ import vector from './../assets/icons/Vector-4.png';
 
 import setTitle from '../components/setTitle';
 
-function Menu() {
+function Menu({ language, setLanguage }) {
 
     const menus = [
         { name: "Reservation", image: image2 },
@@ -202,12 +202,12 @@ function Menu() {
                                         aria-expanded="false"
                                         style={{background:"transparent"}}
                                     >
-                                        <FaGlobe className="me-1" /> EN
+                                        <FaGlobe className="me-1" /> {language === 'en' ? 'EN' : 'עברית'}
                                     </button>
                                     <ul className="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
-                                        <li><a className="dropdown-item" href="#">English</a></li>
-                                        <li><a className="dropdown-item" href="#">Hebrew</a></li>
-                                        <li><a className="dropdown-item" href="#">Arabic</a></li>
+                                        <li><button className="dropdown-item"  onClick={() => setLanguage('en')}>English</button></li>
+                                        <li><button className="dropdown-item" onClick={() => setLanguage('he')}>Hebrew</button></li>
+                                        <li><button className="dropdown-item" >Arabic</button></li>
                                     </ul>
                                 </div>
                             </div>
