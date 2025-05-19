@@ -536,7 +536,7 @@ function CategoryproductsPage({ language }) {
                                         </div>
                                     </div>
                                     <div className="product-details">
-                                        <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
+                                        <div className={`product-row `}>
                                             <h5 className="product-title"> {language === "he"
                                                     ? productTranslations2[language][product.id].title 
                                                     : product.title} </h5>
@@ -587,7 +587,7 @@ function CategoryproductsPage({ language }) {
                                 <div className={`product-card d-flex justify-content-between ${language === "he" ? "flex-row-reverse" : ""}`}>
                                     <div className="product-details w-100 d-flex flex-column justify-content-between">
                                         <div>
-                                            <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
+                                            <div className={`product-row`}>
                                                 <h5 className="product-title">{language === "he"
                                                     ? productTranslations2[language][product.id].title 
                                                     : product.title}</h5>
