@@ -43,7 +43,7 @@ function AppContent() {
       
       <Routes>
         <Route path="/subcategories" element={<Subcategories language={language} />} />
-        <Route path="/" element={<Menu />} />
+        <Route path="/" element={<Menu language={language} setLanguage={setLanguage} />} />
         <Route path="/home" element={<Home language={language} />} />
         <Route path="/categoryproducts" element={<Categoryproducts language={language} />} />
         <Route path="/menu-managemnet" element={<MenuManagement />} />
