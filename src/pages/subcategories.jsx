@@ -210,7 +210,7 @@ function SubcategoriesPage({ language }) {
         const isMobile = useIsMobile();
         return (
             <div className="products-section container pb-4">
-                <div className={`section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
+                <div className={`section-header d-flex justify-content-between align-items-center`}>
                     <div className="header-left d-flex align-items-center">
                         <FaStar className="star-icon" />
                         {/*
