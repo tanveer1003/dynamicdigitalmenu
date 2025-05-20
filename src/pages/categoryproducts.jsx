@@ -668,7 +668,7 @@ function CategoryproductsPage({ language }) {
                                     aria-label="Close"
                                 ></button>
                             </div>
-                            <div className="modal-body">
+                            <div className="modal-body" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                                 {selectedProduct && (
                                     <>
                                         <div key={selectedProduct.id} className="product-card">
