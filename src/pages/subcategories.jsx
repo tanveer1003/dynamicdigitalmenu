@@ -242,7 +242,7 @@ function SubcategoriesPage({ language }) {
                                             </div>
                                         </div>
                                         <div className="product-details">
-                                            <div className={`product-row ${language === "he" ? "flex-row-reverse" : ""}`}>
+                                            <div className={`product-row`}>
                                                 <h5 className="product-title">{language === "he"
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}</h5>
