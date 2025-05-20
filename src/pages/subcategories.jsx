@@ -288,7 +288,7 @@ function SubcategoriesPage({ language }) {
                                 <div className={`product-card d-flex  justify-content-between`}>
                                     <div className={`product-details w-100 d-flex flex-column justify-content-between`}>
                                         <div>
-                                            <div className={`product-row gap-1 d-flex justify-content-between align-items-start`}>
+                                            <div className={`product-row gap-1 d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-start`}>
                                                 <h5 className="product-title">{language === "he"
                                                     ? productTranslations[language][product.title].title || product.title
                                                     : product.title}
