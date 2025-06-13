@@ -85,7 +85,7 @@ function MenuManagementAdd() {
         
         // Send to backend
         try {
-            const response = await axios.post("http://dynamicdigitalmenu2.touchtoshop.com/dynamicdigitalmenu-api2/api/products", formData, {
+            const response = await axios.post("https://dynamicdigitalmenu2.touchtoshop.com/dynamicdigitalmenu-api2/api/products", formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 }
