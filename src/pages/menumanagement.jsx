@@ -158,7 +158,7 @@ function MenuManagement() {
             setMessageType('success');
           } else {
            */
-            await axios.post('http://dynamicdigitalmenu2.touchtoshop.com/dynamicdigitalmenu-api2/api/categories', formData);
+            await axios.post('https://dynamicdigitalmenu2.touchtoshop.com/dynamicdigitalmenu-api2/api/categories', formData);
             setMessage('Category created successfully');
             setMessageType('success');
             setCategoryName("");
