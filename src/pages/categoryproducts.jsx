@@ -1,19 +1,14 @@
 
-import Footer from './../components/footer';
-import Header from './../components/header';
-import Searchcomponent from './../components/searchcomponent';
-import ProductCard from './../components/productcard';
 import ReadMoreText from './../components/readmore';
 import { FaFilter, FaSearch } from "react-icons/fa";
 import './../assets/css/categories_slidable.css';
 import './../assets/css/productCard.css';
 import './../assets/css/subcategory_card.css';
-import React, { useRef, useEffect, useState } from "react";
-import { FaStar, FaList, FaTh, FaArrowRight } from "react-icons/fa";
+import { useRef, useEffect, useState } from "react";
+import { FaStar } from "react-icons/fa";
 import wheatIconIcon from './../assets/icons/Vector-wheat.png';
 import leafIcon from './../assets/icons/Vector-leaft.png';
 import chilleIcon from './../assets/icons/Vector-chille.png';
-import moreIcon from './../assets/icons/Vector-more.png';
 import translations from '../../src/components/languagues';
 
 import category1 from './../assets/img/category-1.png';
@@ -37,34 +32,64 @@ import productTranslations2 from '../languagues/productTranslations2';
 //import { Modal } from 'bootstrap';
 import setTitle from '../components/setTitle';
 
+import { fetchCategories } from './../api';
+import { fetchProducts } from './../api';
+import { fetchSubCategories } from './../api';
+
 function CategoryproductsPage({ language }) {
+
+    const [topLevelCategories, setTopLevelCategories] = useState([]);
+    const [subCategories, setSubCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
+       // products //.filter(p => p._id != 0)
+        //productData.filter(product => product.drink_category_id == 1)
+    
+
+    //const [selectedProduct, setSelectedProduct] =
+
+    useEffect(() => {
+                fetchCategories().then( (data) => {
+                                setTopLevelCategories(data);
+                                //setFilteredCategories(data);
+                            }
+                        );
+                fetchSubCategories().then( (data) => {
+                                setSubCategories(data);
+                                //setFilteredCategories(data);
+                            }
+                        );
+                fetchProducts().then( (product) => {
+                        setProducts(product);
+            setSelectedProducts(product);
+                                // setSelectedProducts(product);
+                            }
+                        );
+            }, []);
+
+
+
+
+
 
     function useIsMobile() {
         const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-      
+
         useEffect(() => {
-          const handleResize = () => setIsMobile(window.innerWidth <= 768);
-          window.addEventListener('resize', handleResize);
-          return () => window.removeEventListener('resize', handleResize);
+            const handleResize = () => setIsMobile(window.innerWidth <= 768);
+            window.addEventListener('resize', handleResize);
+            return () => window.removeEventListener('resize', handleResize);
         }, []);
-      
+
         return isMobile;
-      }
+    }
 
-    const categories = [
-        { id: 1 , name: "Appetizers", image: category1 },
-        { id: 2 , name: "Main Course", image: category2 },
-        { id: 3 , name: "Desserts", image: category3 },
-        { id: 4 , name: "Drinks", image: category4 },
-        { id: 5 , name: "Main Course", image: category1 },
-        { id: 6 , name: "Desserts", image: category2 },
 
-    ];
 
     const drinksData = [
         {
             id: 1,
-            categoryId:1,
+            categoryId: 1,
             subcategory: "Wine",
             background: "#373738",
             category: "Drink",
@@ -73,7 +98,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 2,
-            categoryId:4,
+            categoryId: 4,
             subcategory: "Beer",
             background: "#827C64",
             category: "Drink",
@@ -82,7 +107,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 3,
-            categoryId:1,
+            categoryId: 1,
             subcategory: "Spirits &\n Liquors",
             background: "#C6552D",
             category: "Drink",
@@ -91,7 +116,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 4,
-            categoryId:1,
+            categoryId: 1,
             subcategory: "Cocktails",
             background: "#B1834E",
             category: "Drink",
@@ -100,7 +125,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 5,
-            categoryId:2,
+            categoryId: 2,
             subcategory: "Wine",
             background: "#373738",
             category: "Drink",
@@ -109,7 +134,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 6,
-            categoryId:3,
+            categoryId: 3,
             subcategory: "Spirits &\n Liquors",
             background: "#C6552D",
             category: "Drink",
@@ -118,7 +143,7 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 7,
-            categoryId:5,
+            categoryId: 5,
             subcategory: "Cocktails",
             background: "#B1834E",
             category: "Drink",
@@ -127,22 +152,22 @@ function CategoryproductsPage({ language }) {
         },
         {
             id: 8,
-            categoryId:6,
+            categoryId: 6,
             subcategory: "Wine",
             background: "#373738",
             category: "Drink",
             image: subcategory1,
             tags: ["Vegan", "Gluten Free", "Spicy"],
         },
-        
+
         // Add more products as needed
     ];
 
-     const productData = [
+    const productData = [
         {
             id: 1,
             title: "Fermented grape juice Wines",
-            drink_category_id:1,
+            drink_category_id: 1,
             price: 15.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink1,
@@ -151,7 +176,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 2,
             title: "sparkling wines",
-            drink_category_id:1,
+            drink_category_id: 1,
             price: 12.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink2,
@@ -160,7 +185,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 3,
             title: "Red Wines",
-            drink_category_id:1,
+            drink_category_id: 1,
             price: 8.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink3,
@@ -169,7 +194,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 4,
             title: "Fermented grape juice Wines",
-            drink_category_id:1,
+            drink_category_id: 1,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink4,
@@ -178,7 +203,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 5,
             title: "sparkling wines",
-            drink_category_id:1,
+            drink_category_id: 1,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -187,7 +212,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 6,
             title: "Red Wines",
-            drink_category_id:1,
+            drink_category_id: 1,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink6,
@@ -196,7 +221,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 7,
             title: "Red Wines",
-            drink_category_id:2,
+            drink_category_id: 2,
             price: 8.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink3,
@@ -205,7 +230,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 8,
             title: "Red Wines",
-            drink_category_id:3,
+            drink_category_id: 3,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink6,
@@ -214,7 +239,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 9,
             title: "sparkling wines",
-            drink_category_id:4,
+            drink_category_id: 4,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -223,7 +248,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 10,
             title: "sparkling wines",
-            drink_category_id:5,
+            drink_category_id: 5,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -232,7 +257,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 11,
             title: "sparkling wines",
-            drink_category_id:6,
+            drink_category_id: 6,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -241,7 +266,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 12,
             title: "sparkling wines",
-            drink_category_id:7,
+            drink_category_id: 7,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -250,7 +275,7 @@ function CategoryproductsPage({ language }) {
         {
             id: 13,
             title: "sparkling wines",
-            drink_category_id:8,
+            drink_category_id: 8,
             price: 18.00,
             description: "Fresh mixed greens with feta cheese, olives, and house dressing .",
             image: drink5,
@@ -268,44 +293,44 @@ function CategoryproductsPage({ language }) {
 
     setTitle("Products - DynamicDigitalMenu");
 
-   
+
 
     const drinksDataHebrew = [
         {
-          id: 1,
-          categoryId: 1,
-          subcategory: "יין", // Wine
-          background: "#373738",
-          category: "שתייה", // Drink
-          image: subcategory1,
-          tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
+            id: 1,
+            categoryId: 1,
+            subcategory: "יין", // Wine
+            background: "#373738",
+            category: "שתייה", // Drink
+            image: subcategory1,
+            tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
         },
         {
-          id: 2,
-          categoryId: 1,
-          subcategory: "בירה", // Beer
-          background: "#827C64",
-          category: "שתייה", // Drink
-          image: subcategory2,
-          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+            id: 2,
+            categoryId: 1,
+            subcategory: "בירה", // Beer
+            background: "#827C64",
+            category: "שתייה", // Drink
+            image: subcategory2,
+            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
         },
         {
-          id: 3,
-          categoryId: 1,
-          subcategory: "רוחות ואלכוהול", // Spirits & Liquors
-          background: "#C6552D",
-          category: "שתייה", // Drink
-          image: subcategory3,
-          tags: ["טִבעוֹנִי"], // Vegan
+            id: 3,
+            categoryId: 1,
+            subcategory: "רוחות ואלכוהול", // Spirits & Liquors
+            background: "#C6552D",
+            category: "שתייה", // Drink
+            image: subcategory3,
+            tags: ["טִבעוֹנִי"], // Vegan
         },
         {
-          id: 4,
-          categoryId: 4,
-          subcategory: "קוקטיילים", // Cocktails
-          background: "#B1834E",
-          category: "שתייה", // Drink
-          image: subcategory2,
-          tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
+            id: 4,
+            categoryId: 4,
+            subcategory: "קוקטיילים", // Cocktails
+            background: "#B1834E",
+            category: "שתייה", // Drink
+            image: subcategory2,
+            tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
         },
         {
             id: 5,
@@ -315,8 +340,8 @@ function CategoryproductsPage({ language }) {
             category: "שתייה", // Drink
             image: subcategory1,
             tags: ["טִבעוֹנִי", "ללא גלוטן", "חָרִיף"], // Vegan, Gluten Free, Spicy
-          },
-          {
+        },
+        {
             id: 6,
             categoryId: 3,
             subcategory: "רוחות ואלכוהול", // Spirits & Liquors
@@ -324,8 +349,8 @@ function CategoryproductsPage({ language }) {
             category: "שתייה", // Drink
             image: subcategory3,
             tags: ["טִבעוֹנִי"], // Vegan
-          },
-          {
+        },
+        {
             id: 7,
             categoryId: 5,
             subcategory: "קוקטיילים", // Cocktails
@@ -333,8 +358,8 @@ function CategoryproductsPage({ language }) {
             category: "שתייה", // Drink
             image: subcategory2,
             tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
-          },
-          {
+        },
+        {
             id: 8,
             categoryId: 4,
             subcategory: "קוקטיילים", // Cocktails
@@ -342,12 +367,12 @@ function CategoryproductsPage({ language }) {
             category: "שתייה", // Drink
             image: subcategory2,
             tags: ["ללא גלוטן", "חָרִיף"], // Gluten Free, Spicy
-          },
+        },
         // Add more products as needed
-      ];
+    ];
 
 
-    const [selectedSubCategory,setSelectedSubCategory] = useState(drinksData);//  useState(drinksData.filter(category =>category.categoryId == 1)); //useState(drinksData);
+    const [selectedSubCategory, setSelectedSubCategory] = useState(subCategories);//  useState(drinksData.filter(category =>category.categoryId == 1)); //useState(drinksData);
     const [isGrid, setisGrid] = useState(true);
 
     const Categories = () => {
@@ -380,69 +405,55 @@ function CategoryproductsPage({ language }) {
                     </div>
                     <div className="header-right">
                         <button className='bg-light border border-0' onClick={() => setisGrid(false)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="#007bff" d="M224 128a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8M40 72h176a8 8 0 0 0 0-16H40a8 8 0 0 0 0 16m176 112H40a8 8 0 0 0 0 16h176a8 8 0 0 0 0-16"/></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 256 256"><path fill="#007bff" d="M224 128a8 8 0 0 1-8 8H40a8 8 0 0 1 0-16h176a8 8 0 0 1 8 8M40 72h176a8 8 0 0 0 0-16H40a8 8 0 0 0 0 16m176 112H40a8 8 0 0 0 0 16h176a8 8 0 0 0 0-16" /></svg>
                         </button>
                         <button className='bg-light border border-0' onClick={() => setisGrid(true)}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="#007bff" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z"/><path fill="007bff" d="M9 13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zm10 0a2 2 0 0 1 1.995 1.85L21 15v4a2 2 0 0 1-1.85 1.995L19 21h-4a2 2 0 0 1-1.995-1.85L13 19v-4a2 2 0 0 1 1.85-1.995L15 13zM9 15H5v4h4zm10 0h-4v4h4zm0-12a2 2 0 0 1 1.995 1.85L21 5v4a2 2 0 0 1-1.85 1.995L19 11h-4a2 2 0 0 1-1.995-1.85L13 9V5a2 2 0 0 1 1.85-1.995L15 3zM9 3a2 2 0 0 1 1.995 1.85L11 5v4a2 2 0 0 1-1.85 1.995L9 11H5a2 2 0 0 1-1.995-1.85L3 9V5a2 2 0 0 1 1.85-1.995L5 3zm10 2h-4v4h4zM9 5H5v4h4z"/></g></svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><g fill="#007bff" fill-rule="evenodd"><path d="m12.593 23.258l-.011.002l-.071.035l-.02.004l-.014-.004l-.071-.035q-.016-.005-.024.005l-.004.01l-.017.428l.005.02l.01.013l.104.074l.015.004l.012-.004l.104-.074l.012-.016l.004-.017l-.017-.427q-.004-.016-.017-.018m.265-.113l-.013.002l-.185.093l-.01.01l-.003.011l.018.43l.005.012l.008.007l.201.093q.019.005.029-.008l.004-.014l-.034-.614q-.005-.018-.02-.022m-.715.002a.02.02 0 0 0-.027.006l-.006.014l-.034.614q.001.018.017.024l.015-.002l.201-.093l.01-.008l.004-.011l.017-.43l-.003-.012l-.01-.01z" /><path fill="007bff" d="M9 13a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2zm10 0a2 2 0 0 1 1.995 1.85L21 15v4a2 2 0 0 1-1.85 1.995L19 21h-4a2 2 0 0 1-1.995-1.85L13 19v-4a2 2 0 0 1 1.85-1.995L15 13zM9 15H5v4h4zm10 0h-4v4h4zm0-12a2 2 0 0 1 1.995 1.85L21 5v4a2 2 0 0 1-1.85 1.995L19 11h-4a2 2 0 0 1-1.995-1.85L13 9V5a2 2 0 0 1 1.85-1.995L15 3zM9 3a2 2 0 0 1 1.995 1.85L11 5v4a2 2 0 0 1-1.85 1.995L9 11H5a2 2 0 0 1-1.995-1.85L3 9V5a2 2 0 0 1 1.85-1.995L5 3zm10 2h-4v4h4zM9 5H5v4h4z" /></g></svg>
                         </button>
                     </div>
                 </div>
 
                 {/* Scrollable Row */}
                 <div className="categories-container" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
-                    {categories.map((category, index) => (
-                        <button key={index} onClick={ () => { 
-                            const filteredDrinks = drinksData.filter(drink => drink.categoryId === category.id);
-                            const drinkCategoryIds = filteredDrinks.map(drink => drink.id);
-                            const filteredProducts = productData.filter(product =>
-                                drinkCategoryIds.includes(product.drink_category_id)
+                    {topLevelCategories.map((category, index) => (
+                        <button key={index} onClick={() => {
+                            const filteredSubcategories = subCategories.filter(sub => sub.parentCategory === category._id);
+                            /*
+                            const subCategoriesIds = filteredSubcategories.map(sub => sub._id);
+                            const filteredProducts = products.filter(product =>
+                                subCategoriesIds.includes(product._id)
                             );
-            
-                            setSelectedSubCategory(filteredDrinks);
-                            setSelectedProducts(filteredProducts);
+                            */
+
+                            setSelectedSubCategory(filteredSubcategories);
+                            setSelectedProducts( products.filter( p => p.parentCategory  == category._id ) );
                             /*
                             setSelectedSubCategory( drinksData.filter( drink => drink.categoryId == category.id)); 
                             setSelectedProducts(productData.filter( product => product.drink_category_id ==  drink.categoryId ));
                             */
-                            } } className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
+                        }} className="category-card" style={{ backgroundImage: `url(${category.imageUrl})` }}>
                             <div className="overlay"></div>
                             <h5 className="category-text">{language === "he"
-                                    ? categoryTranslations[category.name] || category.name
-                                    : category.name}</h5>
+                                ? category.name.he
+                                : category.name.en}</h5>
                         </button>
                     ))}
                 </div>
-
-                {/* Scrollbar Indicator */}
-                {/*
-                <div className="scroll-indicator">
-                    <div
-                        className="scroll-indicator-fill"
-                        style={{
-                            width: scrollWidth > 1 ? `${(scrollLeft / scrollWidth) * 100}%` : "0%",
-                        }}
-                    ></div>
-                </div>
-                */}
             </div>
         );
     };
 
-   
+
 
     const formatTag = (tag) => {
         return tag.toLowerCase().replace(/\s+/g, "-");
     };
 
     const [selectedProduct, setSelectedProduct] = useState(null);
-    const [selectedDrink,setSelectedDrink] = useState(0);
-    
+    const [selectedDrink, setSelectedDrink] = useState(0);
 
-    //const [selectedProduct, setSelectedProduct] =
-    const [selectedProducts, setSelectedProducts] = useState(
-        //productData
-        productData.filter(product => product.drink_category_id == 1)
-    );
+
+
 
     const [priceRange, setPriceRange] = useState([0, 1000]);
     const [minPrice, maxPrice] = priceRange;
@@ -456,16 +467,17 @@ function CategoryproductsPage({ language }) {
         event.preventDefault(); // Prevent form submission and page reload
 
         // Filter categories based on search query
-        const filtered = productData.filter(product =>
-            product.title.toLowerCase().includes(searchQuery.toLowerCase()) 
+        const filtered = products.filter(product =>
+            product.title.en.toLowerCase().includes(searchQuery.toLowerCase()) 
+        ||  product.title.he.toLowerCase().includes(searchQuery.toLowerCase()) 
             && product.price >= minPrice && product.price <= maxPrice
         );
         //alert();
         setSelectedProducts(filtered);
-        
+
         const filteredProducts = productData.filter(product => {
             const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            product.description.toLowerCase().includes(searchQuery.toLowerCase())
+                product.description.toLowerCase().includes(searchQuery.toLowerCase())
             const matchesCategory = product.drink_category_id === selectedCategory;
             return matchesSearch && matchesCategory;
         });
@@ -477,13 +489,13 @@ function CategoryproductsPage({ language }) {
         setSearchQuery(event.target.value);
     };
 
-   
+
     const [selectedCategory, setSelectedCategory] = useState(1); // Default category (1)
 
     // Filter products based on searchQuery and drink_category_id
     const filteredProducts = productData.filter(product => {
         const matchesSearch = product.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        product.description.toLowerCase().includes(searchQuery.toLowerCase())
+            product.description.toLowerCase().includes(searchQuery.toLowerCase())
         const matchesCategory = product.drink_category_id === selectedCategory;
         return matchesSearch && matchesCategory;
     });
@@ -493,25 +505,15 @@ function CategoryproductsPage({ language }) {
 
     useEffect(() => {
         if (selectedProduct && modalRef.current) {
-        bsModal.current = new window.bootstrap.Modal(modalRef.current); //new Modal(modalRef.current);
-        bsModal.current.show();
+            bsModal.current = new window.bootstrap.Modal(modalRef.current); //new Modal(modalRef.current);
+            bsModal.current.show();
         }
     }, [selectedProduct]);
 
-  const handleClick = (product) => {
-    
-    setSelectedProduct(product);
-    //useEffect( );
-    /*
-    setTimeout(() => {
-      if (bsModal.current) {
-        bsModal.current.show();
-      }
-    }, 100);
-    */
-    //alert(selectedProduct.title);
-    //alert(product.title);
-  };
+    const handleClick = (product) => {
+
+        setSelectedProduct(product);
+    };
 
 
     const ProductsSection = () => {
@@ -521,89 +523,89 @@ function CategoryproductsPage({ language }) {
             <div className="products-section container pb-4">
 
 
-                <div className={`row ${language === "he" ? "flex-row-reverse" : ""}`} style={{ direction: language === "he" ? "rtl" : "ltr" }}>
+                <div className={`row `} style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {selectedProducts.map((product) => (
                         isGrid ?
-                            <div key={product.id} className="p-2 col-lg-6 col-xl-4 col-md-6 ">
+                            <div key={product._id} className="p-2 col-lg-6 col-xl-4 col-md-6 ">
                                 <button type="button" className="read-more-btn w-100" data-bs-toggle="modal"
-                                                data-bs-target="#productModal" onClick={() => setSelectedProduct(product) }>
-                                <div className="product-card">
-                                    <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
-                                        <div className="overlay">
-                                            <span className="product-category-tag"> {language === "he"
-                                                    ? productTranslations2[language][product.id].tags[0] 
+                                    data-bs-target="#productModal" onClick={() => setSelectedProduct(product)}>
+                                    <div className="product-card">
+                                        <div className="product-image" style={{ backgroundImage: `url(${product.imageUrl})` }}>
+                                            <div className="overlay">
+                                                <span className="product-category-tag"> {language === "he"
+                                                    ? product.tags[0]
                                                     : product.tags[0]} </span>
+                                            </div>  
                                         </div>
-                                    </div>
-                                    <div className="product-details">
-                                        <div className={`product-row `}>
-                                            <h5 className="product-title"> {language === "he"
-                                                    ? productTranslations2[language][product.id].title 
-                                                    : product.title} </h5>
-                                            <div className="product-price">₪ {product.price}</div>
-                                        </div>
-                                        <p className="product-description " style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {textAlign: 'left'}}> 
-                                        {language === "he"
+                                        <div className="product-details">
+                                            <div className={`product-row `}>
+                                                <h5 className="product-title"> {language === "he"
+                                                    ? product.title.he
+                                                    : product.title.en} </h5>
+                                                <div className="product-price">₪ {product.price}</div>
+                                            </div>
+                                            <p className="product-description " style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : { textAlign: 'left' }}>
+                                                {language === "he"
                                                     ? <ReadMoreText
-                                                    text={ productTranslations2[language][product.id].description.substring(0, isMobile ? 30 : 100)} 
-                                                    lang={language} 
-                                                    />  
+                                                        text={product.description.he.substring(0, isMobile ? 30 : 100)}
+                                                        lang={language}
+                                                    />
                                                     : <ReadMoreText
-                                                    text={ product.description.substring(0, isMobile ? 30 : 100) }  
-                                                    lang={language} 
-                                                    />  }
-                                        </p>
-                                        <div className="product-row">
-                                            <div className="product-tags">
-                                                {product.tags.map((tag, index) => (
-                                                    <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                        {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                        {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
-                                                        {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                        {language === "he"
-                                                    ? productTranslations2[language][product.id].tags[index] 
-                                                    : product.tags[index]}
-                                                    </div>
-                                                ))}
-                                            </div>
-                                            
-                                            <div className="g-2 d-flex align-items-center">
-                                                <span style={{ paddingLeft:"5px"}}> 
-                                                <span>  { language === "he"  ? "קרא עוד " :  "Read More " }</span> 
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
-                                                        <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
-                                                    </svg>
-                                                </span>
-                                            </div>
-                                                    
-                                        </div>
+                                                        text={product.description.en.substring(0, isMobile ? 30 : 100)}
+                                                        lang={language}
+                                                    />}
+                                            </p>
+                                            <div className="product-row">
+                                                <div className="product-tags">
+                                                    {product.tags.map((tag, index) => (
+                                                        <div key={index} className={`tag ${formatTag(tag)}`}>
+                                                            {tag === "gluten free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
+                                                            {tag === "spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
+                                                            {tag === "vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
+                                                            {language === "he"
+                                                                ? product.tags[index]
+                                                                : product.tags[index]}aa
+                                                        </div>
+                                                    ))}
+                                                </div>
 
+                                                <div className="g-2 d-flex align-items-center">
+                                                    <span style={{ paddingLeft: "5px" }}>
+                                                        <span>  {language === "he" ? "קרא עוד " : "Read More "}</span>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
+                                                            <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
+                                                        </svg>
+                                                    </span>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
                                     </div>
-                                </div>
                                 </button>
                             </div>
                             :
-                            <div key={product.id} className=" p-2 col-md-12">
+                            <div key={product._id} className=" p-2 col-md-12">
                                 <div className={`product-card d-flex justify-content-between ${language === "he" ? "flex-row-reverse" : ""}`}>
                                     <div className="product-details w-100 d-flex flex-column justify-content-between">
                                         <div>
                                             <div className={`product-row`}>
                                                 <h5 className="product-title">{language === "he"
-                                                    ? productTranslations2[language][product.id].title 
-                                                    : product.title}</h5>
+                                                    ? product.title.he
+                                                    : product.title.en} </h5>
                                                 <div className="product-price">₪ {product.price}</div>
                                             </div>
-                                            <p className="product-description" style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {textAlign: 'left'}}>
+                                            <p className="product-description" style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : { textAlign: 'left' }}>
                                                 {language === "he"
                                                     ? <ReadMoreText
-                                                    text={ productTranslations2[language][product.id].description.substring(0, isMobile ? 30 : 100)} 
-                                                    lang={language} 
-                                                    />  
+                                                        text={product.description.he.substring(0, isMobile ? 30 : 100)}
+                                                        lang={language}
+                                                    />
                                                     : <ReadMoreText
-                                                    text={ product.description.substring(0, isMobile ? 30 : 100) }  
-                                                    lang={language} 
-                                                    />  }
-                                                  </p>
+                                                        text={product.description.en.substring(0, isMobile ? 30 : 100)}
+                                                        lang={language}
+                                                    />}
+                                            </p>
                                         </div>
                                         <div className="product-row">
                                             <div className="product-tags">
@@ -613,8 +615,8 @@ function CategoryproductsPage({ language }) {
                                                         {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                         {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                         {language === "he"
-                                                    ? productTranslations2[language][product.id].tags[index] 
-                                                    : product.tags[index]}
+                                                            ? product.tags[index]
+                                                            : product.tags[index]}
                                                     </div>
                                                 ))}
                                             </div>
@@ -622,7 +624,7 @@ function CategoryproductsPage({ language }) {
 
                                     </div>
                                     <div className=" product-grid" style={{
-                                        backgroundImage: `url(${product.image})`,
+                                        backgroundImage: `url(${product.imageUrl})`,
                                         //width: "257px",  // Adjust as needed
                                         //height: "257px",
                                         //backgroundSize: "cover",
@@ -632,8 +634,8 @@ function CategoryproductsPage({ language }) {
                                     }}>
                                         <div className="overlay">
                                             <span className="product-category-tag">{language === "he"
-                                                    ? productTranslations2[language][product.id].tags[0] 
-                                                    : product.tags[0]}</span>
+                                                ? product.tags[0]
+                                                : product.tags[0]}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -647,7 +649,7 @@ function CategoryproductsPage({ language }) {
                     tabIndex="-1"
                     aria-labelledby="productModalLabel"
                     aria-hidden="true"
-                    style={{ "alignContent":"center"}}
+                    style={{ "alignContent": "center" }}
                 >
                     <div className="modal-dialog border border-0" style={{ maxWidth: 900 }}>
                         <div className="modal-content bg-transparent border border-0">
@@ -659,7 +661,7 @@ function CategoryproductsPage({ language }) {
                                         backgroundImage: `url(${closeIcon})`,
                                         width: '10px',
                                         height: '10px',
-                                        marginRight:'10px',
+                                        marginRight: '10px',
                                         aspectRatio: '1',
                                         backgroundSize: 'cover',
                                         backgroundPosition: 'center',
@@ -671,27 +673,27 @@ function CategoryproductsPage({ language }) {
                             <div className="modal-body" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                                 {selectedProduct && (
                                     <>
-                                        <div key={selectedProduct.id} className="product-card">
+                                        <div key={selectedProduct._id} className="product-card">
                                             <div class="card" style={{ width: '100%', position: 'relative', overflow: 'hidden' }} >
-                                                <img src={selectedProduct.image} class="card-img-top" style={{ maxHeight: '70vh',overflowY: 'auto' }} alt="Card Image" />
+                                                <img src={selectedProduct.imageUrl} class="card-img-top" style={{ maxHeight: '70vh', overflowY: 'auto' }} alt="Card Image" />
 
                                                 <span class="badge bg-primary position-absolute top-0 start-0 m-2">
                                                     {language === "he"
-                                                        ? productTranslations2[language][selectedProduct.id].tags[0]
+                                                        ? selectedProduct.tags[0]
                                                         : selectedProduct.tags[0]}
                                                 </span>
 
                                                 <div class="card-body">
                                                     <div className="product-row">
                                                         <h5 className="product-title"  > {language === "he"
-                                                            ? productTranslations2[language][selectedProduct.id].title
-                                                            : selectedProduct.title} </h5>
+                                                            ? selectedProduct.title.he
+                                                            : selectedProduct.title.en} </h5>
                                                         <div className="product-price"> {language === "he"
                                                             ? "₪" : "₪"} {selectedProduct.price}</div>
                                                     </div>
                                                     <p className="product-description" style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {}}> {language === "he"
-                                                        ? productTranslations2[language][selectedProduct.id].description
-                                                        : selectedProduct.description}
+                                                        ? selectedProduct.description.he
+                                                        : selectedProduct.description.en}
                                                     </p>
                                                     <div className="product-row">
                                                         <div className="product-tags">
@@ -701,7 +703,7 @@ function CategoryproductsPage({ language }) {
                                                                     {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                     {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                                     {language === "he"
-                                                                        ? productTranslations2[language][selectedProduct.id].tags[index]
+                                                                        ? selectedProduct.tags[index]
                                                                         : selectedProduct.tags[index]}
                                                                 </div>
                                                             ))}
@@ -709,42 +711,6 @@ function CategoryproductsPage({ language }) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* 
-                                            <div className="product-image-model" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
-                                                <div className="overlay">
-                                                    <span className="product-category-tag">{language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
-                                                        : selectedProduct.tags[0]}</span>
-                                                </div>
-                                            </div>
-                                            <div className="product-details">
-                                                <div className="product-row">
-                                                    <h5 className="product-title"> {language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
-                                                        : selectedProduct.title} </h5>
-                                                    <div className="product-price"> {language === "he"
-                                                        ? "₪" : "₪"} {selectedProduct.price}</div>
-                                                </div>
-                                                <p className="product-description"> {language === "he"
-                                                    ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
-                                                    : selectedProduct.description}
-                                                </p>
-                                                <div className="product-row">
-                                                    <div className="product-tags">
-                                                        {selectedProduct.tags.map((tag, index) => (
-                                                            <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                                {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                                {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
-                                                                {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                                {language === "he"
-                                                                    ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
-                                                                    : selectedProduct.tags[index]}
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            */ }
                                         </div>
                                     </>
                                 )}
@@ -756,26 +722,26 @@ function CategoryproductsPage({ language }) {
         );
     };
 
-    const CategoryTag = ({ subcategory,id, category, imageUrl, backgroundColor }) => {
+    const CategoryTag = ({ subcategory, id, category, imageUrl, backgroundColor }) => {
         return (
-            <button type="button" onClick={() =>  setSelectedProducts(productData.filter(product => product.drink_category_id == id)) } className="category-tag" style={{ border:0, backgroundColor: backgroundColor }}>
+            <button type="button" onClick={ () => setSelectedProducts(products.filter(p => p.categoryId._id == id) ) } className="category-tag" style={{ border: 0, backgroundColor: backgroundColor }}>
                 <div className="category-info">
-                    <h3 className="subcategory"> {language === "he" ? drinksDataHebrew.filter( product => product.id == id)[0] .subcategory  : subcategory} </h3>
-                    <p className="category">{language === "he" ? drinksDataHebrew.filter( product => product.id == id)[0] .category  : category}</p>
+                    <h3 className="subcategory">  {language === "he" ? subcategory : subcategory}  </h3>
+                    <p className="category"> {language === "he" ? category : category}</p>
                 </div>
                 <img src={imageUrl} alt={subcategory} className="category-image" />
             </button>
         );
     };
 
-    
+
     return (
         <div >
 
             <div className='pt-2' style={{ background: "rgb(243 246 250)" }} >
 
                 <div className="px-2">
-                    
+
                     <form onSubmit={handleSearchSubmit} className="container py-2 bg-white d-flex align-items-center mb-3">
                         {/* Search Input (95% on mobile, 80% on desktop) */}
                         <div className="flex-grow-1 me-2 w-sm-95 w-md-65">
@@ -809,22 +775,22 @@ function CategoryproductsPage({ language }) {
 
                         {/* Two Buttons (Hidden on mobile, 10% each on desktop) */}
                         <div className="d-none d-md-flex gap-2" style={{ width: "35%" }}>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
-                                    <FaFilter className="me-1" />  {translations[language].FilterText}
-                                </button>
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
+                                <FaFilter className="me-1" />  {translations[language].FilterText}
+                            </button>
                             <button type="submit" className="btn btn-primary w-100">
-                                    <FaSearch className="me-1" /> {translations[language].SearchText}
-                                </button>
+                                <FaSearch className="me-1" /> {translations[language].SearchText}
+                            </button>
                         </div>
 
                     </form>
                     <div class="px-2 collapse  d-md-none" id="collapseExample">
                         <div class="card card-body">
-                        <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
+                            <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal" className="btn w-100 border bg-white text-dark">
                                 <FaFilter className="me-1" />  {translations[language].FilterText}
                             </button>
                             <button type="submit" onClick={handleSearchSubmit} className="btn btn-primary w-100">
-                                    <FaSearch className="me-1" /> {translations[language].SearchText}
+                                <FaSearch className="me-1" /> {translations[language].SearchText}
                             </button>
                         </div>
                     </div>
@@ -832,46 +798,48 @@ function CategoryproductsPage({ language }) {
                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Search Filters</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            
-                            <input
-                            type="range"
-                            min="0"
-                            max="1000"
-                            value={maxPrice}
-                            onChange={(e) => setPriceRange([minPrice, +e.target.value])}
-                            className="w-100"
-                            />
-                            <div className="d-flex justify-content-between">
-                                <div className="me-2">
-                                <label>Min ($)</label>
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Search Filters</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+
                                 <input
-                                    type="number"
-                                    value={minPrice}
-                                    onChange={(e) => setPriceRange([+e.target.value, maxPrice])}
-                                    className="form-control"
-                                />
-                                </div>
-                                <div>
-                                <label>Max ($)</label>
-                                <input
-                                    type="number"
+                                    type="range"
+                                    min="0"
+                                    max="1000"
                                     value={maxPrice}
                                     onChange={(e) => setPriceRange([minPrice, +e.target.value])}
-                                    className="form-control"
+                                    className="w-100"
                                 />
+                                <div className="d-flex justify-content-between">
+                                    <div className="me-2">
+                                        <label>Min ($)</label>
+                                        <input
+                                            type="number"
+                                            value={minPrice}
+                                            onChange={(e) => setPriceRange([+e.target.value, maxPrice])}
+                                            className="form-control"
+                                        />
+                                    </div>
+                                    <div>
+                                        <label>Max ($)</label>
+                                        <input
+                                            type="number"
+                                            value={maxPrice}
+                                            onChange={(e) => setPriceRange([minPrice, +e.target.value])}
+                                            className="form-control"
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                         </div>
                     </div>
                 </div>
                 <Categories />
+
                 <div className="container my-5">
+
                     <div className={`section-header d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-center`}>
                         <div className={`header-left d-flex ${language === "he" ? "flex-row-reverse" : ""} align-items-start `} >
                             <FaStar className="star-icon" />
@@ -879,20 +847,21 @@ function CategoryproductsPage({ language }) {
                         </div>
                     </div>
 
-                    {/* Scrollable Row */}
-                    <div className={`categories-container ${language === "he" ? "flex-row-reverse" : ""}`} style={{ direction: language === "he" ? "rtl" : "ltr" }}>
-                        {selectedSubCategory.map((drinks, index) => (
+                    <div className={`categories-container `} style={{ direction: language === "he" ? "rtl" : "ltr" }}>
+                        {subCategories.map((subCategory, index) => (
                             <CategoryTag
-                                subcategory={drinks.subcategory}
-                                id={drinks.id}
-                                category={drinks.category}
-                                imageUrl={drinks.image}
-                                backgroundColor={drinks.background} // Change this color as needed
+                                //subcategory={subCategory.subcategory}
+                                subcategory={language === "he" ? subCategory.name.he : subCategory.name.en}
+                                id={subCategory._id}
+                                category= {language === "he" ? subCategory.parentCategory.name.he : subCategory.parentCategory.name.en} 
+                                imageUrl={subCategory.imageUrl}
+                            //backgroundColor={subCategory.background} // Change this color as needed
                             />
                         ))}
                     </div>
 
                 </div>
+
                 <ProductsSection />
             </div>
         </div>

@@ -19,11 +19,16 @@ import category10 from './../assets/img/category-10.jpg';
 import category11 from './../assets/img/category-11.jpg';
 import category12 from './../assets/img/category-12.jpg';
 
+import { fetchCategories } from './../api';
+
 import setTitle from '../components/setTitle';
 
 function Home({ language }) {
 
+    const [categories, setCategories] = useState([]);
     const [searchQuery, setSearchQuery] = useState("");
+    const [filteredCategories, setFilteredCategories] = useState([]);
+    /*
     const [filteredCategories, setFilteredCategories] = useState(
         [
             { name: "Appetizers", image: category1 },
@@ -40,6 +45,8 @@ function Home({ language }) {
             { name: "Drinks", image: category12 },
         ]
     );
+    */
+    /*
 
     const categoryTranslations = {
         "Appetizers": "מתאבנים",
@@ -67,8 +74,22 @@ function Home({ language }) {
         { name: "Desserts", image: category11 },
         { name: "Drinks", image: category12 },
     ];
+    */
 
     setTitle("Categories - DynamicDigitalMenu"); 
+
+    useEffect(() => {
+        fetchCategories().then( (data) => {
+                setCategories(data);
+                setFilteredCategories(data);
+            }
+        );
+        
+        }, []);
+    
+    
+    
+   
 
     
 
@@ -78,7 +99,8 @@ function Home({ language }) {
 
         // Filter categories based on search query
         const filtered = categories.filter(category =>
-            category.name.toLowerCase().includes(searchQuery.toLowerCase())
+            category.name.he.toLowerCase().includes(searchQuery.toLowerCase())
+           || category.name.en.toLowerCase().includes(searchQuery.toLowerCase())
         );
         setFilteredCategories(filtered);
     };
@@ -164,7 +186,7 @@ function Home({ language }) {
                             <div 
                                 className="category-card position-relative" 
                                 style={{ 
-                                backgroundImage: `url(${category.image})`,
+                                backgroundImage: `url(${category.imageUrl})`,
                                 paddingTop: '100%', // 1:1 aspect ratio (height = width)
                                 backgroundSize: 'cover',
                                 backgroundPosition: 'center',
@@ -177,8 +199,8 @@ function Home({ language }) {
                                 <div className="position-absolute top-50 start-50 translate-middle w-100 px-2">
                                 <h5 className="category-text text-white mb-0">
                                     {language === "he" 
-                                    ? categoryTranslations[category.name] || category.name 
-                                    : category.name}
+                                    ? category.name.he
+                                    : category.name.en}
                                 </h5>
                                 </div>
                             </div>

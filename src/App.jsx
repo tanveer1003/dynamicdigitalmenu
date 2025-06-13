@@ -10,6 +10,7 @@ import NotFoundPage from './pages/notfoundpage';
 import MenuManagement from './pages/menumanagement';
 import MenuManagementAdd from './pages/menumanagementadd';
 import MenuManagementSetting from './pages/menumanagementsetting';
+import ProductManagement from './pages/productmanagement';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import translations from './components/languagues';
@@ -31,7 +32,8 @@ function AppContent() {
     '/',
     '/menu-managemnet',
     '/menu-managemnet-add',
-    '/menu-managemnet-setting'
+    '/menu-managemnet-setting',
+    '/product-managemnet'
   ];
 
 
@@ -49,6 +51,7 @@ function AppContent() {
         <Route path="/menu-managemnet" element={<MenuManagement />} />
         <Route path="/menu-managemnet-add" element={<MenuManagementAdd />} />
         <Route path="/menu-managemnet-setting" element={<MenuManagementSetting />} />
+        <Route path="/product-managemnet" element={<ProductManagement />} />
       </Routes>
 
      {/*    {!hideFooterRoutes.includes(location.pathname) && <Footer language={language} />} */}

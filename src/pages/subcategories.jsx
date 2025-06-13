@@ -27,25 +27,29 @@ import prodcut4 from './../assets/img/f284588c2064d3bfa8bf45ef9a63015c.jpeg';
 
 import closeIcon from './../assets/img/close-icon.png';
 import setTitle from '../components/setTitle';
+import { fetchCategories } from './../api';
+import { fetchProducts } from './../api';
 
 
 function SubcategoriesPage({ language }) {
 
-    const categories = [
-        { name: "Appetizers", image: category1 },
-        { name: "Main Course", image: category2 },
-        { name: "Desserts", image: category3 },
-        { name: "Drinks", image: category4 },
-        { name: "Main Course", image: category2 },
-        { name: "Desserts", image: category3 },
-    ];
+    const [categories, setCategories] = useState([]);
+    const [products, setProducts] = useState([]);
+    const [selectedProducts, setSelectedProducts] = useState([]);
 
-    const categoryTranslations = {
-        "Appetizers": "מנות פתיחה",
-        "Main Course": "מנה עיקרית",
-        "Desserts": "קינוחים",
-        "Drinks": "משקאות",
-    };
+    useEffect(() => {
+            fetchCategories().then( (data) => {
+                            setCategories(data);
+                            //setFilteredCategories(data);
+                        }
+                    );
+            fetchProducts().then( (product) => {
+                            setProducts(product);
+                            setSelectedProducts(product);
+                        }
+                    );
+        }, []);
+    
 
     
     setTitle("Products - DynamicDigitalMenu");
@@ -83,12 +87,12 @@ function SubcategoriesPage({ language }) {
                 {/* Scrollable Row */}
                 <div className="categories-container" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     {categories.map((category, index) => (
-                        <div key={index} className="category-card" style={{ backgroundImage: `url(${category.image})` }}>
+                        <div key={index} className="category-card" style={{ backgroundImage: `url(${category.imageUrl})` }}>
                             <Link className='text-white link-offset-2 link-underline link-underline-opacity-0' to="/categoryproducts">
                                 <div className="overlay"></div>
                                 <h5 className="category-text"> {language === "he"
-                                    ? categoryTranslations[category.name] || category.name
-                                    : category.name} </h5>
+                                    ? category.name.he
+                                    : category.name.en} </h5>
                             </Link>
                         </div>
                     ))}
@@ -168,9 +172,7 @@ function SubcategoriesPage({ language }) {
 
     const [isGrid, setisGrid] = useState(true);
 
-    const [selectedProducts, setSelectedProducts] = useState(
-        productData
-    );
+    
     const [searchQuery, setSearchQuery] = useState("");
 
     const handleSearchChange = (event) => {
@@ -184,8 +186,9 @@ function SubcategoriesPage({ language }) {
         event.preventDefault(); // Prevent form submission and page reload
 
         // Filter categories based on search query
-        const filtered = productData.filter(product =>
-            product.title.toLowerCase().includes(searchQuery.toLowerCase())
+        const filtered = products.filter(product => 
+            product.title.en.toLowerCase().includes(searchQuery.toLowerCase())
+        || product.title.he.toLowerCase().includes(searchQuery.toLowerCase())
             && product.price >= minPrice && product.price <= maxPrice
         );
         //alert();
@@ -231,28 +234,33 @@ function SubcategoriesPage({ language }) {
                     {selectedProducts.map((product) => (
                         isGrid ?
                             <div key={product.id} className=" p-2 col-lg-6 col-xl-4 col-md-6">
-                                <button type="button" className="read-more-btn" data-bs-toggle="modal"
+                                 <button type="button" className="read-more-btn w-100" data-bs-toggle="modal"
                                     data-bs-target="#productModal" onClick={() => setSelectedProduct(product)}>
                                     <div className="product-card">
-                                        <div className="product-image" style={{ backgroundImage: `url(${product.image})` }}>
+                                        <div className="product-image" style={{ backgroundImage: `url(${product.imageUrl})` }}>
                                             <div className="overlay">
-                                                <span className="product-category-tag">{language === "he"
-                                                    ? productTranslations[language][product.title].tags[0] || product.title
+                                                <span className="product-category-tag"> {language === "he"
+                                                    ? product.tags[0]
                                                     : product.tags[0]} </span>
-                                            </div>
+                                            </div>  
                                         </div>
                                         <div className="product-details">
-                                            <div className={`product-row`}>
-                                                <h5 className="product-title">{language === "he"
-                                                    ? productTranslations[language][product.title].title || product.title
-                                                    : product.title}</h5>
-                                                <div className="product-price"> {language === "he"
-                                                    ? "₪" : "₪"} {product.price}</div>
-                                            </div> 
-                                            <p className={ "product-description"} style={  language === "he" ? {  marginBottom: 0, direction: 'rtl', textAlign: 'right' } : { textAlign:"left" }} >
+                                            <div className={`product-row `}>
+                                                <h5 className="product-title"> {language === "he"
+                                                    ? product.title.he
+                                                    : product.title.en} </h5>
+                                                <div className="product-price">₪ {product.price}</div>
+                                            </div>
+                                            <p className="product-description " style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : { textAlign: 'left' }}>
                                                 {language === "he"
-                                                    ? productTranslations[language][product.title].description.substring(0, 100) || product.title
-                                                    : product.description.substring(0, 100)}
+                                                    ? <ReadMoreText
+                                                        text={product.description.he.substring(0, isMobile ? 30 : 100)}
+                                                        lang={language}
+                                                    />
+                                                    : <ReadMoreText
+                                                        text={product.description.en.substring(0, isMobile ? 30 : 100)}
+                                                        lang={language}
+                                                    />}
                                             </p>
                                             <div className="product-row">
                                                 <div className="product-tags">
@@ -262,15 +270,15 @@ function SubcategoriesPage({ language }) {
                                                             {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                             {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                             {language === "he"
-                                                                ? productTranslations[language][product.title].tags[index] || product.title
+                                                                ? product.tags[index]
                                                                 : product.tags[index]}
-
                                                         </div>
                                                     ))}
                                                 </div>
+
                                                 <div className="g-2 d-flex align-items-center">
-                                                    
-                                                    <span style={{ paddingLeft: "5px" }}><span >{language === "he" ? "קרא עוד " : "Read More "}</span>
+                                                    <span style={{ paddingLeft: "5px" }}>
+                                                        <span>  {language === "he" ? "קרא עוד " : "Read More "}</span>
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 512 512">
                                                             <path fill="none" stroke="#0d6efd" stroke-linecap="round" stroke-linejoin="round" stroke-width="41" d="M388.364 242.764v178.691A42.547 42.547 0 0 1 345.818 464H90.546A42.544 42.544 0 0 1 48 421.455V166.182a42.543 42.543 0 0 1 42.546-42.546h178.69M464 180.364V48H331.636M216 296L464 48" />
                                                         </svg>
@@ -283,15 +291,15 @@ function SubcategoriesPage({ language }) {
                                     </div>
                                 </button>
                             </div>
-                            :
+                        :
                             <div key={product.id} className=" p-2 col-md-12">
                                 <div className={`product-card d-flex  justify-content-between`}>
                                     <div className={`product-details w-100 d-flex flex-column justify-content-between`}>
                                         <div>
                                             <div className={`product-row gap-1 d-flex ${language === "he" ? "flex-row-reverse" : ""} justify-content-between align-items-start`}>
                                                 <h5 className="product-title">{language === "he"
-                                                    ? productTranslations[language][product.title].title || product.title
-                                                    : product.title}
+                                                    ? product.title.he
+                                                    : product.title.en }
                                                 </h5>
                                                 <div className="product-price">  {language === "he"
                                                     ? "₪" : "₪"}{product.price}
@@ -301,8 +309,8 @@ function SubcategoriesPage({ language }) {
                                                 <ReadMoreText
                                                     text={
                                                         language === "he"
-                                                            ? productTranslations[language][product.title].description || product.title
-                                                            : product.description
+                                                            ? product.description.he 
+                                                            : product.description.en
                                                     } // Adjust the maxLength as needed
                                                     maxLength={isMobile ? 30 : 100}
                                                     lang={language}
@@ -326,7 +334,7 @@ function SubcategoriesPage({ language }) {
 
                                     </div>
                                     <div className=" product-grid " style={{
-                                        backgroundImage: `url(${product.image})`,
+                                        backgroundImage: `url(${product.imageUrl})`,
                                         //width: "257px",  // Adjust as needed
                                         //height: "257px",
                                         //backgroundSize: "cover",
@@ -336,12 +344,12 @@ function SubcategoriesPage({ language }) {
                                     }}>
                                         <div className="overlay">
                                             <span className="product-category-tag">{language === "he"
-                                                ? productTranslations[language][product.title].tags[0] || product.title
+                                                ? product.tags[0] 
                                                 : product.tags[0]}</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>  
                     ))}
                 </div>
                 <div
@@ -377,25 +385,25 @@ function SubcategoriesPage({ language }) {
                                     <>
                                         <div key={selectedProduct.id} className="product-card">
                                             <div class="card" style={{ width: '100%', position: 'relative', overflow: 'hidden' }} >
-                                            <img src={selectedProduct.image} class="card-img-top" style={{ maxHeight: '70vh',overflowY: 'auto' }} alt="Card Image" />
+                                            <img src={selectedProduct.imageUrl} class="card-img-top" style={{ maxHeight: '70vh',overflowY: 'auto' }} alt="Card Image" />
 
                                                 <span class="badge bg-primary position-absolute top-0 start-0 m-2">
                                                     {language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
-                                                        : selectedProduct.tags[0]}
+                                                        ? selectedProduct.tags[0]
+                                                        : selectedProduct.tags[0] }
                                                 </span>
 
                                                 <div class="card-body">
                                                     <div className={`row `} >
                                                         <h5 className="product-title"> {language === "he"
-                                                            ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
-                                                            : selectedProduct.title} </h5>
+                                                            ? selectedProduct.title.he
+                                                            : selectedProduct.title.en } </h5>
                                                         <div className="product-price"> {language === "he"
                                                             ? "₪" : "₪"} {selectedProduct.price}</div>
                                                     </div>
                                                     <p className={"product-description"} style={language === "he" ? { marginBottom: 0, direction: 'rtl', textAlign: 'right' } : {}}> {language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
-                                                        : selectedProduct.description}
+                                                        ? selectedProduct.description.he
+                                                        : selectedProduct.description.en }
                                                     </p>
                                                     <div className="product-row">
                                                         <div className="product-tags">
@@ -405,7 +413,7 @@ function SubcategoriesPage({ language }) {
                                                                     {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
                                                                     {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
                                                                     {language === "he"
-                                                                        ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
+                                                                        ? selectedProduct.tags[index] 
                                                                         : selectedProduct.tags[index]}
                                                                 </div>
                                                             ))}
@@ -413,42 +421,6 @@ function SubcategoriesPage({ language }) {
                                                     </div>
                                                 </div>
                                             </div>
-                                            {/* 
-                                            <div className="product-image-model" style={{ backgroundImage: `url(${selectedProduct.image})` }}>
-                                                <div className="overlay">
-                                                    <span className="product-category-tag">{language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].tags[0] || selectedProduct.title
-                                                        : selectedProduct.tags[0]}</span>
-                                                </div>
-                                            </div>
-                                            <div className="product-details">
-                                                <div className="product-row">
-                                                    <h5 className="product-title"> {language === "he"
-                                                        ? productTranslations[language][selectedProduct.title].title || selectedProduct.title
-                                                        : selectedProduct.title} </h5>
-                                                    <div className="product-price"> {language === "he"
-                                                        ? "₪" : "₪"} {selectedProduct.price}</div>
-                                                </div>
-                                                <p className="product-description"> {language === "he"
-                                                    ? productTranslations[language][selectedProduct.title].description || selectedProduct.title
-                                                    : selectedProduct.description}
-                                                </p>
-                                                <div className="product-row">
-                                                    <div className="product-tags">
-                                                        {selectedProduct.tags.map((tag, index) => (
-                                                            <div key={index} className={`tag ${formatTag(tag)}`}>
-                                                                {tag === "Gluten Free" && <img style={{ height: 10, width: 10 }} src={wheatIconIcon} alt="Vegan Icon" />}
-                                                                {tag === "Spicy" && <img style={{ height: 10, width: 10 }} src={chilleIcon} alt="Spicy Icon" />}
-                                                                {tag === "Vegan" && <img style={{ height: 10, width: 10 }} src={leafIcon} alt="Vegan Icon" />}
-                                                                {language === "he"
-                                                                    ? productTranslations[language][selectedProduct.title].tags[index] || selectedProduct.title
-                                                                    : selectedProduct.tags[index]}
-                                                            </div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            */ }
                                         </div>
                                     </>
                                 )}
