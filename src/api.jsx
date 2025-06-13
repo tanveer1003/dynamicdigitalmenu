@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://dynamicdigitalmenu2.touchtoshop.com/dynamicdigitalmenu-api2/"; //process.env.REACT_APP_API_BASE_URL;
+const API_BASE_URL = "https://dynamicdigitalmenu2.touchtoshop.com/dynamicdigitalmenu-api2/"; //process.env.REACT_APP_API_BASE_URL;
 
 
   export const fetchCategories = async () => {
