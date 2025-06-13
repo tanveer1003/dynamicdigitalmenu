@@ -70,7 +70,7 @@ function MenuManagement() {
     // SAVE UPDATE
     const handleUpdate = async () => {
         try {
-            const res = await fetch(`http://localhost:5000/api/categories/${editingCategory._id}`, {
+            const res = await fetch(`https://localhost:5000/api/categories/${editingCategory._id}`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -350,9 +350,11 @@ function MenuManagement() {
                                             {cat.name.en}
                                         </div>
                                         <div className="d-flex">
+                                            {/* 
                                             <button onClick={() => handleEditStart(cat)} className="btn btn-primary border border-0 bg-light text-success">
                                                 Edit
                                             </button>
+                                            */}
                                             <button onClick={() => handleDelete(cat._id)} className="btn btn-primary border border-0 bg-light text-danger">
                                                 Remove
                                             </button>
