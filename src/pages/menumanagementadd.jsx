@@ -9,8 +9,9 @@ import leafIcon from './../assets/icons/Vector-leaft.png';
 import chilleIcon from './../assets/icons/Vector-chille.png';
 import { fetchCategories } from './../api';
 import { fetchProducts } from './../api';
+import translations from '../../src/components/languagues';
 
-function MenuManagementAdd() {
+function MenuManagementAdd({ language, setLanguage }) {
 
     const [itemName, setItemName] = useState('');
     const [itemNameUr, setItemNameUr] = useState('');
@@ -106,10 +107,10 @@ function MenuManagementAdd() {
 
     return (
         <div>
-            <AdminHeader />
+            <AdminHeader language={language} setLanguage={setLanguage} />
             <div className="container-fluid" style={{ background: "#F9FAFB" }}>
 
-                <div className="row">
+                <div className="row" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     <div className="col-md-6 p-3">
                         <div className="d-flex gap-2">
                             <Link to="/menu-managemnet" className="btn btn-primary border border-0" style={{ background: "#fff", color: "#4B5563" }}>
@@ -120,28 +121,28 @@ function MenuManagementAdd() {
                                         <path d="M14.0003 10V1.33333C13.1163 1.33333 12.2684 1.68452 11.6433 2.30964C11.0182 2.93477 10.667 3.78261 10.667 4.66667V8.66667C10.667 9.4 11.267 10 12.0003 10H14.0003ZM14.0003 10V14.6667" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
-                                Categories
+                                {translations[language].categoryTitle}
                             </Link>
                             <Link to="/menu-managemnet-add" className="btn btn-primary border border-0" style={{ background: "#DBEAFE", color: "#0d6efd" }}>
                                 <span className='pe-1'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" /></svg>
                                 </span>
-                                Add Item
+                                {translations[language].addItem}
                             </Link>
                             <Link to="/menu-managemnet-setting" className="btn btn-primary border border-0" style={{ background: "#fff", color: "#4B5563" }}>
                                 <span className='pe-1'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M19.9 12.66a1 1 0 0 1 0-1.32l1.28-1.44a1 1 0 0 0 .12-1.17l-2-3.46a1 1 0 0 0-1.07-.48l-1.88.38a1 1 0 0 1-1.15-.66l-.61-1.83a1 1 0 0 0-.95-.68h-4a1 1 0 0 0-1 .68l-.56 1.83a1 1 0 0 1-1.15.66L5 4.79a1 1 0 0 0-1 .48L2 8.73a1 1 0 0 0 .1 1.17l1.27 1.44a1 1 0 0 1 0 1.32L2.1 14.1a1 1 0 0 0-.1 1.17l2 3.46a1 1 0 0 0 1.07.48l1.88-.38a1 1 0 0 1 1.15.66l.61 1.83a1 1 0 0 0 1 .68h4a1 1 0 0 0 .95-.68l.61-1.83a1 1 0 0 1 1.15-.66l1.88.38a1 1 0 0 0 1.07-.48l2-3.46a1 1 0 0 0-.12-1.17ZM18.41 14l.8.9l-1.28 2.22l-1.18-.24a3 3 0 0 0-3.45 2L12.92 20h-2.56L10 18.86a3 3 0 0 0-3.45-2l-1.18.24l-1.3-2.21l.8-.9a3 3 0 0 0 0-4l-.8-.9l1.28-2.2l1.18.24a3 3 0 0 0 3.45-2L10.36 4h2.56l.38 1.14a3 3 0 0 0 3.45 2l1.18-.24l1.28 2.22l-.8.9a3 3 0 0 0 0 3.98m-6.77-6a4 4 0 1 0 4 4a4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2a2 2 0 0 1-2 2" /></svg>
                                 </span>
-                                Settings
+                                {translations[language].setting}
                             </Link>
 
                         </div>
                         <div className="bg-white mt-4 p-3">
-                            <h4>Add New Dish</h4>
+                            <h4>{translations[language].categoryTitle} Add New Dish</h4>
 
                             <form className='' onSubmit={handleSubmit}>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput1" className="form-label">Title En</label>
+                                    <label for="exampleFormControlInput1" className="form-label"> {translations[language].title} En</label>
                                     <input type="text" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput1"
                                         value={itemName}
@@ -149,7 +150,7 @@ function MenuManagementAdd() {
                                         placeholder="e.g., Margherita Pizza" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput2" className="form-label">Title He</label>
+                                    <label for="exampleFormControlInput2" className="form-label"> {translations[language].title} He </label>
                                     <input type="text" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput2"
                                         value={itemNameUr}
@@ -157,7 +158,7 @@ function MenuManagementAdd() {
                                         placeholder="e.g., Margherita Pizza" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput3" className="form-label">Description</label>
+                                    <label for="exampleFormControlInput3" className="form-label"> {translations[language].description} En</label>
                                     <textarea type="text" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput3"
                                         onChange={(e) => setDescription(e.target.value)} value={description}
@@ -165,7 +166,7 @@ function MenuManagementAdd() {
                                     </textarea>
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput4" className="form-label">Description He</label>
+                                    <label for="exampleFormControlInput4" className="form-label"> {translations[language].description} He</label>
                                     <textarea type="text" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput4"
                                         onChange={(e) => setDescriptionUr(e.target.value)} value={descriptionUr}
@@ -179,14 +180,14 @@ function MenuManagementAdd() {
                                     ))}
                                 </select>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput5" className="form-label">Price</label>
+                                    <label for="exampleFormControlInput5" className="form-label">{translations[language].price}</label>
                                     <input type="number" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput5"
                                         onChange={(e) => setPrice(e.target.value)} value={price}
                                         placeholder="0.00" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput6" className="form-label">SKU</label>
+                                    <label for="exampleFormControlInput6" className="form-label">{translations[language].sku}</label>
                                     <input type="text" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput6"
                                         onChange={(e) => setSku(e.target.value)} value={sku}
@@ -195,7 +196,7 @@ function MenuManagementAdd() {
                                 <ImageUpload onImageSelect={(file) => setSelectedImage(file)} />
 
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput7" className="form-label">Dietary Options</label>
+                                    <label for="exampleFormControlInput7" className="form-label"> {translations[language].dietaryOptions}</label>
                                     <div className="">
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="checkbox" id="vegan"
@@ -210,7 +211,7 @@ function MenuManagementAdd() {
                                     </div>
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput8" className="form-label">HighLight text</label>
+                                    <label for="exampleFormControlInput8" className="form-label"> {translations[language].highlightText}</label>
                                     <input type="text" className="form-control border border-0 border-bottom rounded-0"
                                         style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput8"
                                         onChange={(e) => setHighlight(e.target.value)} value={highlight}
@@ -225,7 +226,7 @@ function MenuManagementAdd() {
                                     </div>
                                 )}
                                 <button type="submit" className="btn btn-primary border border-0" style={{ background: "#0d6efd", color: "#fff" }}>
-                                    Add Dish
+                                    {translations[language].submit}
                                 </button>
                             </form>
 

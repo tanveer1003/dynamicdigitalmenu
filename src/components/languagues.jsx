@@ -1,3 +1,5 @@
+import MenuManagement from "../pages/menumanagement";
+
 const translations = {
     en: {
         headerTiming :"Mon-Sun: 11:00 AM - 10:00 PM",
@@ -23,7 +25,23 @@ const translations = {
         seachPlaceholder:"Search",
         categoryTitle:"Categories",
         sectionTitle: "Appetizers Specials Deals",
-        subCategoryTitle: "Subcategories",
+        subCategoryTitle: "Subcategories",//
+        language:"Language",
+        addItem:"Add Item",
+        setting:"Setting",
+        name:"Name",
+        title:"Title",
+        description:"Description",
+        sku:"SKU",
+        price:"Price",
+        dietaryOptions:"Dietary Options",
+        highlightText:"HighLight text",
+        image:"Image",
+        submit:"Submit",
+        livePreview:"Live Preview",
+        existing:"Existing",
+        remove:"Remove",
+        menuManagement:"Menu Management",
       // Other translatable strings for English
     },
     he: {
@@ -51,6 +69,22 @@ const translations = {
         categoryTitle:"קטגוריות",
         sectionTitle: "הצעות מיוחדות של אפטיזר",
         subCategoryTitle: "קטגוריות משנה",
+        language: "שפה",
+        addItem: "הוסף פריט",
+        setting: "הגדרות",
+        name: "שם",
+        title: "כותרת",
+        description: "תיאור",
+        sku: "מק\"ט (SKU)",
+        price: "מחיר",
+        dietaryOptions: "אפשרויות תזונה",
+        highlightText: "טקסט מודגש",
+        image: "תמונה",
+        submit: "שלח",
+        livePreview: "תצוגה מקדימה",
+        existing: "קיים",
+        remove: "הסר",
+        menuManagement: "ניהול תפריט"
         // Other translatable strings for Hebrew
     },
   };

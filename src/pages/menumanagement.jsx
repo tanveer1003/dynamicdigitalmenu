@@ -4,8 +4,9 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import AdminHeader from './../components/adminheader';
 import { fetchCategories,deleteCategory } from './../api';
+import translations from '../../src/components/languagues';
 
-function MenuManagement() {
+function MenuManagement({ language, setLanguage }) {
 
     const [form, setForm] = useState({
         id: null,
@@ -197,7 +198,7 @@ function MenuManagement() {
     */
 
 
-    const Categories = () => {
+    const CategoriesSection = () => {
 
 
         return (
@@ -205,7 +206,7 @@ function MenuManagement() {
                 <Link to="#" >
                     Live Preview
                 </Link>
-                <h5 className="mb-4 pt-4">Appetizers</h5>
+                <h5 className="mb-4 pt-4">{translations[language].categoryTitle}</h5>
 
                 {/* Scrollable Row */}
                 <div className="categories-container">
@@ -219,7 +220,7 @@ function MenuManagement() {
                     ))}
                 </div>
 
-                <h5 className="mb-4 pt-4">Appetizers</h5>
+                <h5 className="mb-4 pt-4">{translations[language].categoryTitle}</h5>
 
                 <div className="categories-container">
                     {categories.map((category, index) => (
@@ -260,10 +261,10 @@ function MenuManagement() {
     ];
     return (
         <div>
-            <AdminHeader />
+            <AdminHeader language={language} setLanguage={setLanguage} />
             <div className="container-fluid" style={{ background: "#F9FAFB" }}>
 
-                <div className="row">
+                <div className="row" style={{ direction: language === "he" ? "rtl" : "ltr" }}>
                     <div className="col-md-6 p-3">
                         <div className="d-flex gap-2">
                             <Link to="/menu-managemnet" className="btn btn-primary border border-0" style={{ background: "#DBEAFE", color: "#0d6efd" }}>
@@ -274,32 +275,32 @@ function MenuManagement() {
                                         <path d="M14.0003 10V1.33333C13.1163 1.33333 12.2684 1.68452 11.6433 2.30964C11.0182 2.93477 10.667 3.78261 10.667 4.66667V8.66667C10.667 9.4 11.267 10 12.0003 10H14.0003ZM14.0003 10V14.6667" stroke="#1D4ED8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                                     </svg>
                                 </span>
-                                Categories
+                                {translations[language].categoryTitle}
                             </Link>
                             <Link to="/menu-managemnet-add" className="btn btn-primary border border-0" style={{ background: "#fff", color: "#4B5563" }}>
                                 <span className='pe-1'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M19 12.998h-6v6h-2v-6H5v-2h6v-6h2v6h6z" /></svg>
                                 </span>
-                                Add Item
+                                {translations[language].addItem}
                             </Link>
                             <Link to="/menu-managemnet-setting" className="btn btn-primary border border-0" style={{ background: "#fff", color: "#4B5563" }}>
                                 <span className='pe-1'>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#000000" d="M19.9 12.66a1 1 0 0 1 0-1.32l1.28-1.44a1 1 0 0 0 .12-1.17l-2-3.46a1 1 0 0 0-1.07-.48l-1.88.38a1 1 0 0 1-1.15-.66l-.61-1.83a1 1 0 0 0-.95-.68h-4a1 1 0 0 0-1 .68l-.56 1.83a1 1 0 0 1-1.15.66L5 4.79a1 1 0 0 0-1 .48L2 8.73a1 1 0 0 0 .1 1.17l1.27 1.44a1 1 0 0 1 0 1.32L2.1 14.1a1 1 0 0 0-.1 1.17l2 3.46a1 1 0 0 0 1.07.48l1.88-.38a1 1 0 0 1 1.15.66l.61 1.83a1 1 0 0 0 1 .68h4a1 1 0 0 0 .95-.68l.61-1.83a1 1 0 0 1 1.15-.66l1.88.38a1 1 0 0 0 1.07-.48l2-3.46a1 1 0 0 0-.12-1.17ZM18.41 14l.8.9l-1.28 2.22l-1.18-.24a3 3 0 0 0-3.45 2L12.92 20h-2.56L10 18.86a3 3 0 0 0-3.45-2l-1.18.24l-1.3-2.21l.8-.9a3 3 0 0 0 0-4l-.8-.9l1.28-2.2l1.18.24a3 3 0 0 0 3.45-2L10.36 4h2.56l.38 1.14a3 3 0 0 0 3.45 2l1.18-.24l1.28 2.22l-.8.9a3 3 0 0 0 0 3.98m-6.77-6a4 4 0 1 0 4 4a4 4 0 0 0-4-4m0 6a2 2 0 1 1 2-2a2 2 0 0 1-2 2" /></svg>
                                 </span>
-                                Settings
+                                {translations[language].setting}
                             </Link>
                         </div>
                         <div className="bg-white mt-4 p-3">
-                            <h4>Categories</h4>
+                            <h4>{translations[language].categoryTitle}</h4>
 
                             <form className='' onSubmit={(e) => e.preventDefault()}>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput1" className="form-label" >Category Name English</label>
+                                    <label for="exampleFormControlInput1" className="form-label" >{translations[language].name} English</label>
                                     <input type="text" value={categoryName}
                                         onChange={(e) => setCategoryName(e.target.value)} className="form-control border border-0 border-bottom rounded-0" style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput1" placeholder="e.g., Main Dishes" />
                                 </div>
                                 <div className="mb-3">
-                                    <label for="exampleFormControlInput2" className="form-label" >Category Name Hebrow</label>
+                                    <label for="exampleFormControlInput2" className="form-label" >{translations[language].name} Hebrow</label>
                                     <input type="text" value={categoryNameHe}
                                         onChange={(e) => setCategoryNameHe(e.target.value)} className="form-control border border-0 border-bottom rounded-0" style={{ "::placeholder": { color: "red" } }} id="exampleFormControlInput2" placeholder="e.g., Main Dishes" />
                                 </div>
@@ -310,7 +311,7 @@ function MenuManagement() {
                                     ))}
                                 </select>
                                 <div className="mb-3">
-                                    <label className="block text-sm font-medium">Image</label>
+                                    <label className="block text-sm font-medium">{translations[language].image}</label>
                                     <input
                                         type="file"
                                         accept="image/*"
@@ -340,7 +341,7 @@ function MenuManagement() {
                                 )}
                             </form>
                             <div className="pt-4 pb-3">
-                                Existing Categories
+                                {translations[language].existing} {translations[language].categoryTitle}
                             </div>
 
                             <div className="container-fluid gap-2">
@@ -356,7 +357,7 @@ function MenuManagement() {
                                             </button>
                                             */}
                                             <button onClick={() => handleDelete(cat._id)} className="btn btn-primary border border-0 bg-light text-danger">
-                                                Remove
+                                                {translations[language].remove}
                                             </button>
                                         </div>
                                     </div>
@@ -369,7 +370,7 @@ function MenuManagement() {
 
                     </div>
                     <div className="col-md-6 ">
-                        <Categories />
+                        <CategoriesSection />
                     </div>
                 </div>
             </div>

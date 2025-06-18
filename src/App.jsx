@@ -48,9 +48,9 @@ function AppContent() {
         <Route path="/" element={<Menu language={language} setLanguage={setLanguage} />} />
         <Route path="/home" element={<Home language={language} />} />
         <Route path="/categoryproducts" element={<Categoryproducts language={language} />} />
-        <Route path="/menu-managemnet" element={<MenuManagement />} />
-        <Route path="/menu-managemnet-add" element={<MenuManagementAdd />} />
-        <Route path="/menu-managemnet-setting" element={<MenuManagementSetting />} />
+        <Route path="/menu-managemnet" element={<MenuManagement language={language} setLanguage={setLanguage} />} />
+        <Route path="/menu-managemnet-add" element={<MenuManagementAdd language={language} setLanguage={setLanguage} />} />
+        <Route path="/menu-managemnet-setting" element={<MenuManagementSetting language={language} setLanguage={setLanguage} />} />
         <Route path="/product-managemnet" element={<ProductManagement />} />
       </Routes>
 
